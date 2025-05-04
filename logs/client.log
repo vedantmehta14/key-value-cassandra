@@ -1,20 +1,1054 @@
-2025-05-03 20:04:33,716 - __main__ - INFO - Connecting to server at 127.0.0.1:50056
-2025-05-03 20:05:10,436 - __main__ - INFO - Connecting to server at 127.0.0.1:50051
-2025-05-03 20:05:26,806 - __main__ - INFO - Connecting to server at 127.0.0.1:50057
-2025-05-03 20:05:31,752 - __main__ - INFO - Stored key name with timestamp 1746327931748
-2025-05-03 20:05:36,544 - __main__ - INFO - Retrieved key name: Neel
-2025-05-03 20:07:27,376 - __main__ - INFO - Connecting to server at 127.0.0.1:50051
-2025-05-03 20:07:35,890 - __main__ - INFO - Stored key name with timestamp 1746328055886
-2025-05-03 20:08:02,112 - __main__ - INFO - Connecting to server at 127.0.0.1:50051
-2025-05-03 20:08:12,699 - __main__ - INFO - Retrieved key name: Neel
-2025-05-03 20:12:41,376 - __main__ - INFO - Connecting to server at 127.0.0.1:50056
-2025-05-03 20:14:32,739 - __main__ - INFO - Connecting to server at 127.0.0.1:50053
-2025-05-03 20:14:39,412 - __main__ - INFO - Stored key name with timestamp 1746328479408
-2025-05-03 20:14:41,204 - __main__ - INFO - Retrieved key name: Neel
-2025-05-03 20:22:41,098 - __main__ - INFO - Connecting to server at 127.0.0.1:50050
-2025-05-03 20:22:52,079 - __main__ - INFO - Stored key hello with timestamp 1746328972074
-2025-05-03 20:22:55,810 - __main__ - INFO - Retrieved key hello: world
-2025-05-03 23:22:30,974 - __main__ - INFO - Connecting to server at 192.168.1.129:50055
-2025-05-03 23:22:48,425 - __main__ - INFO - Connecting to server at 192.168.1.115:50059
-2025-05-03 23:22:56,222 - __main__ - INFO - Stored key sex with timestamp 1746339776103
-2025-05-03 23:23:24,283 - __main__ - INFO - Retrieved key sex: male
+2025-05-03 23:37:29,219 - __main__ - INFO - Connecting to server at 192.168.1.105:50050
+2025-05-03 23:37:35,701 - __main__ - INFO - Stored key champak with timestamp 1746340655668
+2025-05-03 23:38:58,569 - __main__ - INFO - Retrieved key champak: madhvi
+2025-05-03 23:39:41,802 - __main__ - INFO - Retrieved key champak: madhvi
+2025-05-03 23:55:07,617 - __main__ - INFO - Connecting to server at 192.168.1.105:50053
+2025-05-03 23:55:15,602 - __main__ - ERROR - Error in Get for key champak: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNKNOWN: ipv4:192.168.1.105:50053: Failed to connect to remote host: connect: Connection refused (61)"
+	debug_error_string = "UNKNOWN:Error received from peer  {created_time:"2025-05-03T23:55:15.602384-07:00", grpc_status:14, grpc_message:"failed to connect to all addresses; last error: UNKNOWN: ipv4:192.168.1.105:50053: Failed to connect to remote host: connect: Connection refused (61)"}"
+>
+2025-05-03 23:55:24,425 - __main__ - ERROR - Error in Put for key champak: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNKNOWN: ipv4:192.168.1.105:50053: Failed to connect to remote host: connect: Connection refused (61)"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"failed to connect to all addresses; last error: UNKNOWN: ipv4:192.168.1.105:50053: Failed to connect to remote host: connect: Connection refused (61)", grpc_status:14, created_time:"2025-05-03T23:55:24.425006-07:00"}"
+>
+2025-05-03 23:57:19,832 - __main__ - INFO - Connecting to server at 192.168.1.105:50051
+2025-05-03 23:57:34,499 - __main__ - INFO - Stored key champak with timestamp 1746341852358
+2025-05-03 23:57:43,931 - __main__ - INFO - Retrieved key champak: madhvi
+2025-05-03 23:58:00,637 - __main__ - INFO - Stored key vedant with timestamp 1746341880634
+2025-05-03 23:58:05,087 - __main__ - INFO - Retrieved key vedant: mehta
+2025-05-04 00:13:39,934 - __main__ - INFO - Starting load test with configuration:
+2025-05-04 00:13:39,934 - __main__ - INFO -   Clients: 5
+2025-05-04 00:13:39,934 - __main__ - INFO -   Starting operations: 100
+2025-05-04 00:13:39,934 - __main__ - INFO -   Scaling factor: 2
+2025-05-04 00:13:39,934 - __main__ - INFO -   Steps: 5
+2025-05-04 00:13:39,934 - grpc_client - INFO - Connecting to server at 192.168.1.105:50050
+2025-05-04 00:13:39,934 - grpc_client - INFO - Connecting to server at 192.168.1.105:50055
+2025-05-04 00:13:39,934 - grpc_client - INFO - Connecting to server at 192.168.1.105:50051
+2025-05-04 00:13:39,934 - grpc_client - INFO - Connecting to server at 192.168.1.105:50058
+2025-05-04 00:13:39,934 - grpc_client - INFO - Connecting to server at 192.168.1.105:50059
+2025-05-04 00:13:39,934 - __main__ - INFO - Initialized LoadTester with 5 clients connected to 10 servers
+2025-05-04 00:13:39,934 - __main__ - INFO - Starting weak scaling test with 100 initial operations, scaling by 2x over 5 steps
+2025-05-04 00:13:39,934 - __main__ - INFO - Step 1/5: 100 operations with 1 threads (100 ops/thread)
+2025-05-04 00:13:39,934 - __main__ - INFO - Running parallel workload with 1 threads, 100 operations per thread
+2025-05-04 00:13:39,935 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:13:39,935 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:13:39,940 - grpc_client - INFO - Stored key test_key_CTsLxyrC with timestamp 1746342819938
+2025-05-04 00:13:42,085 - grpc_client - INFO - Stored key test_key_QOLZSZh5 with timestamp 1746342822076
+2025-05-04 00:13:46,407 - grpc_client - INFO - Stored key test_key_GEnLy4nK with timestamp 1746342824216
+2025-05-04 00:13:46,423 - grpc_client - INFO - Stored key test_key_KO4O1tb1 with timestamp 1746342826416
+2025-05-04 00:13:46,429 - grpc_client - INFO - Stored key test_key_Np4rF9ip with timestamp 1746342826425
+2025-05-04 00:13:46,479 - grpc_client - INFO - Stored key test_key_OZ3vL1sK with timestamp 1746342826431
+2025-05-04 00:13:48,611 - grpc_client - INFO - Stored key test_key_ev3eLibi with timestamp 1746342828607
+2025-05-04 00:13:48,615 - grpc_client - INFO - Stored key test_key_aMLHPVkN with timestamp 1746342828613
+2025-05-04 00:13:50,745 - grpc_client - INFO - Stored key test_key_FsDIFbLa with timestamp 1746342830739
+2025-05-04 00:13:50,753 - grpc_client - INFO - Stored key test_key_BMZtMQLc with timestamp 1746342830747
+2025-05-04 00:13:50,761 - grpc_client - INFO - Stored key test_key_RJWlOQlt with timestamp 1746342830756
+2025-05-04 00:13:55,020 - grpc_client - INFO - Stored key test_key_NGi3B1yK with timestamp 1746342832892
+2025-05-04 00:13:57,240 - grpc_client - INFO - Stored key test_key_Nqrqu1Dd with timestamp 1746342837232
+2025-05-04 00:13:59,388 - grpc_client - INFO - Stored key test_key_KStPkAQj with timestamp 1746342839381
+2025-05-04 00:13:59,395 - grpc_client - INFO - Stored key test_key_zbdmOjTA with timestamp 1746342839390
+2025-05-04 00:14:03,720 - grpc_client - INFO - Stored key test_key_nbR0sKlk with timestamp 1746342841533
+2025-05-04 00:14:03,734 - grpc_client - INFO - Stored key test_key_VJ1IJZ7P with timestamp 1746342843726
+2025-05-04 00:14:05,861 - grpc_client - INFO - Stored key test_key_1c42yqUV with timestamp 1746342845859
+2025-05-04 00:14:05,864 - grpc_client - INFO - Stored key test_key_P0S6WZ9u with timestamp 1746342845862
+2025-05-04 00:14:05,867 - grpc_client - INFO - Stored key test_key_Sm1ovms0 with timestamp 1746342845865
+2025-05-04 00:14:05,867 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:14:05,870 - grpc_client - INFO - Retrieved key test_key_BMZtMQLc: test_value_0nc6HygjIydwBXMMbTJW
+2025-05-04 00:14:08,000 - grpc_client - INFO - Retrieved key test_key_Np4rF9ip: test_value_MURusDztwV7Mg2EjJuVv
+2025-05-04 00:14:08,004 - grpc_client - INFO - Retrieved key test_key_VJ1IJZ7P: test_value_WhOlllUUHwdRfq46ra5T
+2025-05-04 00:14:08,009 - grpc_client - INFO - Retrieved key test_key_BMZtMQLc: test_value_0nc6HygjIydwBXMMbTJW
+2025-05-04 00:14:08,015 - grpc_client - INFO - Retrieved key test_key_Sm1ovms0: test_value_pEtIfPrBI5gly7NgVekk
+2025-05-04 00:14:08,018 - grpc_client - INFO - Retrieved key test_key_GEnLy4nK: test_value_5VQYxtDvOsHj1yHrArVE
+2025-05-04 00:14:10,161 - grpc_client - INFO - Retrieved key test_key_aMLHPVkN: test_value_ldecVy0gsjhFz6IouOAJ
+2025-05-04 00:14:11,580 - grpc_client - INFO - Retrieved key test_key_1c42yqUV: test_value_KD71T5lqHsHFR8EIcUJd
+2025-05-04 00:14:13,716 - grpc_client - INFO - Retrieved key test_key_P0S6WZ9u: test_value_kuIlso0wmdbOuPpkCqbT
+2025-05-04 00:14:13,721 - grpc_client - INFO - Retrieved key test_key_GEnLy4nK: test_value_5VQYxtDvOsHj1yHrArVE
+2025-05-04 00:14:15,861 - grpc_client - INFO - Retrieved key test_key_zbdmOjTA: test_value_hjMZetf02TE0GCvu4Jiq
+2025-05-04 00:14:18,001 - grpc_client - INFO - Retrieved key test_key_Nqrqu1Dd: test_value_iO1lBSzascFo3BdahYDV
+2025-05-04 00:14:22,274 - grpc_client - INFO - Retrieved key test_key_zbdmOjTA: test_value_hjMZetf02TE0GCvu4Jiq
+2025-05-04 00:14:24,477 - grpc_client - INFO - Retrieved key test_key_KO4O1tb1: test_value_AJU3QaQWwAg0Or2LSQO4
+2025-05-04 00:14:24,483 - grpc_client - INFO - Retrieved key test_key_1c42yqUV: test_value_KD71T5lqHsHFR8EIcUJd
+2025-05-04 00:14:26,623 - grpc_client - INFO - Retrieved key test_key_P0S6WZ9u: test_value_kuIlso0wmdbOuPpkCqbT
+2025-05-04 00:14:28,823 - grpc_client - INFO - Retrieved key test_key_BMZtMQLc: test_value_0nc6HygjIydwBXMMbTJW
+2025-05-04 00:14:33,076 - grpc_client - INFO - Retrieved key test_key_NGi3B1yK: test_value_cVJKWbwfZKUfqpVGm3jN
+2025-05-04 00:14:33,082 - grpc_client - INFO - Retrieved key test_key_CTsLxyrC: test_value_IyuGbS0TEi0aBc4wMbKI
+2025-05-04 00:14:35,223 - grpc_client - INFO - Retrieved key test_key_nbR0sKlk: test_value_EK6JMRcSWSejzOqhDw06
+2025-05-04 00:14:37,367 - grpc_client - INFO - Retrieved key test_key_OZ3vL1sK: test_value_Zfd5SvovjFtnoADILIHs
+2025-05-04 00:14:39,512 - grpc_client - INFO - Retrieved key test_key_KStPkAQj: test_value_6q1Wnd26JGwBEdlXWoGP
+2025-05-04 00:14:43,784 - grpc_client - INFO - Retrieved key test_key_VJ1IJZ7P: test_value_WhOlllUUHwdRfq46ra5T
+2025-05-04 00:14:43,806 - grpc_client - INFO - Retrieved key test_key_KO4O1tb1: test_value_AJU3QaQWwAg0Or2LSQO4
+2025-05-04 00:14:45,992 - grpc_client - INFO - Retrieved key test_key_Np4rF9ip: test_value_MURusDztwV7Mg2EjJuVv
+2025-05-04 00:14:45,996 - grpc_client - INFO - Retrieved key test_key_aMLHPVkN: test_value_ldecVy0gsjhFz6IouOAJ
+2025-05-04 00:14:48,185 - grpc_client - INFO - Retrieved key test_key_FsDIFbLa: test_value_vy0cvAYhADHJZnQBY4CW
+2025-05-04 00:14:52,463 - grpc_client - INFO - Retrieved key test_key_zbdmOjTA: test_value_hjMZetf02TE0GCvu4Jiq
+2025-05-04 00:14:54,611 - grpc_client - INFO - Retrieved key test_key_OZ3vL1sK: test_value_Zfd5SvovjFtnoADILIHs
+2025-05-04 00:14:56,750 - grpc_client - INFO - Retrieved key test_key_OZ3vL1sK: test_value_Zfd5SvovjFtnoADILIHs
+2025-05-04 00:15:01,014 - grpc_client - INFO - Retrieved key test_key_Nqrqu1Dd: test_value_iO1lBSzascFo3BdahYDV
+2025-05-04 00:15:03,158 - grpc_client - INFO - Retrieved key test_key_aMLHPVkN: test_value_ldecVy0gsjhFz6IouOAJ
+2025-05-04 00:15:03,166 - grpc_client - INFO - Retrieved key test_key_Sm1ovms0: test_value_pEtIfPrBI5gly7NgVekk
+2025-05-04 00:15:03,171 - grpc_client - INFO - Retrieved key test_key_OZ3vL1sK: test_value_Zfd5SvovjFtnoADILIHs
+2025-05-04 00:15:03,175 - grpc_client - INFO - Retrieved key test_key_Nqrqu1Dd: test_value_iO1lBSzascFo3BdahYDV
+2025-05-04 00:15:03,178 - grpc_client - INFO - Retrieved key test_key_BMZtMQLc: test_value_0nc6HygjIydwBXMMbTJW
+2025-05-04 00:15:05,320 - grpc_client - INFO - Retrieved key test_key_Nqrqu1Dd: test_value_iO1lBSzascFo3BdahYDV
+2025-05-04 00:15:05,325 - grpc_client - INFO - Retrieved key test_key_QOLZSZh5: test_value_App4AN8r5ORLmJh0uJzM
+2025-05-04 00:15:05,330 - grpc_client - INFO - Retrieved key test_key_BMZtMQLc: test_value_0nc6HygjIydwBXMMbTJW
+2025-05-04 00:15:09,640 - grpc_client - INFO - Retrieved key test_key_NGi3B1yK: test_value_cVJKWbwfZKUfqpVGm3jN
+2025-05-04 00:15:10,312 - grpc_client - INFO - Retrieved key test_key_ev3eLibi: test_value_P2HR2vHDzNLKJF8Qw6Cd
+2025-05-04 00:15:10,319 - grpc_client - INFO - Retrieved key test_key_OZ3vL1sK: test_value_Zfd5SvovjFtnoADILIHs
+2025-05-04 00:15:12,455 - grpc_client - INFO - Retrieved key test_key_P0S6WZ9u: test_value_kuIlso0wmdbOuPpkCqbT
+2025-05-04 00:15:14,653 - grpc_client - INFO - Retrieved key test_key_nbR0sKlk: test_value_EK6JMRcSWSejzOqhDw06
+2025-05-04 00:15:14,662 - grpc_client - INFO - Retrieved key test_key_aMLHPVkN: test_value_ldecVy0gsjhFz6IouOAJ
+2025-05-04 00:15:18,936 - grpc_client - INFO - Retrieved key test_key_Sm1ovms0: test_value_pEtIfPrBI5gly7NgVekk
+2025-05-04 00:15:21,767 - grpc_client - INFO - Retrieved key test_key_QOLZSZh5: test_value_App4AN8r5ORLmJh0uJzM
+2025-05-04 00:15:21,777 - grpc_client - INFO - Retrieved key test_key_1c42yqUV: test_value_KD71T5lqHsHFR8EIcUJd
+2025-05-04 00:15:23,915 - grpc_client - INFO - Retrieved key test_key_Sm1ovms0: test_value_pEtIfPrBI5gly7NgVekk
+2025-05-04 00:15:23,923 - grpc_client - INFO - Retrieved key test_key_Np4rF9ip: test_value_MURusDztwV7Mg2EjJuVv
+2025-05-04 00:15:23,928 - grpc_client - INFO - Retrieved key test_key_aMLHPVkN: test_value_ldecVy0gsjhFz6IouOAJ
+2025-05-04 00:15:28,196 - grpc_client - INFO - Retrieved key test_key_NGi3B1yK: test_value_cVJKWbwfZKUfqpVGm3jN
+2025-05-04 00:15:28,207 - grpc_client - INFO - Retrieved key test_key_nbR0sKlk: test_value_EK6JMRcSWSejzOqhDw06
+2025-05-04 00:15:32,493 - grpc_client - INFO - Retrieved key test_key_NGi3B1yK: test_value_cVJKWbwfZKUfqpVGm3jN
+2025-05-04 00:15:32,510 - grpc_client - INFO - Retrieved key test_key_aMLHPVkN: test_value_ldecVy0gsjhFz6IouOAJ
+2025-05-04 00:15:32,514 - grpc_client - INFO - Retrieved key test_key_NGi3B1yK: test_value_cVJKWbwfZKUfqpVGm3jN
+2025-05-04 00:15:32,517 - grpc_client - INFO - Retrieved key test_key_Np4rF9ip: test_value_MURusDztwV7Mg2EjJuVv
+2025-05-04 00:15:34,717 - grpc_client - INFO - Retrieved key test_key_QOLZSZh5: test_value_App4AN8r5ORLmJh0uJzM
+2025-05-04 00:15:40,511 - grpc_client - INFO - Retrieved key test_key_P0S6WZ9u: test_value_kuIlso0wmdbOuPpkCqbT
+2025-05-04 00:15:42,663 - grpc_client - INFO - Retrieved key test_key_1c42yqUV: test_value_KD71T5lqHsHFR8EIcUJd
+2025-05-04 00:15:44,814 - grpc_client - INFO - Retrieved key test_key_zbdmOjTA: test_value_hjMZetf02TE0GCvu4Jiq
+2025-05-04 00:15:44,819 - grpc_client - INFO - Retrieved key test_key_Nqrqu1Dd: test_value_iO1lBSzascFo3BdahYDV
+2025-05-04 00:15:44,825 - grpc_client - INFO - Retrieved key test_key_KStPkAQj: test_value_6q1Wnd26JGwBEdlXWoGP
+2025-05-04 00:15:48,242 - grpc_client - INFO - Retrieved key test_key_zbdmOjTA: test_value_hjMZetf02TE0GCvu4Jiq
+2025-05-04 00:15:48,249 - grpc_client - INFO - Retrieved key test_key_VJ1IJZ7P: test_value_WhOlllUUHwdRfq46ra5T
+2025-05-04 00:15:50,389 - grpc_client - INFO - Retrieved key test_key_NGi3B1yK: test_value_cVJKWbwfZKUfqpVGm3jN
+2025-05-04 00:15:52,536 - grpc_client - INFO - Retrieved key test_key_ev3eLibi: test_value_P2HR2vHDzNLKJF8Qw6Cd
+2025-05-04 00:15:54,678 - grpc_client - INFO - Retrieved key test_key_ev3eLibi: test_value_P2HR2vHDzNLKJF8Qw6Cd
+2025-05-04 00:15:54,690 - grpc_client - INFO - Retrieved key test_key_Nqrqu1Dd: test_value_iO1lBSzascFo3BdahYDV
+2025-05-04 00:15:54,695 - grpc_client - INFO - Retrieved key test_key_VJ1IJZ7P: test_value_WhOlllUUHwdRfq46ra5T
+2025-05-04 00:15:54,695 - __main__ - INFO - Performing 10 DELETE operations
+2025-05-04 00:15:54,700 - grpc_client - INFO - Deleted key test_key_KStPkAQj
+2025-05-04 00:15:54,703 - grpc_client - INFO - Deleted key test_key_FsDIFbLa
+2025-05-04 00:15:54,706 - grpc_client - INFO - Deleted key test_key_CTsLxyrC
+2025-05-04 00:15:54,710 - grpc_client - INFO - Deleted key test_key_Nqrqu1Dd
+2025-05-04 00:15:54,713 - grpc_client - INFO - Deleted key test_key_ev3eLibi
+2025-05-04 00:15:59,157 - grpc_client - INFO - Deleted key test_key_Sm1ovms0
+2025-05-04 00:16:01,295 - grpc_client - INFO - Deleted key test_key_nbR0sKlk
+2025-05-04 00:16:03,441 - grpc_client - INFO - Deleted key test_key_Np4rF9ip
+2025-05-04 00:16:03,451 - grpc_client - INFO - Deleted key test_key_1c42yqUV
+2025-05-04 00:16:07,718 - grpc_client - INFO - Deleted key test_key_RJWlOQlt
+2025-05-04 00:16:07,722 - __main__ - INFO - Step 1 completed in 147.79 seconds
+2025-05-04 00:16:07,722 - __main__ - INFO -   Throughput: 0.68 ops/sec
+2025-05-04 00:16:07,722 - __main__ - INFO -   Success rate: 100.00%
+2025-05-04 00:16:07,722 - __main__ - INFO -   Average latency: 1477.82 ms
+2025-05-04 00:16:09,727 - __main__ - INFO - Step 2/5: 200 operations with 2 threads (100 ops/thread)
+2025-05-04 00:16:09,728 - __main__ - INFO - Running parallel workload with 2 threads, 100 operations per thread
+2025-05-04 00:16:09,729 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:16:09,729 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:16:09,729 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:16:09,730 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:16:09,750 - grpc_client - INFO - Stored key test_key_DfadACaV with timestamp 1746342969734
+2025-05-04 00:16:09,750 - grpc_client - INFO - Stored key test_key_kkoTlbvY with timestamp 1746342969734
+2025-05-04 00:16:09,755 - grpc_client - INFO - Stored key test_key_85oddm4i with timestamp 1746342969752
+2025-05-04 00:16:11,891 - grpc_client - INFO - Stored key test_key_SC5AtgRE with timestamp 1746342971880
+2025-05-04 00:16:11,891 - grpc_client - INFO - Stored key test_key_RSz7ysQ3 with timestamp 1746342971882
+2025-05-04 00:16:11,900 - grpc_client - INFO - Stored key test_key_RybQpW1y with timestamp 1746342971894
+2025-05-04 00:16:16,164 - grpc_client - INFO - Stored key test_key_Qt1DwHw8 with timestamp 1746342974035
+2025-05-04 00:16:16,175 - grpc_client - INFO - Stored key test_key_qW8KGutb with timestamp 1746342974034
+2025-05-04 00:16:18,323 - grpc_client - INFO - Stored key test_key_RJkT2Jz7 with timestamp 1746342978304
+2025-05-04 00:16:18,324 - grpc_client - INFO - Stored key test_key_Vwqq8KrZ with timestamp 1746342978304
+2025-05-04 00:16:18,328 - grpc_client - INFO - Stored key test_key_V5p3QTE7 with timestamp 1746342978325
+2025-05-04 00:16:20,471 - grpc_client - INFO - Stored key test_key_bJocfkSy with timestamp 1746342980462
+2025-05-04 00:16:20,471 - grpc_client - INFO - Stored key test_key_QhM4n99r with timestamp 1746342980462
+2025-05-04 00:16:20,476 - grpc_client - INFO - Stored key test_key_oT6INDt8 with timestamp 1746342980472
+2025-05-04 00:16:22,610 - grpc_client - INFO - Stored key test_key_nFxdCSZW with timestamp 1746342982600
+2025-05-04 00:16:22,610 - grpc_client - INFO - Stored key test_key_GrNK4DkY with timestamp 1746342982601
+2025-05-04 00:16:22,617 - grpc_client - INFO - Stored key test_key_9Art08yT with timestamp 1746342982612
+2025-05-04 00:16:26,871 - grpc_client - INFO - Stored key test_key_o7YErRG5 with timestamp 1746342984743
+2025-05-04 00:16:29,887 - grpc_client - INFO - Stored key test_key_33o8p9UV with timestamp 1746342984742
+2025-05-04 00:16:29,893 - grpc_client - INFO - Stored key test_key_fTlV2PM9 with timestamp 1746342989061
+2025-05-04 00:16:32,034 - grpc_client - INFO - Stored key test_key_LYhmkUr0 with timestamp 1746342989894
+2025-05-04 00:16:32,051 - grpc_client - INFO - Stored key test_key_oLOnxWmI with timestamp 1746342992031
+2025-05-04 00:16:32,056 - grpc_client - INFO - Stored key test_key_GPMT8UkI with timestamp 1746342992044
+2025-05-04 00:16:34,196 - grpc_client - INFO - Stored key test_key_RcmiKY4S with timestamp 1746342994184
+2025-05-04 00:16:34,197 - grpc_client - INFO - Stored key test_key_LBp5dh5i with timestamp 1746342994185
+2025-05-04 00:16:34,205 - grpc_client - INFO - Stored key test_key_Z6Dkuifd with timestamp 1746342994201
+2025-05-04 00:16:34,210 - grpc_client - INFO - Stored key test_key_7djEv6yL with timestamp 1746342994207
+2025-05-04 00:16:36,332 - grpc_client - INFO - Stored key test_key_7lUwxOpF with timestamp 1746342996323
+2025-05-04 00:16:36,334 - grpc_client - INFO - Stored key test_key_XbPaWfkr with timestamp 1746342996324
+2025-05-04 00:16:36,338 - grpc_client - INFO - Stored key test_key_yaX7c6Ob with timestamp 1746342996335
+2025-05-04 00:16:36,342 - grpc_client - INFO - Stored key test_key_stAE6RsB with timestamp 1746342996339
+2025-05-04 00:16:39,205 - grpc_client - INFO - Stored key test_key_aYFsbG14 with timestamp 1746342999186
+2025-05-04 00:16:39,211 - grpc_client - INFO - Stored key test_key_dyi3CtYt with timestamp 1746342999208
+2025-05-04 00:16:40,658 - grpc_client - INFO - Stored key test_key_Ig6rhWE0 with timestamp 1746342998523
+2025-05-04 00:16:40,681 - grpc_client - INFO - Stored key test_key_Jj83U58E with timestamp 1746343000672
+2025-05-04 00:16:41,354 - grpc_client - INFO - Stored key test_key_Z9x5VzxH with timestamp 1746343001348
+2025-05-04 00:16:41,354 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:16:42,933 - grpc_client - INFO - Stored key test_key_3h6WcFXO with timestamp 1746343002930
+2025-05-04 00:16:43,489 - grpc_client - INFO - Retrieved key test_key_fTlV2PM9: test_value_ZiMxwSGxfSP1pwqj0NnO
+2025-05-04 00:16:45,072 - grpc_client - INFO - Stored key test_key_T4ydOt01 with timestamp 1746343005060
+2025-05-04 00:16:51,467 - grpc_client - INFO - Retrieved key test_key_LBp5dh5i: test_value_r7z9AsG0f6JnvBncYI35
+2025-05-04 00:16:53,613 - grpc_client - INFO - Stored key test_key_xxmKjP73 with timestamp 1746343011464
+2025-05-04 00:16:53,625 - grpc_client - INFO - Retrieved key test_key_o7YErRG5: test_value_JLV4mDN8lXIJ2LPB0NJX
+2025-05-04 00:16:53,631 - grpc_client - INFO - Stored key test_key_Pp0KHQF0 with timestamp 1746343013619
+2025-05-04 00:16:53,631 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:16:55,768 - grpc_client - INFO - Retrieved key test_key_kkoTlbvY: test_value_Px5Ea0vLjKx5zahiYcud
+2025-05-04 00:16:55,773 - grpc_client - INFO - Retrieved key test_key_Jj83U58E: test_value_ehEK4U6TmZPjVFqXUSCd
+2025-05-04 00:16:57,967 - grpc_client - INFO - Retrieved key test_key_QhM4n99r: test_value_O3u1WZ1pN9gtAKTHZQJK
+2025-05-04 00:16:57,971 - grpc_client - INFO - Retrieved key test_key_xxmKjP73: test_value_iAbhV5Aj9IQjYyCVha2V
+2025-05-04 00:16:57,976 - grpc_client - INFO - Retrieved key test_key_fTlV2PM9: test_value_ZiMxwSGxfSP1pwqj0NnO
+2025-05-04 00:16:57,983 - grpc_client - INFO - Retrieved key test_key_Vwqq8KrZ: test_value_8XuuiZNaM3XopD5eGqCW
+2025-05-04 00:16:57,988 - grpc_client - INFO - Retrieved key test_key_V5p3QTE7: test_value_qZWVSNYvIazlaz7Uw0Y4
+2025-05-04 00:16:57,992 - grpc_client - INFO - Retrieved key test_key_bJocfkSy: test_value_FuZ67MFYIvVre7hvzon5
+2025-05-04 00:16:57,995 - grpc_client - INFO - Retrieved key test_key_7lUwxOpF: test_value_ymOKhwaRcZfdO00ZChO4
+2025-05-04 00:16:57,997 - grpc_client - INFO - Retrieved key test_key_Vwqq8KrZ: test_value_8XuuiZNaM3XopD5eGqCW
+2025-05-04 00:17:00,140 - grpc_client - INFO - Retrieved key test_key_Z6Dkuifd: test_value_CCe2EDj3kTyT1yn4LlqM
+2025-05-04 00:17:00,141 - grpc_client - INFO - Retrieved key test_key_Pp0KHQF0: test_value_Le8DkepdNe0E6bTsK5lL
+2025-05-04 00:17:00,150 - grpc_client - INFO - Retrieved key test_key_oLOnxWmI: test_value_I4nJ50OR151aK6jf5vil
+2025-05-04 00:17:00,150 - grpc_client - INFO - Retrieved key test_key_Ig6rhWE0: test_value_LlNd96sQt27fivCmL9KE
+2025-05-04 00:17:00,154 - grpc_client - INFO - Retrieved key test_key_qW8KGutb: test_value_QHfYn604WCQNlcoiN7N6
+2025-05-04 00:17:04,421 - grpc_client - INFO - Retrieved key test_key_Qt1DwHw8: test_value_uL4tIHh556V5XCPKpxZm
+2025-05-04 00:17:04,422 - grpc_client - INFO - Retrieved key test_key_QhM4n99r: test_value_O3u1WZ1pN9gtAKTHZQJK
+2025-05-04 00:17:04,435 - grpc_client - INFO - Retrieved key test_key_GPMT8UkI: test_value_dOfG84AmjOY1iR0mXBRz
+2025-05-04 00:17:04,436 - grpc_client - INFO - Retrieved key test_key_yaX7c6Ob: test_value_GNf1sI4evpiFH1ioj3Xj
+2025-05-04 00:17:04,441 - grpc_client - INFO - Retrieved key test_key_kkoTlbvY: test_value_Px5Ea0vLjKx5zahiYcud
+2025-05-04 00:17:04,444 - grpc_client - INFO - Retrieved key test_key_aYFsbG14: test_value_sydIPgpuyhsVoHYtPR3G
+2025-05-04 00:17:06,578 - grpc_client - INFO - Retrieved key test_key_oT6INDt8: test_value_nkLsD5RUFr67tTewhmC8
+2025-05-04 00:17:06,638 - grpc_client - INFO - Retrieved key test_key_oLOnxWmI: test_value_I4nJ50OR151aK6jf5vil
+2025-05-04 00:17:08,720 - grpc_client - INFO - Retrieved key test_key_GPMT8UkI: test_value_dOfG84AmjOY1iR0mXBRz
+2025-05-04 00:17:08,729 - grpc_client - INFO - Retrieved key test_key_oT6INDt8: test_value_nkLsD5RUFr67tTewhmC8
+2025-05-04 00:17:08,836 - grpc_client - INFO - Retrieved key test_key_85oddm4i: test_value_X4vFV4f705RNuCDopjWX
+2025-05-04 00:17:17,709 - grpc_client - INFO - Retrieved key test_key_Vwqq8KrZ: test_value_8XuuiZNaM3XopD5eGqCW
+2025-05-04 00:17:17,723 - grpc_client - INFO - Retrieved key test_key_o7YErRG5: test_value_JLV4mDN8lXIJ2LPB0NJX
+2025-05-04 00:17:17,726 - grpc_client - INFO - Retrieved key test_key_Pp0KHQF0: test_value_Le8DkepdNe0E6bTsK5lL
+2025-05-04 00:17:19,862 - grpc_client - INFO - Retrieved key test_key_Pp0KHQF0: test_value_Le8DkepdNe0E6bTsK5lL
+2025-05-04 00:17:19,864 - grpc_client - INFO - Retrieved key test_key_85oddm4i: test_value_X4vFV4f705RNuCDopjWX
+2025-05-04 00:17:19,869 - grpc_client - INFO - Retrieved key test_key_9Art08yT: test_value_GdhhpXaQO0ciCTGiTfqx
+2025-05-04 00:17:22,078 - grpc_client - INFO - Retrieved key test_key_RSz7ysQ3: test_value_UBzeXkWtV9QLAoGho4va
+2025-05-04 00:17:22,086 - grpc_client - INFO - Retrieved key test_key_dyi3CtYt: test_value_KH7lu4MOmyaWhU9IwBEK
+2025-05-04 00:17:24,209 - grpc_client - INFO - Retrieved key test_key_Vwqq8KrZ: test_value_8XuuiZNaM3XopD5eGqCW
+2025-05-04 00:17:24,871 - grpc_client - INFO - Retrieved key test_key_V5p3QTE7: test_value_qZWVSNYvIazlaz7Uw0Y4
+2025-05-04 00:17:24,881 - grpc_client - INFO - Retrieved key test_key_Qt1DwHw8: test_value_uL4tIHh556V5XCPKpxZm
+2025-05-04 00:17:26,355 - grpc_client - INFO - Retrieved key test_key_qW8KGutb: test_value_QHfYn604WCQNlcoiN7N6
+2025-05-04 00:17:27,018 - grpc_client - INFO - Retrieved key test_key_T4ydOt01: test_value_YJjk7JQuP73bDWCcEpab
+2025-05-04 00:17:27,020 - grpc_client - INFO - Retrieved key test_key_7djEv6yL: test_value_EcFQkoiysUUBtn1JGCqK
+2025-05-04 00:17:27,025 - grpc_client - INFO - Retrieved key test_key_GPMT8UkI: test_value_dOfG84AmjOY1iR0mXBRz
+2025-05-04 00:17:27,030 - grpc_client - INFO - Retrieved key test_key_Pp0KHQF0: test_value_Le8DkepdNe0E6bTsK5lL
+2025-05-04 00:17:31,286 - grpc_client - INFO - Retrieved key test_key_9Art08yT: test_value_GdhhpXaQO0ciCTGiTfqx
+2025-05-04 00:17:33,422 - grpc_client - INFO - Retrieved key test_key_33o8p9UV: test_value_mxAJjxiVlfnEH9EOmmeZ
+2025-05-04 00:17:35,525 - grpc_client - INFO - Retrieved key test_key_Ig6rhWE0: test_value_LlNd96sQt27fivCmL9KE
+2025-05-04 00:17:35,541 - grpc_client - INFO - Retrieved key test_key_bJocfkSy: test_value_FuZ67MFYIvVre7hvzon5
+2025-05-04 00:17:37,544 - grpc_client - INFO - Retrieved key test_key_yaX7c6Ob: test_value_GNf1sI4evpiFH1ioj3Xj
+2025-05-04 00:17:37,551 - grpc_client - INFO - Retrieved key test_key_SC5AtgRE: test_value_kbK7c1D2jBEKuJTKfK4n
+2025-05-04 00:17:39,696 - grpc_client - INFO - Retrieved key test_key_dyi3CtYt: test_value_KH7lu4MOmyaWhU9IwBEK
+2025-05-04 00:17:39,701 - grpc_client - INFO - Retrieved key test_key_RybQpW1y: test_value_oJB0oKoWNKU5W8iJG7H9
+2025-05-04 00:17:39,702 - grpc_client - INFO - Retrieved key test_key_LBp5dh5i: test_value_r7z9AsG0f6JnvBncYI35
+2025-05-04 00:17:39,707 - grpc_client - INFO - Retrieved key test_key_oLOnxWmI: test_value_I4nJ50OR151aK6jf5vil
+2025-05-04 00:17:39,707 - grpc_client - INFO - Retrieved key test_key_DfadACaV: test_value_XkkKxYaXygw00wyF0mEU
+2025-05-04 00:17:39,710 - grpc_client - INFO - Retrieved key test_key_GrNK4DkY: test_value_H0iW9jMzQ2feMqp3Nc6S
+2025-05-04 00:17:41,837 - grpc_client - INFO - Retrieved key test_key_xxmKjP73: test_value_iAbhV5Aj9IQjYyCVha2V
+2025-05-04 00:17:41,842 - grpc_client - INFO - Retrieved key test_key_7djEv6yL: test_value_EcFQkoiysUUBtn1JGCqK
+2025-05-04 00:17:46,164 - grpc_client - INFO - Retrieved key test_key_Vwqq8KrZ: test_value_8XuuiZNaM3XopD5eGqCW
+2025-05-04 00:17:46,858 - grpc_client - INFO - Retrieved key test_key_T4ydOt01: test_value_YJjk7JQuP73bDWCcEpab
+2025-05-04 00:17:48,303 - grpc_client - INFO - Retrieved key test_key_dyi3CtYt: test_value_KH7lu4MOmyaWhU9IwBEK
+2025-05-04 00:17:50,442 - grpc_client - INFO - Retrieved key test_key_RcmiKY4S: test_value_WKZxVMfWzQeaddve5p7f
+2025-05-04 00:17:50,443 - grpc_client - INFO - Retrieved key test_key_Z6Dkuifd: test_value_CCe2EDj3kTyT1yn4LlqM
+2025-05-04 00:17:52,583 - grpc_client - INFO - Retrieved key test_key_V5p3QTE7: test_value_qZWVSNYvIazlaz7Uw0Y4
+2025-05-04 00:17:52,589 - grpc_client - INFO - Retrieved key test_key_Z9x5VzxH: test_value_rtRH0sw9gRol74RJQC5J
+2025-05-04 00:17:52,592 - grpc_client - INFO - Retrieved key test_key_DfadACaV: test_value_XkkKxYaXygw00wyF0mEU
+2025-05-04 00:17:54,760 - grpc_client - INFO - Retrieved key test_key_stAE6RsB: test_value_fWlDpkioQAx2eP32BpDV
+2025-05-04 00:17:55,458 - grpc_client - INFO - Retrieved key test_key_XbPaWfkr: test_value_FL9WMrICSSVXhkRk5XUO
+2025-05-04 00:17:55,464 - grpc_client - INFO - Retrieved key test_key_LBp5dh5i: test_value_r7z9AsG0f6JnvBncYI35
+2025-05-04 00:17:55,470 - grpc_client - INFO - Retrieved key test_key_aYFsbG14: test_value_sydIPgpuyhsVoHYtPR3G
+2025-05-04 00:17:56,912 - grpc_client - INFO - Retrieved key test_key_33o8p9UV: test_value_mxAJjxiVlfnEH9EOmmeZ
+2025-05-04 00:17:59,124 - grpc_client - INFO - Retrieved key test_key_stAE6RsB: test_value_fWlDpkioQAx2eP32BpDV
+2025-05-04 00:17:59,127 - grpc_client - INFO - Retrieved key test_key_bJocfkSy: test_value_FuZ67MFYIvVre7hvzon5
+2025-05-04 00:17:59,137 - grpc_client - INFO - Retrieved key test_key_oLOnxWmI: test_value_I4nJ50OR151aK6jf5vil
+2025-05-04 00:17:59,138 - grpc_client - INFO - Retrieved key test_key_RybQpW1y: test_value_oJB0oKoWNKU5W8iJG7H9
+2025-05-04 00:18:03,413 - grpc_client - INFO - Retrieved key test_key_fTlV2PM9: test_value_ZiMxwSGxfSP1pwqj0NnO
+2025-05-04 00:18:03,417 - grpc_client - INFO - Retrieved key test_key_RcmiKY4S: test_value_WKZxVMfWzQeaddve5p7f
+2025-05-04 00:18:07,742 - grpc_client - INFO - Retrieved key test_key_Vwqq8KrZ: test_value_8XuuiZNaM3XopD5eGqCW
+2025-05-04 00:18:07,769 - grpc_client - INFO - Retrieved key test_key_7djEv6yL: test_value_EcFQkoiysUUBtn1JGCqK
+2025-05-04 00:18:12,135 - grpc_client - INFO - Retrieved key test_key_DfadACaV: test_value_XkkKxYaXygw00wyF0mEU
+2025-05-04 00:18:12,140 - grpc_client - INFO - Retrieved key test_key_XbPaWfkr: test_value_FL9WMrICSSVXhkRk5XUO
+2025-05-04 00:18:14,347 - grpc_client - INFO - Retrieved key test_key_Pp0KHQF0: test_value_Le8DkepdNe0E6bTsK5lL
+2025-05-04 00:18:14,945 - grpc_client - INFO - Retrieved key test_key_xxmKjP73: test_value_iAbhV5Aj9IQjYyCVha2V
+2025-05-04 00:18:16,479 - grpc_client - INFO - Retrieved key test_key_RJkT2Jz7: test_value_4KH0PjexybYxt1s1ieEy
+2025-05-04 00:18:16,493 - grpc_client - INFO - Retrieved key test_key_aYFsbG14: test_value_sydIPgpuyhsVoHYtPR3G
+2025-05-04 00:18:16,498 - grpc_client - INFO - Retrieved key test_key_dyi3CtYt: test_value_KH7lu4MOmyaWhU9IwBEK
+2025-05-04 00:18:17,089 - grpc_client - INFO - Retrieved key test_key_SC5AtgRE: test_value_kbK7c1D2jBEKuJTKfK4n
+2025-05-04 00:18:17,095 - grpc_client - INFO - Retrieved key test_key_fTlV2PM9: test_value_ZiMxwSGxfSP1pwqj0NnO
+2025-05-04 00:18:17,098 - grpc_client - INFO - Retrieved key test_key_7lUwxOpF: test_value_ymOKhwaRcZfdO00ZChO4
+2025-05-04 00:18:19,245 - grpc_client - INFO - Retrieved key test_key_LBp5dh5i: test_value_r7z9AsG0f6JnvBncYI35
+2025-05-04 00:18:19,246 - grpc_client - INFO - Retrieved key test_key_LYhmkUr0: test_value_xxOW3d8VEOkm3nM4K6aY
+2025-05-04 00:18:19,254 - grpc_client - INFO - Retrieved key test_key_RybQpW1y: test_value_oJB0oKoWNKU5W8iJG7H9
+2025-05-04 00:18:21,395 - grpc_client - INFO - Retrieved key test_key_aYFsbG14: test_value_sydIPgpuyhsVoHYtPR3G
+2025-05-04 00:18:21,395 - grpc_client - INFO - Retrieved key test_key_DfadACaV: test_value_XkkKxYaXygw00wyF0mEU
+2025-05-04 00:18:21,404 - grpc_client - INFO - Retrieved key test_key_RcmiKY4S: test_value_WKZxVMfWzQeaddve5p7f
+2025-05-04 00:18:21,409 - grpc_client - INFO - Retrieved key test_key_oT6INDt8: test_value_nkLsD5RUFr67tTewhmC8
+2025-05-04 00:18:28,741 - grpc_client - INFO - Retrieved key test_key_RSz7ysQ3: test_value_UBzeXkWtV9QLAoGho4va
+2025-05-04 00:18:30,881 - grpc_client - INFO - Retrieved key test_key_33o8p9UV: test_value_mxAJjxiVlfnEH9EOmmeZ
+2025-05-04 00:18:33,031 - grpc_client - INFO - Retrieved key test_key_RJkT2Jz7: test_value_4KH0PjexybYxt1s1ieEy
+2025-05-04 00:18:33,032 - grpc_client - INFO - Retrieved key test_key_SC5AtgRE: test_value_kbK7c1D2jBEKuJTKfK4n
+2025-05-04 00:18:37,315 - grpc_client - INFO - Retrieved key test_key_o7YErRG5: test_value_JLV4mDN8lXIJ2LPB0NJX
+2025-05-04 00:18:37,318 - grpc_client - INFO - Retrieved key test_key_RcmiKY4S: test_value_WKZxVMfWzQeaddve5p7f
+2025-05-04 00:18:38,049 - grpc_client - INFO - Retrieved key test_key_Ig6rhWE0: test_value_LlNd96sQt27fivCmL9KE
+2025-05-04 00:18:44,592 - grpc_client - INFO - Retrieved key test_key_QhM4n99r: test_value_O3u1WZ1pN9gtAKTHZQJK
+2025-05-04 00:18:46,731 - grpc_client - INFO - Retrieved key test_key_SC5AtgRE: test_value_kbK7c1D2jBEKuJTKfK4n
+2025-05-04 00:18:46,737 - grpc_client - INFO - Retrieved key test_key_o7YErRG5: test_value_JLV4mDN8lXIJ2LPB0NJX
+2025-05-04 00:18:48,876 - grpc_client - INFO - Retrieved key test_key_oT6INDt8: test_value_nkLsD5RUFr67tTewhmC8
+2025-05-04 00:18:48,877 - grpc_client - INFO - Retrieved key test_key_o7YErRG5: test_value_JLV4mDN8lXIJ2LPB0NJX
+2025-05-04 00:18:48,884 - grpc_client - INFO - Retrieved key test_key_9Art08yT: test_value_GdhhpXaQO0ciCTGiTfqx
+2025-05-04 00:18:53,147 - grpc_client - INFO - Retrieved key test_key_RybQpW1y: test_value_oJB0oKoWNKU5W8iJG7H9
+2025-05-04 00:18:53,151 - grpc_client - INFO - Retrieved key test_key_nFxdCSZW: test_value_8HRMCnm1MQtY7WH7tCqa
+2025-05-04 00:18:53,167 - grpc_client - INFO - Retrieved key test_key_T4ydOt01: test_value_YJjk7JQuP73bDWCcEpab
+2025-05-04 00:18:53,170 - grpc_client - INFO - Retrieved key test_key_stAE6RsB: test_value_fWlDpkioQAx2eP32BpDV
+2025-05-04 00:18:53,176 - grpc_client - INFO - Retrieved key test_key_RcmiKY4S: test_value_WKZxVMfWzQeaddve5p7f
+2025-05-04 00:18:55,315 - grpc_client - INFO - Retrieved key test_key_RJkT2Jz7: test_value_4KH0PjexybYxt1s1ieEy
+2025-05-04 00:18:55,316 - grpc_client - INFO - Retrieved key test_key_SC5AtgRE: test_value_kbK7c1D2jBEKuJTKfK4n
+2025-05-04 00:18:55,323 - grpc_client - INFO - Retrieved key test_key_SC5AtgRE: test_value_kbK7c1D2jBEKuJTKfK4n
+2025-05-04 00:18:59,577 - grpc_client - INFO - Retrieved key test_key_Z6Dkuifd: test_value_CCe2EDj3kTyT1yn4LlqM
+2025-05-04 00:18:59,583 - grpc_client - INFO - Retrieved key test_key_RcmiKY4S: test_value_WKZxVMfWzQeaddve5p7f
+2025-05-04 00:18:59,591 - grpc_client - INFO - Retrieved key test_key_oLOnxWmI: test_value_I4nJ50OR151aK6jf5vil
+2025-05-04 00:18:59,596 - grpc_client - INFO - Retrieved key test_key_dyi3CtYt: test_value_KH7lu4MOmyaWhU9IwBEK
+2025-05-04 00:19:03,383 - grpc_client - INFO - Retrieved key test_key_bJocfkSy: test_value_FuZ67MFYIvVre7hvzon5
+2025-05-04 00:19:03,878 - grpc_client - INFO - Retrieved key test_key_LBp5dh5i: test_value_r7z9AsG0f6JnvBncYI35
+2025-05-04 00:19:03,897 - grpc_client - INFO - Retrieved key test_key_RSz7ysQ3: test_value_UBzeXkWtV9QLAoGho4va
+2025-05-04 00:19:06,028 - grpc_client - INFO - Retrieved key test_key_xxmKjP73: test_value_iAbhV5Aj9IQjYyCVha2V
+2025-05-04 00:19:06,033 - grpc_client - INFO - Retrieved key test_key_dyi3CtYt: test_value_KH7lu4MOmyaWhU9IwBEK
+2025-05-04 00:19:06,039 - grpc_client - INFO - Retrieved key test_key_Z6Dkuifd: test_value_CCe2EDj3kTyT1yn4LlqM
+2025-05-04 00:19:06,042 - grpc_client - INFO - Retrieved key test_key_oLOnxWmI: test_value_I4nJ50OR151aK6jf5vil
+2025-05-04 00:19:08,173 - grpc_client - INFO - Retrieved key test_key_oT6INDt8: test_value_nkLsD5RUFr67tTewhmC8
+2025-05-04 00:19:08,179 - grpc_client - INFO - Retrieved key test_key_SC5AtgRE: test_value_kbK7c1D2jBEKuJTKfK4n
+2025-05-04 00:19:08,186 - grpc_client - INFO - Retrieved key test_key_xxmKjP73: test_value_iAbhV5Aj9IQjYyCVha2V
+2025-05-04 00:19:08,191 - grpc_client - INFO - Retrieved key test_key_RybQpW1y: test_value_oJB0oKoWNKU5W8iJG7H9
+2025-05-04 00:19:08,194 - grpc_client - INFO - Retrieved key test_key_Ig6rhWE0: test_value_LlNd96sQt27fivCmL9KE
+2025-05-04 00:19:08,194 - __main__ - INFO - Performing 10 DELETE operations
+2025-05-04 00:19:08,198 - grpc_client - INFO - Deleted key test_key_bJocfkSy
+2025-05-04 00:19:10,370 - grpc_client - INFO - Retrieved key test_key_Z9x5VzxH: test_value_rtRH0sw9gRol74RJQC5J
+2025-05-04 00:19:10,376 - grpc_client - INFO - Deleted key test_key_LYhmkUr0
+2025-05-04 00:19:10,387 - grpc_client - INFO - Deleted key test_key_Qt1DwHw8
+2025-05-04 00:19:10,392 - grpc_client - INFO - Deleted key test_key_Ig6rhWE0
+2025-05-04 00:19:17,652 - grpc_client - INFO - Retrieved key test_key_dyi3CtYt: test_value_KH7lu4MOmyaWhU9IwBEK
+2025-05-04 00:19:17,670 - grpc_client - INFO - Deleted key test_key_DfadACaV
+2025-05-04 00:19:19,810 - grpc_client - INFO - Retrieved key test_key_yaX7c6Ob: test_value_GNf1sI4evpiFH1ioj3Xj
+2025-05-04 00:19:19,816 - grpc_client - INFO - Deleted key test_key_7lUwxOpF
+2025-05-04 00:19:19,818 - grpc_client - INFO - Retrieved key test_key_stAE6RsB: test_value_fWlDpkioQAx2eP32BpDV
+2025-05-04 00:19:21,962 - grpc_client - INFO - Retrieved key test_key_aYFsbG14: test_value_sydIPgpuyhsVoHYtPR3G
+2025-05-04 00:19:21,962 - grpc_client - INFO - Deleted key test_key_Vwqq8KrZ
+2025-05-04 00:19:21,970 - grpc_client - INFO - Deleted key test_key_oT6INDt8
+2025-05-04 00:19:21,976 - grpc_client - INFO - Deleted key test_key_3h6WcFXO
+2025-05-04 00:19:26,240 - grpc_client - INFO - Retrieved key test_key_7djEv6yL: test_value_EcFQkoiysUUBtn1JGCqK
+2025-05-04 00:19:26,240 - __main__ - INFO - Performing 10 DELETE operations
+2025-05-04 00:19:26,241 - grpc_client - INFO - Deleted key test_key_RcmiKY4S
+2025-05-04 00:19:26,262 - grpc_client - INFO - Deleted key test_key_fTlV2PM9
+2025-05-04 00:19:26,271 - grpc_client - INFO - Deleted key test_key_aYFsbG14
+2025-05-04 00:19:26,277 - grpc_client - INFO - Deleted key test_key_9Art08yT
+2025-05-04 00:19:28,436 - grpc_client - INFO - Deleted key test_key_85oddm4i
+2025-05-04 00:19:30,607 - grpc_client - INFO - Deleted key test_key_Z9x5VzxH
+2025-05-04 00:19:30,617 - grpc_client - INFO - Deleted key test_key_o7YErRG5
+2025-05-04 00:19:30,624 - grpc_client - INFO - Deleted key test_key_RSz7ysQ3
+2025-05-04 00:19:30,628 - grpc_client - INFO - Deleted key test_key_QhM4n99r
+2025-05-04 00:19:34,893 - grpc_client - INFO - Deleted key test_key_RJkT2Jz7
+2025-05-04 00:19:39,164 - grpc_client - INFO - Deleted key test_key_nFxdCSZW
+2025-05-04 00:19:39,167 - __main__ - INFO - Step 2 completed in 209.44 seconds
+2025-05-04 00:19:39,168 - __main__ - INFO -   Throughput: 0.95 ops/sec
+2025-05-04 00:19:39,168 - __main__ - INFO -   Success rate: 100.00%
+2025-05-04 00:19:39,168 - __main__ - INFO -   Average latency: 2029.71 ms
+2025-05-04 00:19:41,173 - __main__ - INFO - Step 3/5: 400 operations with 4 threads (100 ops/thread)
+2025-05-04 00:19:41,174 - __main__ - INFO - Running parallel workload with 4 threads, 100 operations per thread
+2025-05-04 00:19:41,175 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:19:41,175 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:19:41,175 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:19:41,175 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:19:41,176 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:19:41,176 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:19:41,178 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:19:41,177 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:19:41,194 - grpc_client - INFO - Stored key test_key_OjmZ0Aa5 with timestamp 1746343181183
+2025-05-04 00:19:41,194 - grpc_client - INFO - Stored key test_key_j39C3Mxn with timestamp 1746343181183
+2025-05-04 00:19:41,200 - grpc_client - INFO - Stored key test_key_vzNBgs4h with timestamp 1746343181196
+2025-05-04 00:19:41,201 - grpc_client - INFO - Stored key test_key_1LJIeGeo with timestamp 1746343181196
+2025-05-04 00:19:43,339 - grpc_client - INFO - Stored key test_key_5kiTp7Y9 with timestamp 1746343183331
+2025-05-04 00:19:43,358 - grpc_client - INFO - Stored key test_key_eYdTr0Zm with timestamp 1746343183346
+2025-05-04 00:19:45,499 - grpc_client - INFO - Stored key test_key_kupf4tcJ with timestamp 1746343183356
+2025-05-04 00:19:46,323 - grpc_client - INFO - Stored key test_key_9kPuxo0R with timestamp 1746343186307
+2025-05-04 00:19:47,633 - grpc_client - INFO - Stored key test_key_d5n2mj2P with timestamp 1746343185496
+2025-05-04 00:19:49,771 - grpc_client - INFO - Stored key test_key_mVyif1hW with timestamp 1746343185491
+2025-05-04 00:19:49,787 - grpc_client - INFO - Stored key test_key_Sl2tyehE with timestamp 1746343188515
+2025-05-04 00:19:49,792 - grpc_client - INFO - Stored key test_key_8Q9lgD89 with timestamp 1746343189768
+2025-05-04 00:19:51,920 - grpc_client - INFO - Stored key test_key_2ZoSIzHG with timestamp 1746343189768
+2025-05-04 00:19:51,925 - grpc_client - INFO - Stored key test_key_6iu0VydV with timestamp 1746343191911
+2025-05-04 00:19:54,069 - grpc_client - INFO - Stored key test_key_T6UeLUPQ with timestamp 1746343194057
+2025-05-04 00:19:56,944 - grpc_client - INFO - Stored key test_key_yjSuUiNI with timestamp 1746343194057
+2025-05-04 00:19:57,059 - grpc_client - INFO - Stored key test_key_owGlctaZ with timestamp 1746343191918
+2025-05-04 00:19:59,192 - grpc_client - INFO - Stored key test_key_dU1unRRz with timestamp 1746343197057
+2025-05-04 00:19:59,192 - grpc_client - INFO - Stored key test_key_TY02c5U9 with timestamp 1746343197064
+2025-05-04 00:20:01,321 - grpc_client - INFO - Stored key test_key_nGkgDNNt with timestamp 1746343199190
+2025-05-04 00:20:01,332 - grpc_client - INFO - Stored key test_key_hzR7VSWM with timestamp 1746343201317
+2025-05-04 00:20:01,337 - grpc_client - INFO - Stored key test_key_WJBNlYi8 with timestamp 1746343201320
+2025-05-04 00:20:01,342 - grpc_client - INFO - Stored key test_key_ytqeFiNS with timestamp 1746343201339
+2025-05-04 00:20:01,369 - grpc_client - INFO - Stored key test_key_8M4AIHxm with timestamp 1746343201365
+2025-05-04 00:20:01,372 - grpc_client - INFO - Stored key test_key_FSbMApdT with timestamp 1746343201370
+2025-05-04 00:20:03,557 - grpc_client - INFO - Stored key test_key_Dc0SS89B with timestamp 1746343203539
+2025-05-04 00:20:03,558 - grpc_client - INFO - Stored key test_key_o5LcS3ns with timestamp 1746343203542
+2025-05-04 00:20:03,562 - grpc_client - INFO - Stored key test_key_RxQPxdRn with timestamp 1746343203559
+2025-05-04 00:20:05,629 - grpc_client - INFO - Stored key test_key_Vyk1ILfx with timestamp 1746343203495
+2025-05-04 00:20:07,890 - grpc_client - INFO - Stored key test_key_hWrTbDQN with timestamp 1746343205688
+2025-05-04 00:20:09,896 - grpc_client - INFO - Stored key test_key_Adg19ZUK with timestamp 1746343207753
+2025-05-04 00:20:09,897 - grpc_client - INFO - Stored key test_key_U2v325UN with timestamp 1746343205626
+2025-05-04 00:20:09,900 - grpc_client - INFO - Stored key test_key_5tHLNnTb with timestamp 1746343207895
+2025-05-04 00:20:09,909 - grpc_client - INFO - Stored key test_key_XWXP6Gds with timestamp 1746343209900
+2025-05-04 00:20:12,055 - grpc_client - INFO - Stored key test_key_sdSmoSg4 with timestamp 1746343212045
+2025-05-04 00:20:12,056 - grpc_client - INFO - Stored key test_key_Y427F7Fj with timestamp 1746343212047
+2025-05-04 00:20:12,061 - grpc_client - INFO - Stored key test_key_PApoS0dO with timestamp 1746343212057
+2025-05-04 00:20:14,172 - grpc_client - INFO - Stored key test_key_IzzcW8TD with timestamp 1746343212037
+2025-05-04 00:20:14,181 - grpc_client - INFO - Stored key test_key_RWPoEJ5m with timestamp 1746343214169
+2025-05-04 00:20:14,193 - grpc_client - INFO - Stored key test_key_8F1Hm2Mi with timestamp 1746343214178
+2025-05-04 00:20:14,193 - grpc_client - INFO - Stored key test_key_ZF50vLU7 with timestamp 1746343214186
+2025-05-04 00:20:14,194 - grpc_client - INFO - Stored key test_key_lQjh5YoB with timestamp 1746343214179
+2025-05-04 00:20:16,343 - grpc_client - INFO - Stored key test_key_8TDrzgM8 with timestamp 1746343216326
+2025-05-04 00:20:16,343 - grpc_client - INFO - Stored key test_key_ORUMkTrW with timestamp 1746343216326
+2025-05-04 00:20:18,468 - grpc_client - INFO - Stored key test_key_GNcaI9Ar with timestamp 1746343216332
+2025-05-04 00:20:18,469 - grpc_client - INFO - Stored key test_key_z29i8N2m with timestamp 1746343216330
+2025-05-04 00:20:19,199 - grpc_client - INFO - Stored key test_key_a6aaudjH with timestamp 1746343219187
+2025-05-04 00:20:19,205 - grpc_client - INFO - Stored key test_key_hTwCIo8b with timestamp 1746343219201
+2025-05-04 00:20:20,671 - grpc_client - INFO - Stored key test_key_syYsbxaV with timestamp 1746343220610
+2025-05-04 00:20:22,793 - grpc_client - INFO - Stored key test_key_fXwjv0HY with timestamp 1746343218533
+2025-05-04 00:20:22,817 - grpc_client - INFO - Stored key test_key_8QqdFT9l with timestamp 1746343222792
+2025-05-04 00:20:22,817 - grpc_client - INFO - Stored key test_key_JZcTIW0x with timestamp 1746343222801
+2025-05-04 00:20:22,817 - grpc_client - INFO - Stored key test_key_DooZgwRA with timestamp 1746343222804
+2025-05-04 00:20:22,817 - grpc_client - INFO - Stored key test_key_ddv6YM9n with timestamp 1746343222799
+2025-05-04 00:20:22,821 - grpc_client - INFO - Stored key test_key_WK9VI7Yj with timestamp 1746343222818
+2025-05-04 00:20:24,961 - grpc_client - INFO - Stored key test_key_Bqf2Xc3l with timestamp 1746343222819
+2025-05-04 00:20:24,978 - grpc_client - INFO - Stored key test_key_ejczPGpa with timestamp 1746343224956
+2025-05-04 00:20:24,979 - grpc_client - INFO - Stored key test_key_GAdhwVDm with timestamp 1746343224956
+2025-05-04 00:20:24,980 - grpc_client - INFO - Stored key test_key_NojYhesl with timestamp 1746343224958
+2025-05-04 00:20:27,136 - grpc_client - INFO - Stored key test_key_Bo3Ma5pk with timestamp 1746343224968
+2025-05-04 00:20:27,145 - grpc_client - INFO - Stored key test_key_YywBTOWA with timestamp 1746343227134
+2025-05-04 00:20:27,152 - grpc_client - INFO - Stored key test_key_zoH3pxB7 with timestamp 1746343227141
+2025-05-04 00:20:27,174 - grpc_client - INFO - Stored key test_key_wN1pIhkR with timestamp 1746343227169
+2025-05-04 00:20:27,174 - grpc_client - INFO - Stored key test_key_PghfONeh with timestamp 1746343227168
+2025-05-04 00:20:27,178 - grpc_client - INFO - Stored key test_key_IGp9beuV with timestamp 1746343227176
+2025-05-04 00:20:31,437 - grpc_client - INFO - Stored key test_key_utNduQ17 with timestamp 1746343229286
+2025-05-04 00:20:31,446 - grpc_client - INFO - Stored key test_key_BQFVDRhH with timestamp 1746343229286
+2025-05-04 00:20:31,461 - grpc_client - INFO - Stored key test_key_lrFaGo4G with timestamp 1746343231447
+2025-05-04 00:20:31,482 - grpc_client - INFO - Stored key test_key_0JNqNgFa with timestamp 1746343229299
+2025-05-04 00:20:31,487 - grpc_client - INFO - Stored key test_key_t84RiyCa with timestamp 1746343231481
+2025-05-04 00:20:31,492 - grpc_client - INFO - Stored key test_key_LQqbX3O1 with timestamp 1746343231488
+2025-05-04 00:20:31,495 - grpc_client - INFO - Stored key test_key_pRSJIONa with timestamp 1746343231493
+2025-05-04 00:20:31,495 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:20:33,595 - grpc_client - INFO - Stored key test_key_8bfH2B9j with timestamp 1746343231455
+2025-05-04 00:20:33,614 - grpc_client - INFO - Stored key test_key_kEmZ8J7F with timestamp 1746343233600
+2025-05-04 00:20:33,614 - grpc_client - INFO - Stored key test_key_NuxvuNWe with timestamp 1746343233601
+2025-05-04 00:20:33,614 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:20:35,728 - grpc_client - INFO - Stored key test_key_9SiHWszf with timestamp 1746343233593
+2025-05-04 00:20:35,729 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:20:35,731 - grpc_client - INFO - Retrieved key test_key_vzNBgs4h: test_value_T7EOXZdD4fSMR6Vq1vJK
+2025-05-04 00:20:35,731 - grpc_client - INFO - Retrieved key test_key_U2v325UN: test_value_8NHlGm2u4NZFxBddmWmA
+2025-05-04 00:20:37,899 - grpc_client - INFO - Retrieved key test_key_8F1Hm2Mi: test_value_LmzBUrbzAyrxE9XGyxgh
+2025-05-04 00:20:37,906 - grpc_client - INFO - Stored key test_key_ikiHQijv with timestamp 1746343235740
+2025-05-04 00:20:37,914 - grpc_client - INFO - Retrieved key test_key_9kPuxo0R: test_value_stqqwRdvEiqxi7aEY09z
+2025-05-04 00:20:37,918 - grpc_client - INFO - Retrieved key test_key_kEmZ8J7F: test_value_nLLJr7xJVMdiEFu1I74k
+2025-05-04 00:20:40,059 - grpc_client - INFO - Retrieved key test_key_IzzcW8TD: test_value_WmojN3AHHyxysqrcoMLW
+2025-05-04 00:20:42,192 - grpc_client - INFO - Retrieved key test_key_FSbMApdT: test_value_1meN8LMSv70mio2nGU4m
+2025-05-04 00:20:42,199 - grpc_client - INFO - Stored key test_key_aOSTsnoF with timestamp 1746343240058
+2025-05-04 00:20:42,201 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:20:42,217 - grpc_client - INFO - Retrieved key test_key_WJBNlYi8: test_value_462MfHDzRv1gUZAsZVD5
+2025-05-04 00:20:42,218 - grpc_client - INFO - Retrieved key test_key_zoH3pxB7: test_value_CBLsioBYOQq5E3c6jIhv
+2025-05-04 00:20:42,224 - grpc_client - INFO - Retrieved key test_key_GAdhwVDm: test_value_LxyczWaSyt57q0RulvQU
+2025-05-04 00:20:42,229 - grpc_client - INFO - Retrieved key test_key_j39C3Mxn: test_value_xALaMWqsQZtuBMm5v1gO
+2025-05-04 00:20:42,231 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:20:44,389 - grpc_client - INFO - Stored key test_key_4uxmve89 with timestamp 1746343244381
+2025-05-04 00:20:44,399 - grpc_client - INFO - Stored key test_key_TfiScH8G with timestamp 1746343244392
+2025-05-04 00:20:44,399 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:20:44,404 - grpc_client - INFO - Retrieved key test_key_1LJIeGeo: test_value_lLZCSX2OLz8ArxrN6F6e
+2025-05-04 00:20:46,569 - grpc_client - INFO - Retrieved key test_key_Sl2tyehE: test_value_b0qsHBRJsdBYYG9CDrmP
+2025-05-04 00:20:46,570 - grpc_client - INFO - Retrieved key test_key_hWrTbDQN: test_value_zAojHLHyT7lhiUJppBRK
+2025-05-04 00:20:46,575 - grpc_client - INFO - Retrieved key test_key_Adg19ZUK: test_value_ScerKJ6QwPduIYP4k9av
+2025-05-04 00:20:46,592 - grpc_client - INFO - Retrieved key test_key_mVyif1hW: test_value_UuRoQWpUvAFbcU5BQXGg
+2025-05-04 00:20:46,592 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:20:46,595 - grpc_client - INFO - Retrieved key test_key_IGp9beuV: test_value_yCkWaTJlE0u3cZGJErPr
+2025-05-04 00:20:48,711 - grpc_client - INFO - Retrieved key test_key_FSbMApdT: test_value_1meN8LMSv70mio2nGU4m
+2025-05-04 00:20:48,712 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:20:48,716 - grpc_client - INFO - Retrieved key test_key_9kPuxo0R: test_value_stqqwRdvEiqxi7aEY09z
+2025-05-04 00:20:48,776 - grpc_client - INFO - Retrieved key test_key_OjmZ0Aa5: test_value_iMVKiRSK0zG2LChN8C1w
+2025-05-04 00:20:50,845 - grpc_client - INFO - Retrieved key test_key_IzzcW8TD: test_value_WmojN3AHHyxysqrcoMLW
+2025-05-04 00:20:52,979 - grpc_client - INFO - Retrieved key test_key_hTwCIo8b: test_value_vYKbe5urMYNRQvFyG30V
+2025-05-04 00:20:52,986 - grpc_client - INFO - Retrieved key test_key_hTwCIo8b: test_value_vYKbe5urMYNRQvFyG30V
+2025-05-04 00:20:53,040 - grpc_client - INFO - Retrieved key test_key_4uxmve89: test_value_tn5raAL20OOwlJfnsupK
+2025-05-04 00:20:53,045 - grpc_client - INFO - Retrieved key test_key_YywBTOWA: test_value_gGiBa7IlSW1ml9O2rwan
+2025-05-04 00:20:53,102 - grpc_client - INFO - Retrieved key test_key_8M4AIHxm: test_value_9FERgTJT6LrELf0xawYM
+2025-05-04 00:20:55,131 - grpc_client - INFO - Retrieved key test_key_o5LcS3ns: test_value_Cv3ea0ioP4jK3FrmIulp
+2025-05-04 00:20:55,179 - grpc_client - INFO - Retrieved key test_key_ddv6YM9n: test_value_NnMd9N41wrGrynSDFeik
+2025-05-04 00:20:55,180 - grpc_client - INFO - Retrieved key test_key_0JNqNgFa: test_value_fLfhi5SBN5dR7OqILxFB
+2025-05-04 00:20:55,184 - grpc_client - INFO - Retrieved key test_key_pRSJIONa: test_value_3IdiuuVwAyJrV1cs97Tw
+2025-05-04 00:20:55,185 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:20:55,186 - grpc_client - INFO - Retrieved key test_key_NojYhesl: test_value_73UnImwQqcVXoZfGt0UH
+2025-05-04 00:20:55,229 - grpc_client - INFO - Retrieved key test_key_YywBTOWA: test_value_gGiBa7IlSW1ml9O2rwan
+2025-05-04 00:20:57,322 - grpc_client - INFO - Retrieved key test_key_hzR7VSWM: test_value_idCaqHV9fRNiEpBBxWml
+2025-05-04 00:20:57,326 - grpc_client - INFO - Retrieved key test_key_T6UeLUPQ: test_value_nlhhlfe1lExkOkKI0lJZ
+2025-05-04 00:20:59,457 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:20:59,462 - grpc_client - INFO - Retrieved key test_key_RxQPxdRn: test_value_kiTlo4ffGrDHM1RBarSL
+2025-05-04 00:20:59,463 - grpc_client - INFO - Retrieved key test_key_8M4AIHxm: test_value_9FERgTJT6LrELf0xawYM
+2025-05-04 00:20:59,474 - grpc_client - INFO - Retrieved key test_key_hzR7VSWM: test_value_idCaqHV9fRNiEpBBxWml
+2025-05-04 00:20:59,475 - grpc_client - INFO - Retrieved key test_key_FSbMApdT: test_value_1meN8LMSv70mio2nGU4m
+2025-05-04 00:20:59,506 - grpc_client - INFO - Retrieved key test_key_Vyk1ILfx: test_value_89yUKKnGWGfXbqhJtObc
+2025-05-04 00:21:03,727 - grpc_client - INFO - Retrieved key test_key_LQqbX3O1: test_value_M6NFKNj5z2Pu7CNw1kwd
+2025-05-04 00:21:03,772 - grpc_client - INFO - Retrieved key test_key_ikiHQijv: test_value_ngufP5th7qXVpjUeJf5l
+2025-05-04 00:21:03,777 - grpc_client - INFO - Retrieved key test_key_hWrTbDQN: test_value_zAojHLHyT7lhiUJppBRK
+2025-05-04 00:21:04,471 - grpc_client - INFO - Retrieved key test_key_Adg19ZUK: test_value_ScerKJ6QwPduIYP4k9av
+2025-05-04 00:21:05,865 - grpc_client - INFO - Retrieved key test_key_kEmZ8J7F: test_value_nLLJr7xJVMdiEFu1I74k
+2025-05-04 00:21:05,868 - grpc_client - INFO - Retrieved key test_key_fXwjv0HY: test_value_mcabwWCH87IQqUSsQJeL
+2025-05-04 00:21:08,009 - grpc_client - INFO - Retrieved key test_key_9SiHWszf: test_value_r5LE1xLbJW21nK0Io2lx
+2025-05-04 00:21:10,156 - grpc_client - INFO - Retrieved key test_key_yjSuUiNI: test_value_cD2sBOVZbteRRaHuER2U
+2025-05-04 00:21:10,172 - grpc_client - INFO - Retrieved key test_key_5kiTp7Y9: test_value_zspstPIfcdh3vBPQ6UON
+2025-05-04 00:21:10,184 - grpc_client - INFO - Retrieved key test_key_YywBTOWA: test_value_gGiBa7IlSW1ml9O2rwan
+2025-05-04 00:21:12,319 - grpc_client - INFO - Retrieved key test_key_WK9VI7Yj: test_value_AqfEQlmfEsX13pKCxiP9
+2025-05-04 00:21:14,438 - grpc_client - INFO - Retrieved key test_key_yjSuUiNI: test_value_cD2sBOVZbteRRaHuER2U
+2025-05-04 00:21:14,519 - grpc_client - INFO - Retrieved key test_key_6iu0VydV: test_value_Hb72ZYiUyI19UdANAAjp
+2025-05-04 00:21:14,521 - grpc_client - INFO - Retrieved key test_key_a6aaudjH: test_value_fnUIfTffDRXJoBTuwayd
+2025-05-04 00:21:14,527 - grpc_client - INFO - Retrieved key test_key_a6aaudjH: test_value_fnUIfTffDRXJoBTuwayd
+2025-05-04 00:21:14,532 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:21:14,535 - grpc_client - INFO - Retrieved key test_key_a6aaudjH: test_value_fnUIfTffDRXJoBTuwayd
+2025-05-04 00:21:14,537 - grpc_client - INFO - Retrieved key test_key_ddv6YM9n: test_value_NnMd9N41wrGrynSDFeik
+2025-05-04 00:21:14,540 - grpc_client - INFO - Retrieved key test_key_sdSmoSg4: test_value_jXafxZPPxH2HoYdvLjQr
+2025-05-04 00:21:14,905 - grpc_client - INFO - Retrieved key test_key_pRSJIONa: test_value_3IdiuuVwAyJrV1cs97Tw
+2025-05-04 00:21:16,798 - grpc_client - INFO - Retrieved key test_key_utNduQ17: test_value_ummMz2oLLS6Ap9ney6W0
+2025-05-04 00:21:17,041 - grpc_client - INFO - Retrieved key test_key_ZF50vLU7: test_value_YVf29ak3SZzRsAWhXEPD
+2025-05-04 00:21:17,056 - grpc_client - INFO - Retrieved key test_key_DooZgwRA: test_value_XKTucw3JlqiOjjn0RlYd
+2025-05-04 00:21:17,056 - grpc_client - INFO - Retrieved key test_key_WK9VI7Yj: test_value_AqfEQlmfEsX13pKCxiP9
+2025-05-04 00:21:17,061 - grpc_client - INFO - Retrieved key test_key_4uxmve89: test_value_tn5raAL20OOwlJfnsupK
+2025-05-04 00:21:17,065 - grpc_client - INFO - Retrieved key test_key_mVyif1hW: test_value_UuRoQWpUvAFbcU5BQXGg
+2025-05-04 00:21:17,068 - grpc_client - INFO - Retrieved key test_key_RWPoEJ5m: test_value_50913t51y0YQkHuLWKsc
+2025-05-04 00:21:19,185 - grpc_client - INFO - Retrieved key test_key_XWXP6Gds: test_value_wIMn0pQFIxooaVYCCzwV
+2025-05-04 00:21:19,186 - grpc_client - INFO - Retrieved key test_key_pRSJIONa: test_value_3IdiuuVwAyJrV1cs97Tw
+2025-05-04 00:21:19,191 - grpc_client - INFO - Retrieved key test_key_eYdTr0Zm: test_value_elWRJZBqbpvJNd9lthzV
+2025-05-04 00:21:21,082 - grpc_client - INFO - Retrieved key test_key_Bqf2Xc3l: test_value_60dAqMG7xzcwtJSqLBBq
+2025-05-04 00:21:21,092 - grpc_client - INFO - Retrieved key test_key_aOSTsnoF: test_value_nnNDvaWgcyGGQKTpGolR
+2025-05-04 00:21:21,092 - grpc_client - INFO - Retrieved key test_key_z29i8N2m: test_value_CAF3sjQ4iRgXo9XkzA7V
+2025-05-04 00:21:23,790 - grpc_client - INFO - Retrieved key test_key_8F1Hm2Mi: test_value_LmzBUrbzAyrxE9XGyxgh
+2025-05-04 00:21:25,365 - grpc_client - INFO - Retrieved key test_key_JZcTIW0x: test_value_uuwvIqygow8UNf5HPXp2
+2025-05-04 00:21:25,818 - grpc_client - INFO - Retrieved key test_key_IGp9beuV: test_value_yCkWaTJlE0u3cZGJErPr
+2025-05-04 00:21:25,820 - grpc_client - INFO - Retrieved key test_key_NojYhesl: test_value_73UnImwQqcVXoZfGt0UH
+2025-05-04 00:21:25,821 - grpc_client - INFO - Retrieved key test_key_lQjh5YoB: test_value_OrKeh8LS7ZJJlFlmrBDq
+2025-05-04 00:21:25,823 - grpc_client - INFO - Retrieved key test_key_lQjh5YoB: test_value_OrKeh8LS7ZJJlFlmrBDq
+2025-05-04 00:21:26,090 - grpc_client - INFO - Retrieved key test_key_DooZgwRA: test_value_XKTucw3JlqiOjjn0RlYd
+2025-05-04 00:21:26,099 - grpc_client - INFO - Retrieved key test_key_8TDrzgM8: test_value_gGt2Ib56dSOyumvsGSma
+2025-05-04 00:21:29,713 - grpc_client - INFO - Retrieved key test_key_hzR7VSWM: test_value_idCaqHV9fRNiEpBBxWml
+2025-05-04 00:21:29,715 - grpc_client - INFO - Retrieved key test_key_8Q9lgD89: test_value_zHvcBzmPweUARSHijuIT
+2025-05-04 00:21:29,715 - grpc_client - INFO - Retrieved key test_key_9kPuxo0R: test_value_stqqwRdvEiqxi7aEY09z
+2025-05-04 00:21:29,726 - grpc_client - INFO - Retrieved key test_key_hWrTbDQN: test_value_zAojHLHyT7lhiUJppBRK
+2025-05-04 00:21:29,731 - grpc_client - INFO - Retrieved key test_key_GNcaI9Ar: test_value_NwvvqbRdcy01a220Zvwu
+2025-05-04 00:21:29,735 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:21:31,850 - grpc_client - INFO - Retrieved key test_key_RWPoEJ5m: test_value_50913t51y0YQkHuLWKsc
+2025-05-04 00:21:31,869 - grpc_client - INFO - Retrieved key test_key_WK9VI7Yj: test_value_AqfEQlmfEsX13pKCxiP9
+2025-05-04 00:21:31,870 - grpc_client - INFO - Retrieved key test_key_zoH3pxB7: test_value_CBLsioBYOQq5E3c6jIhv
+2025-05-04 00:21:32,505 - grpc_client - INFO - Retrieved key test_key_PApoS0dO: test_value_5kSXkZIIg3Z1cC8S4FB5
+2025-05-04 00:21:33,983 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:21:34,006 - grpc_client - INFO - Retrieved key test_key_8QqdFT9l: test_value_J0ky65IXEGTiap5iyExb
+2025-05-04 00:21:34,007 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:21:34,683 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:21:34,696 - grpc_client - INFO - Retrieved key test_key_utNduQ17: test_value_ummMz2oLLS6Ap9ney6W0
+2025-05-04 00:21:36,154 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:21:36,830 - grpc_client - INFO - Retrieved key test_key_9kPuxo0R: test_value_stqqwRdvEiqxi7aEY09z
+2025-05-04 00:21:36,835 - grpc_client - INFO - Retrieved key test_key_WK9VI7Yj: test_value_AqfEQlmfEsX13pKCxiP9
+2025-05-04 00:21:36,841 - grpc_client - INFO - Retrieved key test_key_0JNqNgFa: test_value_fLfhi5SBN5dR7OqILxFB
+2025-05-04 00:21:36,844 - grpc_client - INFO - Retrieved key test_key_NuxvuNWe: test_value_iYx6K9Rdsk1NQr2kEaeG
+2025-05-04 00:21:36,889 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:21:36,890 - grpc_client - INFO - Retrieved key test_key_ytqeFiNS: test_value_MRYBIGjH7qoCGQ7Ecdil
+2025-05-04 00:21:36,893 - grpc_client - INFO - Retrieved key test_key_DooZgwRA: test_value_XKTucw3JlqiOjjn0RlYd
+2025-05-04 00:21:38,986 - grpc_client - INFO - Retrieved key test_key_mVyif1hW: test_value_UuRoQWpUvAFbcU5BQXGg
+2025-05-04 00:21:38,987 - grpc_client - INFO - Retrieved key test_key_d5n2mj2P: test_value_SKKxpRAECWkyMtY8EHqh
+2025-05-04 00:21:39,022 - grpc_client - INFO - Retrieved key test_key_LQqbX3O1: test_value_M6NFKNj5z2Pu7CNw1kwd
+2025-05-04 00:21:41,113 - grpc_client - INFO - Retrieved key test_key_syYsbxaV: test_value_TLy4srqpz2y1hYILsjVE
+2025-05-04 00:21:41,120 - grpc_client - INFO - Retrieved key test_key_TfiScH8G: test_value_zyrE8QLOqQLz04cjP3Cn
+2025-05-04 00:21:41,145 - grpc_client - INFO - Retrieved key test_key_5kiTp7Y9: test_value_zspstPIfcdh3vBPQ6UON
+2025-05-04 00:21:41,216 - grpc_client - INFO - Retrieved key test_key_dU1unRRz: test_value_xavKMAKzKFq8dUGXDsv6
+2025-05-04 00:21:43,256 - grpc_client - INFO - Retrieved key test_key_sdSmoSg4: test_value_jXafxZPPxH2HoYdvLjQr
+2025-05-04 00:21:43,256 - grpc_client - INFO - Retrieved key test_key_IzzcW8TD: test_value_WmojN3AHHyxysqrcoMLW
+2025-05-04 00:21:45,409 - grpc_client - INFO - Retrieved key test_key_BQFVDRhH: test_value_hEK342OHFiSKM681FLoa
+2025-05-04 00:21:45,415 - grpc_client - INFO - Retrieved key test_key_yjSuUiNI: test_value_cD2sBOVZbteRRaHuER2U
+2025-05-04 00:21:45,419 - grpc_client - INFO - Retrieved key test_key_5kiTp7Y9: test_value_zspstPIfcdh3vBPQ6UON
+2025-05-04 00:21:45,423 - grpc_client - INFO - Retrieved key test_key_fXwjv0HY: test_value_mcabwWCH87IQqUSsQJeL
+2025-05-04 00:21:45,426 - grpc_client - INFO - Retrieved key test_key_4uxmve89: test_value_tn5raAL20OOwlJfnsupK
+2025-05-04 00:21:47,567 - grpc_client - INFO - Retrieved key test_key_OjmZ0Aa5: test_value_iMVKiRSK0zG2LChN8C1w
+2025-05-04 00:21:49,719 - grpc_client - INFO - Retrieved key test_key_T6UeLUPQ: test_value_nlhhlfe1lExkOkKI0lJZ
+2025-05-04 00:21:53,232 - grpc_client - INFO - Retrieved key test_key_z29i8N2m: test_value_CAF3sjQ4iRgXo9XkzA7V
+2025-05-04 00:21:53,235 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:21:53,248 - grpc_client - INFO - Retrieved key test_key_hTwCIo8b: test_value_vYKbe5urMYNRQvFyG30V
+2025-05-04 00:21:53,251 - grpc_client - INFO - Retrieved key test_key_z29i8N2m: test_value_CAF3sjQ4iRgXo9XkzA7V
+2025-05-04 00:21:54,025 - grpc_client - INFO - Retrieved key test_key_0JNqNgFa: test_value_fLfhi5SBN5dR7OqILxFB
+2025-05-04 00:21:55,390 - grpc_client - INFO - Retrieved key test_key_TY02c5U9: test_value_NtAcxFzpHUTGlt2iMyI3
+2025-05-04 00:22:02,491 - grpc_client - INFO - Retrieved key test_key_vzNBgs4h: test_value_T7EOXZdD4fSMR6Vq1vJK
+2025-05-04 00:22:02,494 - grpc_client - INFO - Retrieved key test_key_ORUMkTrW: test_value_MT5AfQtQpNqKmKJz0gbG
+2025-05-04 00:22:02,495 - grpc_client - INFO - Retrieved key test_key_hzR7VSWM: test_value_idCaqHV9fRNiEpBBxWml
+2025-05-04 00:22:04,634 - grpc_client - INFO - Retrieved key test_key_8bfH2B9j: test_value_fw5JsHwjymI8E9h8I9DI
+2025-05-04 00:22:06,829 - grpc_client - INFO - Retrieved key test_key_IzzcW8TD: test_value_WmojN3AHHyxysqrcoMLW
+2025-05-04 00:22:06,835 - grpc_client - INFO - Retrieved key test_key_8M4AIHxm: test_value_9FERgTJT6LrELf0xawYM
+2025-05-04 00:22:08,915 - grpc_client - INFO - Retrieved key test_key_WK9VI7Yj: test_value_AqfEQlmfEsX13pKCxiP9
+2025-05-04 00:22:11,059 - grpc_client - INFO - Retrieved key test_key_hWrTbDQN: test_value_zAojHLHyT7lhiUJppBRK
+2025-05-04 00:22:11,061 - grpc_client - INFO - Retrieved key test_key_eYdTr0Zm: test_value_elWRJZBqbpvJNd9lthzV
+2025-05-04 00:22:11,073 - grpc_client - INFO - Retrieved key test_key_FSbMApdT: test_value_1meN8LMSv70mio2nGU4m
+2025-05-04 00:22:11,864 - grpc_client - INFO - Retrieved key test_key_5tHLNnTb: test_value_n3cQwjphDPM6PIPZYuzp
+2025-05-04 00:22:11,866 - grpc_client - INFO - Retrieved key test_key_9kPuxo0R: test_value_stqqwRdvEiqxi7aEY09z
+2025-05-04 00:22:11,867 - grpc_client - INFO - Retrieved key test_key_WJBNlYi8: test_value_462MfHDzRv1gUZAsZVD5
+2025-05-04 00:22:15,800 - grpc_client - INFO - Retrieved key test_key_WK9VI7Yj: test_value_AqfEQlmfEsX13pKCxiP9
+2025-05-04 00:22:15,804 - grpc_client - INFO - Retrieved key test_key_RWPoEJ5m: test_value_50913t51y0YQkHuLWKsc
+2025-05-04 00:22:16,150 - grpc_client - INFO - Retrieved key test_key_9SiHWszf: test_value_r5LE1xLbJW21nK0Io2lx
+2025-05-04 00:22:17,938 - grpc_client - INFO - Retrieved key test_key_fXwjv0HY: test_value_mcabwWCH87IQqUSsQJeL
+2025-05-04 00:22:17,942 - grpc_client - INFO - Retrieved key test_key_LQqbX3O1: test_value_M6NFKNj5z2Pu7CNw1kwd
+2025-05-04 00:22:18,295 - grpc_client - INFO - Retrieved key test_key_owGlctaZ: test_value_4m8cWQx2b1xvovSpyBTm
+2025-05-04 00:22:18,297 - grpc_client - INFO - Retrieved key test_key_Vyk1ILfx: test_value_89yUKKnGWGfXbqhJtObc
+2025-05-04 00:22:20,100 - grpc_client - INFO - Retrieved key test_key_fXwjv0HY: test_value_mcabwWCH87IQqUSsQJeL
+2025-05-04 00:22:20,448 - grpc_client - INFO - Retrieved key test_key_sdSmoSg4: test_value_jXafxZPPxH2HoYdvLjQr
+2025-05-04 00:22:22,639 - grpc_client - INFO - Retrieved key test_key_ZF50vLU7: test_value_YVf29ak3SZzRsAWhXEPD
+2025-05-04 00:22:22,640 - grpc_client - INFO - Retrieved key test_key_TfiScH8G: test_value_zyrE8QLOqQLz04cjP3Cn
+2025-05-04 00:22:23,327 - grpc_client - INFO - Retrieved key test_key_wN1pIhkR: test_value_q7wVQeSBrg24n3lg3FK9
+2025-05-04 00:22:26,922 - grpc_client - INFO - Retrieved key test_key_dU1unRRz: test_value_xavKMAKzKFq8dUGXDsv6
+2025-05-04 00:22:26,929 - grpc_client - INFO - Retrieved key test_key_BQFVDRhH: test_value_hEK342OHFiSKM681FLoa
+2025-05-04 00:22:26,938 - grpc_client - INFO - Retrieved key test_key_a6aaudjH: test_value_fnUIfTffDRXJoBTuwayd
+2025-05-04 00:22:26,939 - grpc_client - INFO - Retrieved key test_key_4uxmve89: test_value_tn5raAL20OOwlJfnsupK
+2025-05-04 00:22:26,949 - grpc_client - INFO - Retrieved key test_key_GAdhwVDm: test_value_LxyczWaSyt57q0RulvQU
+2025-05-04 00:22:26,950 - grpc_client - INFO - Retrieved key test_key_z29i8N2m: test_value_CAF3sjQ4iRgXo9XkzA7V
+2025-05-04 00:22:26,951 - grpc_client - INFO - Retrieved key test_key_ORUMkTrW: test_value_MT5AfQtQpNqKmKJz0gbG
+2025-05-04 00:22:29,165 - grpc_client - INFO - Retrieved key test_key_WJBNlYi8: test_value_462MfHDzRv1gUZAsZVD5
+2025-05-04 00:22:29,170 - grpc_client - INFO - Retrieved key test_key_WJBNlYi8: test_value_462MfHDzRv1gUZAsZVD5
+2025-05-04 00:22:31,319 - grpc_client - INFO - Retrieved key test_key_9SiHWszf: test_value_r5LE1xLbJW21nK0Io2lx
+2025-05-04 00:22:31,320 - grpc_client - INFO - Retrieved key test_key_kEmZ8J7F: test_value_nLLJr7xJVMdiEFu1I74k
+2025-05-04 00:22:31,328 - grpc_client - INFO - Retrieved key test_key_Vyk1ILfx: test_value_89yUKKnGWGfXbqhJtObc
+2025-05-04 00:22:31,336 - grpc_client - INFO - Retrieved key test_key_aOSTsnoF: test_value_nnNDvaWgcyGGQKTpGolR
+2025-05-04 00:22:33,458 - grpc_client - INFO - Retrieved key test_key_eYdTr0Zm: test_value_elWRJZBqbpvJNd9lthzV
+2025-05-04 00:22:33,466 - grpc_client - INFO - Retrieved key test_key_5tHLNnTb: test_value_n3cQwjphDPM6PIPZYuzp
+2025-05-04 00:22:35,598 - grpc_client - INFO - Retrieved key test_key_YywBTOWA: test_value_gGiBa7IlSW1ml9O2rwan
+2025-05-04 00:22:35,607 - grpc_client - INFO - Retrieved key test_key_FSbMApdT: test_value_1meN8LMSv70mio2nGU4m
+2025-05-04 00:22:37,740 - grpc_client - INFO - Retrieved key test_key_ytqeFiNS: test_value_MRYBIGjH7qoCGQ7Ecdil
+2025-05-04 00:22:37,741 - grpc_client - INFO - Retrieved key test_key_ikiHQijv: test_value_ngufP5th7qXVpjUeJf5l
+2025-05-04 00:22:37,746 - grpc_client - INFO - Retrieved key test_key_j39C3Mxn: test_value_xALaMWqsQZtuBMm5v1gO
+2025-05-04 00:22:37,753 - grpc_client - INFO - Retrieved key test_key_j39C3Mxn: test_value_xALaMWqsQZtuBMm5v1gO
+2025-05-04 00:22:38,397 - grpc_client - INFO - Retrieved key test_key_kupf4tcJ: test_value_iwcDMYzGEJEkMkIOMMPX
+2025-05-04 00:22:38,410 - grpc_client - INFO - Retrieved key test_key_kEmZ8J7F: test_value_nLLJr7xJVMdiEFu1I74k
+2025-05-04 00:22:42,037 - grpc_client - INFO - Retrieved key test_key_8F1Hm2Mi: test_value_LmzBUrbzAyrxE9XGyxgh
+2025-05-04 00:22:42,037 - grpc_client - INFO - Retrieved key test_key_NojYhesl: test_value_73UnImwQqcVXoZfGt0UH
+2025-05-04 00:22:42,044 - grpc_client - INFO - Retrieved key test_key_8Q9lgD89: test_value_zHvcBzmPweUARSHijuIT
+2025-05-04 00:22:42,054 - grpc_client - INFO - Retrieved key test_key_ikiHQijv: test_value_ngufP5th7qXVpjUeJf5l
+2025-05-04 00:22:42,054 - grpc_client - INFO - Retrieved key test_key_zoH3pxB7: test_value_CBLsioBYOQq5E3c6jIhv
+2025-05-04 00:22:42,690 - grpc_client - INFO - Retrieved key test_key_PApoS0dO: test_value_5kSXkZIIg3Z1cC8S4FB5
+2025-05-04 00:22:42,695 - grpc_client - INFO - Retrieved key test_key_8Q9lgD89: test_value_zHvcBzmPweUARSHijuIT
+2025-05-04 00:22:44,276 - grpc_client - INFO - Retrieved key test_key_utNduQ17: test_value_ummMz2oLLS6Ap9ney6W0
+2025-05-04 00:22:44,849 - grpc_client - INFO - Retrieved key test_key_t84RiyCa: test_value_2tdHG5TIBY5ERwNS2zWP
+2025-05-04 00:22:44,850 - grpc_client - INFO - Retrieved key test_key_9SiHWszf: test_value_r5LE1xLbJW21nK0Io2lx
+2025-05-04 00:22:46,331 - grpc_client - INFO - Retrieved key test_key_8QqdFT9l: test_value_J0ky65IXEGTiap5iyExb
+2025-05-04 00:22:46,337 - grpc_client - INFO - Retrieved key test_key_WJBNlYi8: test_value_462MfHDzRv1gUZAsZVD5
+2025-05-04 00:22:46,968 - grpc_client - INFO - Retrieved key test_key_JZcTIW0x: test_value_uuwvIqygow8UNf5HPXp2
+2025-05-04 00:22:46,973 - grpc_client - INFO - Retrieved key test_key_ZF50vLU7: test_value_YVf29ak3SZzRsAWhXEPD
+2025-05-04 00:22:48,519 - grpc_client - INFO - Retrieved key test_key_vzNBgs4h: test_value_T7EOXZdD4fSMR6Vq1vJK
+2025-05-04 00:22:50,829 - grpc_client - INFO - Retrieved key test_key_pRSJIONa: test_value_3IdiuuVwAyJrV1cs97Tw
+2025-05-04 00:22:51,281 - grpc_client - INFO - Retrieved key test_key_Bqf2Xc3l: test_value_60dAqMG7xzcwtJSqLBBq
+2025-05-04 00:22:53,459 - grpc_client - INFO - Retrieved key test_key_wN1pIhkR: test_value_q7wVQeSBrg24n3lg3FK9
+2025-05-04 00:22:53,467 - grpc_client - INFO - Retrieved key test_key_PApoS0dO: test_value_5kSXkZIIg3Z1cC8S4FB5
+2025-05-04 00:22:53,470 - grpc_client - INFO - Retrieved key test_key_sdSmoSg4: test_value_jXafxZPPxH2HoYdvLjQr
+2025-05-04 00:22:55,108 - grpc_client - INFO - Retrieved key test_key_PghfONeh: test_value_7XxDCd3LAW5MkZ6Ix57T
+2025-05-04 00:22:55,109 - grpc_client - INFO - Retrieved key test_key_U2v325UN: test_value_8NHlGm2u4NZFxBddmWmA
+2025-05-04 00:22:55,114 - grpc_client - INFO - Retrieved key test_key_DooZgwRA: test_value_XKTucw3JlqiOjjn0RlYd
+2025-05-04 00:22:57,249 - grpc_client - INFO - Retrieved key test_key_NuxvuNWe: test_value_iYx6K9Rdsk1NQr2kEaeG
+2025-05-04 00:22:57,260 - grpc_client - INFO - Retrieved key test_key_wN1pIhkR: test_value_q7wVQeSBrg24n3lg3FK9
+2025-05-04 00:22:57,264 - grpc_client - INFO - Retrieved key test_key_6iu0VydV: test_value_Hb72ZYiUyI19UdANAAjp
+2025-05-04 00:22:59,900 - grpc_client - INFO - Retrieved key test_key_a6aaudjH: test_value_fnUIfTffDRXJoBTuwayd
+2025-05-04 00:23:04,208 - grpc_client - INFO - Retrieved key test_key_d5n2mj2P: test_value_SKKxpRAECWkyMtY8EHqh
+2025-05-04 00:23:04,635 - grpc_client - INFO - Retrieved key test_key_vzNBgs4h: test_value_T7EOXZdD4fSMR6Vq1vJK
+2025-05-04 00:23:04,637 - grpc_client - INFO - Retrieved key test_key_syYsbxaV: test_value_TLy4srqpz2y1hYILsjVE
+2025-05-04 00:23:04,648 - grpc_client - INFO - Retrieved key test_key_8Q9lgD89: test_value_zHvcBzmPweUARSHijuIT
+2025-05-04 00:23:06,367 - grpc_client - INFO - Retrieved key test_key_utNduQ17: test_value_ummMz2oLLS6Ap9ney6W0
+2025-05-04 00:23:08,915 - grpc_client - INFO - Retrieved key test_key_wN1pIhkR: test_value_q7wVQeSBrg24n3lg3FK9
+2025-05-04 00:23:08,916 - grpc_client - INFO - Retrieved key test_key_d5n2mj2P: test_value_SKKxpRAECWkyMtY8EHqh
+2025-05-04 00:23:11,071 - grpc_client - INFO - Retrieved key test_key_GNcaI9Ar: test_value_NwvvqbRdcy01a220Zvwu
+2025-05-04 00:23:13,209 - grpc_client - INFO - Retrieved key test_key_Y427F7Fj: test_value_4IpHPYag2K7vTEVXwEjZ
+2025-05-04 00:23:13,214 - grpc_client - INFO - Retrieved key test_key_Adg19ZUK: test_value_ScerKJ6QwPduIYP4k9av
+2025-05-04 00:23:13,226 - grpc_client - INFO - Retrieved key test_key_ejczPGpa: test_value_JMizlP4vpYhKtF9yDZzn
+2025-05-04 00:23:15,345 - grpc_client - INFO - Retrieved key test_key_hzR7VSWM: test_value_idCaqHV9fRNiEpBBxWml
+2025-05-04 00:23:15,353 - grpc_client - INFO - Retrieved key test_key_wN1pIhkR: test_value_q7wVQeSBrg24n3lg3FK9
+2025-05-04 00:23:15,363 - grpc_client - INFO - Retrieved key test_key_8M4AIHxm: test_value_9FERgTJT6LrELf0xawYM
+2025-05-04 00:23:16,076 - grpc_client - INFO - Retrieved key test_key_wN1pIhkR: test_value_q7wVQeSBrg24n3lg3FK9
+2025-05-04 00:23:16,365 - grpc_client - INFO - Retrieved key test_key_dU1unRRz: test_value_xavKMAKzKFq8dUGXDsv6
+2025-05-04 00:23:17,505 - grpc_client - INFO - Retrieved key test_key_9SiHWszf: test_value_r5LE1xLbJW21nK0Io2lx
+2025-05-04 00:23:17,508 - grpc_client - INFO - Retrieved key test_key_U2v325UN: test_value_8NHlGm2u4NZFxBddmWmA
+2025-05-04 00:23:18,286 - grpc_client - INFO - Retrieved key test_key_0JNqNgFa: test_value_fLfhi5SBN5dR7OqILxFB
+2025-05-04 00:23:18,288 - grpc_client - INFO - Retrieved key test_key_U2v325UN: test_value_8NHlGm2u4NZFxBddmWmA
+2025-05-04 00:23:18,510 - grpc_client - INFO - Retrieved key test_key_lQjh5YoB: test_value_OrKeh8LS7ZJJlFlmrBDq
+2025-05-04 00:23:19,653 - grpc_client - INFO - Retrieved key test_key_8F1Hm2Mi: test_value_LmzBUrbzAyrxE9XGyxgh
+2025-05-04 00:23:20,462 - grpc_client - INFO - Retrieved key test_key_Y427F7Fj: test_value_4IpHPYag2K7vTEVXwEjZ
+2025-05-04 00:23:20,467 - grpc_client - INFO - Retrieved key test_key_TY02c5U9: test_value_NtAcxFzpHUTGlt2iMyI3
+2025-05-04 00:23:20,473 - grpc_client - INFO - Retrieved key test_key_owGlctaZ: test_value_4m8cWQx2b1xvovSpyBTm
+2025-05-04 00:23:21,793 - grpc_client - INFO - Retrieved key test_key_hTwCIo8b: test_value_vYKbe5urMYNRQvFyG30V
+2025-05-04 00:23:21,798 - grpc_client - INFO - Retrieved key test_key_GNcaI9Ar: test_value_NwvvqbRdcy01a220Zvwu
+2025-05-04 00:23:22,596 - grpc_client - INFO - Retrieved key test_key_NuxvuNWe: test_value_iYx6K9Rdsk1NQr2kEaeG
+2025-05-04 00:23:22,664 - grpc_client - INFO - Retrieved key test_key_PApoS0dO: test_value_5kSXkZIIg3Z1cC8S4FB5
+2025-05-04 00:23:22,665 - grpc_client - INFO - Retrieved key test_key_2ZoSIzHG: test_value_wzmf3XbBdGWHYcJejVLo
+2025-05-04 00:23:22,675 - grpc_client - INFO - Retrieved key test_key_zoH3pxB7: test_value_CBLsioBYOQq5E3c6jIhv
+2025-05-04 00:23:24,733 - grpc_client - INFO - Retrieved key test_key_8Q9lgD89: test_value_zHvcBzmPweUARSHijuIT
+2025-05-04 00:23:29,533 - grpc_client - INFO - Retrieved key test_key_YywBTOWA: test_value_gGiBa7IlSW1ml9O2rwan
+2025-05-04 00:23:29,555 - grpc_client - INFO - Retrieved key test_key_4uxmve89: test_value_tn5raAL20OOwlJfnsupK
+2025-05-04 00:23:29,565 - grpc_client - INFO - Retrieved key test_key_ddv6YM9n: test_value_NnMd9N41wrGrynSDFeik
+2025-05-04 00:23:29,567 - grpc_client - INFO - Retrieved key test_key_WK9VI7Yj: test_value_AqfEQlmfEsX13pKCxiP9
+2025-05-04 00:23:31,148 - grpc_client - INFO - Retrieved key test_key_vzNBgs4h: test_value_T7EOXZdD4fSMR6Vq1vJK
+2025-05-04 00:23:31,714 - grpc_client - INFO - Retrieved key test_key_PApoS0dO: test_value_5kSXkZIIg3Z1cC8S4FB5
+2025-05-04 00:23:31,716 - grpc_client - INFO - Retrieved key test_key_Bqf2Xc3l: test_value_60dAqMG7xzcwtJSqLBBq
+2025-05-04 00:23:31,719 - grpc_client - INFO - Retrieved key test_key_8M4AIHxm: test_value_9FERgTJT6LrELf0xawYM
+2025-05-04 00:23:31,721 - grpc_client - INFO - Retrieved key test_key_8F1Hm2Mi: test_value_LmzBUrbzAyrxE9XGyxgh
+2025-05-04 00:23:33,870 - grpc_client - INFO - Retrieved key test_key_XWXP6Gds: test_value_wIMn0pQFIxooaVYCCzwV
+2025-05-04 00:23:33,878 - grpc_client - INFO - Retrieved key test_key_YywBTOWA: test_value_gGiBa7IlSW1ml9O2rwan
+2025-05-04 00:23:33,883 - grpc_client - INFO - Retrieved key test_key_PApoS0dO: test_value_5kSXkZIIg3Z1cC8S4FB5
+2025-05-04 00:23:34,170 - grpc_client - INFO - Retrieved key test_key_RWPoEJ5m: test_value_50913t51y0YQkHuLWKsc
+2025-05-04 00:23:36,312 - grpc_client - INFO - Retrieved key test_key_vzNBgs4h: test_value_T7EOXZdD4fSMR6Vq1vJK
+2025-05-04 00:23:36,312 - grpc_client - INFO - Retrieved key test_key_zoH3pxB7: test_value_CBLsioBYOQq5E3c6jIhv
+2025-05-04 00:23:36,363 - grpc_client - INFO - Retrieved key test_key_OjmZ0Aa5: test_value_iMVKiRSK0zG2LChN8C1w
+2025-05-04 00:23:38,472 - grpc_client - INFO - Retrieved key test_key_ZF50vLU7: test_value_YVf29ak3SZzRsAWhXEPD
+2025-05-04 00:23:40,763 - grpc_client - INFO - Retrieved key test_key_hzR7VSWM: test_value_idCaqHV9fRNiEpBBxWml
+2025-05-04 00:23:40,784 - grpc_client - INFO - Retrieved key test_key_fXwjv0HY: test_value_mcabwWCH87IQqUSsQJeL
+2025-05-04 00:23:40,786 - grpc_client - INFO - Retrieved key test_key_8F1Hm2Mi: test_value_LmzBUrbzAyrxE9XGyxgh
+2025-05-04 00:23:40,789 - grpc_client - INFO - Retrieved key test_key_8bfH2B9j: test_value_fw5JsHwjymI8E9h8I9DI
+2025-05-04 00:23:40,790 - grpc_client - INFO - Retrieved key test_key_8TDrzgM8: test_value_gGt2Ib56dSOyumvsGSma
+2025-05-04 00:23:40,806 - grpc_client - INFO - Retrieved key test_key_ORUMkTrW: test_value_MT5AfQtQpNqKmKJz0gbG
+2025-05-04 00:23:40,810 - grpc_client - INFO - Retrieved key test_key_GNcaI9Ar: test_value_NwvvqbRdcy01a220Zvwu
+2025-05-04 00:23:40,810 - __main__ - INFO - Performing 10 DELETE operations
+2025-05-04 00:23:42,916 - grpc_client - INFO - Retrieved key test_key_kupf4tcJ: test_value_iwcDMYzGEJEkMkIOMMPX
+2025-05-04 00:23:42,929 - grpc_client - INFO - Retrieved key test_key_WJBNlYi8: test_value_462MfHDzRv1gUZAsZVD5
+2025-05-04 00:23:42,931 - __main__ - INFO - Performing 10 DELETE operations
+2025-05-04 00:23:42,937 - grpc_client - INFO - Deleted key test_key_2ZoSIzHG
+2025-05-04 00:23:42,937 - grpc_client - INFO - Retrieved key test_key_5kiTp7Y9: test_value_zspstPIfcdh3vBPQ6UON
+2025-05-04 00:23:42,939 - grpc_client - INFO - Retrieved key test_key_BQFVDRhH: test_value_hEK342OHFiSKM681FLoa
+2025-05-04 00:23:45,087 - grpc_client - INFO - Deleted key test_key_ytqeFiNS
+2025-05-04 00:23:45,101 - grpc_client - INFO - Retrieved key test_key_ZF50vLU7: test_value_YVf29ak3SZzRsAWhXEPD
+2025-05-04 00:23:45,103 - grpc_client - INFO - Retrieved key test_key_6iu0VydV: test_value_Hb72ZYiUyI19UdANAAjp
+2025-05-04 00:23:45,104 - grpc_client - INFO - Deleted key test_key_Bqf2Xc3l
+2025-05-04 00:23:45,109 - grpc_client - INFO - Deleted key test_key_GNcaI9Ar
+2025-05-04 00:23:47,239 - grpc_client - INFO - Retrieved key test_key_ejczPGpa: test_value_JMizlP4vpYhKtF9yDZzn
+2025-05-04 00:23:47,257 - grpc_client - INFO - Deleted key test_key_8Q9lgD89
+2025-05-04 00:23:49,390 - grpc_client - INFO - Retrieved key test_key_aOSTsnoF: test_value_nnNDvaWgcyGGQKTpGolR
+2025-05-04 00:23:52,254 - grpc_client - INFO - Retrieved key test_key_RWPoEJ5m: test_value_50913t51y0YQkHuLWKsc
+2025-05-04 00:23:52,262 - grpc_client - INFO - Retrieved key test_key_6iu0VydV: test_value_Hb72ZYiUyI19UdANAAjp
+2025-05-04 00:23:52,267 - grpc_client - INFO - Retrieved key test_key_6iu0VydV: test_value_Hb72ZYiUyI19UdANAAjp
+2025-05-04 00:23:52,519 - grpc_client - INFO - Retrieved key test_key_mVyif1hW: test_value_UuRoQWpUvAFbcU5BQXGg
+2025-05-04 00:23:54,547 - grpc_client - INFO - Retrieved key test_key_kEmZ8J7F: test_value_nLLJr7xJVMdiEFu1I74k
+2025-05-04 00:23:54,549 - grpc_client - INFO - Deleted key test_key_lrFaGo4G
+2025-05-04 00:23:54,565 - grpc_client - INFO - Deleted key test_key_8TDrzgM8
+2025-05-04 00:23:54,566 - grpc_client - INFO - Retrieved key test_key_XWXP6Gds: test_value_wIMn0pQFIxooaVYCCzwV
+2025-05-04 00:23:54,660 - grpc_client - INFO - Retrieved key test_key_8QqdFT9l: test_value_J0ky65IXEGTiap5iyExb
+2025-05-04 00:23:56,711 - grpc_client - INFO - Deleted key test_key_LQqbX3O1
+2025-05-04 00:23:56,715 - grpc_client - INFO - Deleted key test_key_RxQPxdRn
+2025-05-04 00:23:56,716 - grpc_client - INFO - Retrieved key test_key_ZF50vLU7: test_value_YVf29ak3SZzRsAWhXEPD
+2025-05-04 00:23:58,942 - grpc_client - INFO - Retrieved key test_key_5kiTp7Y9: test_value_zspstPIfcdh3vBPQ6UON
+2025-05-04 00:23:58,942 - __main__ - INFO - Performing 10 DELETE operations
+2025-05-04 00:23:58,944 - grpc_client - INFO - Retrieved key test_key_8bfH2B9j: test_value_fw5JsHwjymI8E9h8I9DI
+2025-05-04 00:23:58,944 - __main__ - INFO - Performing 10 DELETE operations
+2025-05-04 00:23:58,951 - grpc_client - INFO - Deleted key test_key_dU1unRRz
+2025-05-04 00:24:01,115 - grpc_client - INFO - Deleted key test_key_8M4AIHxm
+2025-05-04 00:24:01,115 - grpc_client - INFO - Deleted key test_key_vzNBgs4h
+2025-05-04 00:24:02,182 - grpc_client - INFO - Deleted key test_key_9SiHWszf
+2025-05-04 00:24:02,197 - grpc_client - INFO - Deleted key test_key_5tHLNnTb
+2025-05-04 00:24:04,024 - grpc_client - INFO - Deleted key test_key_0JNqNgFa
+2025-05-04 00:24:04,042 - grpc_client - INFO - Deleted key test_key_Adg19ZUK
+2025-05-04 00:24:04,045 - grpc_client - INFO - Deleted key test_key_hzR7VSWM
+2025-05-04 00:24:04,045 - grpc_client - INFO - Deleted key test_key_TY02c5U9
+2025-05-04 00:24:04,049 - grpc_client - INFO - Deleted key test_key_IGp9beuV
+2025-05-04 00:24:04,049 - grpc_client - INFO - Deleted key test_key_utNduQ17
+2025-05-04 00:24:06,194 - grpc_client - INFO - Deleted key test_key_1LJIeGeo
+2025-05-04 00:24:06,200 - grpc_client - INFO - Deleted key test_key_j39C3Mxn
+2025-05-04 00:24:06,200 - grpc_client - INFO - Deleted key test_key_Sl2tyehE
+2025-05-04 00:24:06,201 - grpc_client - INFO - Deleted key test_key_zoH3pxB7
+2025-05-04 00:24:08,355 - grpc_client - INFO - Deleted key test_key_BQFVDRhH
+2025-05-04 00:24:08,361 - grpc_client - INFO - Deleted key test_key_o5LcS3ns
+2025-05-04 00:24:08,365 - grpc_client - INFO - Deleted key test_key_8bfH2B9j
+2025-05-04 00:24:08,371 - grpc_client - INFO - Deleted key test_key_syYsbxaV
+2025-05-04 00:24:12,026 - grpc_client - INFO - Deleted key test_key_NuxvuNWe
+2025-05-04 00:24:12,040 - grpc_client - INFO - Deleted key test_key_T6UeLUPQ
+2025-05-04 00:24:12,045 - grpc_client - INFO - Deleted key test_key_TfiScH8G
+2025-05-04 00:24:12,663 - grpc_client - INFO - Deleted key test_key_PApoS0dO
+2025-05-04 00:24:12,678 - grpc_client - INFO - Deleted key test_key_Y427F7Fj
+2025-05-04 00:24:12,683 - grpc_client - INFO - Deleted key test_key_9kPuxo0R
+2025-05-04 00:24:14,208 - grpc_client - INFO - Deleted key test_key_ikiHQijv
+2025-05-04 00:24:14,846 - grpc_client - INFO - Deleted key test_key_XWXP6Gds
+2025-05-04 00:24:14,848 - grpc_client - INFO - Deleted key test_key_mVyif1hW
+2025-05-04 00:24:17,004 - grpc_client - INFO - Deleted key test_key_ORUMkTrW
+2025-05-04 00:24:19,212 - grpc_client - INFO - Deleted key test_key_Vyk1ILfx
+2025-05-04 00:24:20,954 - grpc_client - INFO - Deleted key test_key_6iu0VydV
+2025-05-04 00:24:20,954 - __main__ - INFO - Step 3 completed in 279.78 seconds
+2025-05-04 00:24:20,954 - __main__ - INFO -   Throughput: 1.43 ops/sec
+2025-05-04 00:24:20,954 - __main__ - INFO -   Success rate: 100.00%
+2025-05-04 00:24:20,954 - __main__ - INFO -   Average latency: 2714.11 ms
+2025-05-04 00:24:22,964 - __main__ - INFO - Step 4/5: 800 operations with 8 threads (100 ops/thread)
+2025-05-04 00:24:22,965 - __main__ - INFO - Running parallel workload with 8 threads, 100 operations per thread
+2025-05-04 00:24:22,965 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,966 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,966 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:22,967 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,967 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,967 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:22,967 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,971 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:22,968 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,973 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:22,969 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,970 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:22,969 - __main__ - INFO - Running mixed workload with 100 operations (GET: 0.7, PUT: 0.2, DELETE: 0.1)
+2025-05-04 00:24:22,969 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:22,991 - grpc_client - INFO - Stored key test_key_oAUbmtaO with timestamp 1746343462978
+2025-05-04 00:24:22,991 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:22,992 - __main__ - INFO - Performing 20 PUT operations
+2025-05-04 00:24:25,142 - grpc_client - INFO - Stored key test_key_3pT5cJMm with timestamp 1746343465137
+2025-05-04 00:24:25,142 - grpc_client - INFO - Stored key test_key_rkCoxUKg with timestamp 1746343465138
+2025-05-04 00:24:27,261 - grpc_client - INFO - Stored key test_key_2PrrW9CF with timestamp 1746343465125
+2025-05-04 00:24:27,306 - grpc_client - INFO - Stored key test_key_c8mTzmMN with timestamp 1746343465117
+2025-05-04 00:24:29,220 - grpc_client - INFO - Stored key test_key_vKYCJdxl with timestamp 1746343469209
+2025-05-04 00:24:29,433 - grpc_client - INFO - Stored key test_key_XuGk5z3X with timestamp 1746343467302
+2025-05-04 00:24:31,438 - grpc_client - INFO - Stored key test_key_6WDrDqgD with timestamp 1746343471431
+2025-05-04 00:24:31,554 - grpc_client - INFO - Stored key test_key_vqfR3fLY with timestamp 1746343467257
+2025-05-04 00:24:31,561 - grpc_client - INFO - Stored key test_key_behecITe with timestamp 1746343469402
+2025-05-04 00:24:31,583 - grpc_client - INFO - Stored key test_key_Y9Ngm1ha with timestamp 1746343471565
+2025-05-04 00:24:31,584 - grpc_client - INFO - Stored key test_key_C3jvXNU9 with timestamp 1746343471570
+2025-05-04 00:24:31,584 - grpc_client - INFO - Stored key test_key_gaDLEOdU with timestamp 1746343471569
+2025-05-04 00:24:32,746 - grpc_client - INFO - Stored key test_key_TrDhDfRG with timestamp 1746343467306
+2025-05-04 00:24:32,749 - grpc_client - INFO - Stored key test_key_1a9tyyrV with timestamp 1746343467306
+2025-05-04 00:24:32,762 - grpc_client - INFO - Stored key test_key_s7Ol97O8 with timestamp 1746343472744
+2025-05-04 00:24:32,763 - grpc_client - INFO - Stored key test_key_t4BPi5EQ with timestamp 1746343471585
+2025-05-04 00:24:32,764 - grpc_client - INFO - Stored key test_key_Kj9sV50R with timestamp 1746343471585
+2025-05-04 00:24:35,869 - grpc_client - INFO - Stored key test_key_OobtmROL with timestamp 1746343473726
+2025-05-04 00:24:35,876 - grpc_client - INFO - Stored key test_key_1vHlHnAc with timestamp 1746343475861
+2025-05-04 00:24:37,028 - grpc_client - INFO - Stored key test_key_rr9RIHlQ with timestamp 1746343472748
+2025-05-04 00:24:37,028 - grpc_client - INFO - Stored key test_key_ubloBfYn with timestamp 1746343474897
+2025-05-04 00:24:37,029 - grpc_client - INFO - Stored key test_key_Hgs9lJ2m with timestamp 1746343472748
+2025-05-04 00:24:37,034 - grpc_client - INFO - Stored key test_key_NFb6DCUD with timestamp 1746343474889
+2025-05-04 00:24:37,043 - grpc_client - INFO - Stored key test_key_kGjSHWPv with timestamp 1746343477026
+2025-05-04 00:24:37,048 - grpc_client - INFO - Stored key test_key_bFWkxsqi with timestamp 1746343477034
+2025-05-04 00:24:37,048 - grpc_client - INFO - Stored key test_key_bROFgEM2 with timestamp 1746343477035
+2025-05-04 00:24:37,049 - grpc_client - INFO - Stored key test_key_519T3IkD with timestamp 1746343477045
+2025-05-04 00:24:39,190 - grpc_client - INFO - Stored key test_key_l9OyJnyP with timestamp 1746343479170
+2025-05-04 00:24:39,192 - grpc_client - INFO - Stored key test_key_jCg6DSzu with timestamp 1746343479180
+2025-05-04 00:24:41,319 - grpc_client - INFO - Stored key test_key_74gGjzwu with timestamp 1746343477034
+2025-05-04 00:24:41,321 - grpc_client - INFO - Stored key test_key_u8MSzCjM with timestamp 1746343479172
+2025-05-04 00:24:41,391 - grpc_client - INFO - Stored key test_key_bRWlxjVq with timestamp 1746343479175
+2025-05-04 00:24:41,392 - grpc_client - INFO - Stored key test_key_QaBH5xBx with timestamp 1746343479177
+2025-05-04 00:24:43,451 - grpc_client - INFO - Stored key test_key_zClyuqfZ with timestamp 1746343481317
+2025-05-04 00:24:43,451 - grpc_client - INFO - Stored key test_key_BNFaAbW3 with timestamp 1746343481319
+2025-05-04 00:24:43,535 - grpc_client - INFO - Stored key test_key_ZQif1s9S with timestamp 1746343481390
+2025-05-04 00:24:43,557 - grpc_client - INFO - Stored key test_key_ITKY3l5n with timestamp 1746343481329
+2025-05-04 00:24:43,558 - grpc_client - INFO - Stored key test_key_tA5Phe6F with timestamp 1746343481329
+2025-05-04 00:24:45,702 - grpc_client - INFO - Stored key test_key_SdIgzTUM with timestamp 1746343483556
+2025-05-04 00:24:45,704 - grpc_client - INFO - Stored key test_key_HKjKozEw with timestamp 1746343485689
+2025-05-04 00:24:45,710 - grpc_client - INFO - Stored key test_key_X78SVfdy with timestamp 1746343485694
+2025-05-04 00:24:45,710 - grpc_client - INFO - Stored key test_key_tXGjotC0 with timestamp 1746343485706
+2025-05-04 00:24:45,710 - grpc_client - INFO - Stored key test_key_m6DLer1U with timestamp 1746343485697
+2025-05-04 00:24:47,856 - grpc_client - INFO - Stored key test_key_psPWxWeO with timestamp 1746343487840
+2025-05-04 00:24:47,857 - grpc_client - INFO - Stored key test_key_B7l8ivtv with timestamp 1746343487840
+2025-05-04 00:24:47,860 - grpc_client - INFO - Stored key test_key_WyMpaCQ6 with timestamp 1746343487852
+2025-05-04 00:24:47,864 - grpc_client - INFO - Stored key test_key_UYAPusFA with timestamp 1746343487860
+2025-05-04 00:24:50,044 - grpc_client - INFO - Stored key test_key_TVAE379A with timestamp 1746343483534
+2025-05-04 00:24:50,045 - grpc_client - INFO - Stored key test_key_pjTJ5sqE with timestamp 1746343485672
+2025-05-04 00:24:50,049 - grpc_client - INFO - Stored key test_key_9KUCBg3M with timestamp 1746343487804
+2025-05-04 00:24:50,055 - grpc_client - INFO - Stored key test_key_qa6ZDAEz with timestamp 1746343487862
+2025-05-04 00:24:50,064 - grpc_client - INFO - Stored key test_key_fFHiEDbh with timestamp 1746343490049
+2025-05-04 00:24:52,196 - grpc_client - INFO - Stored key test_key_5NzMwB1F with timestamp 1746343490050
+2025-05-04 00:24:52,201 - grpc_client - INFO - Stored key test_key_S9wHkaqu with timestamp 1746343490043
+2025-05-04 00:24:52,202 - grpc_client - INFO - Stored key test_key_gFJwxszj with timestamp 1746343490047
+2025-05-04 00:24:52,205 - grpc_client - INFO - Stored key test_key_MeSqb6LT with timestamp 1746343492189
+2025-05-04 00:24:52,212 - grpc_client - INFO - Stored key test_key_ojxT6bwi with timestamp 1746343492193
+2025-05-04 00:24:52,217 - grpc_client - INFO - Stored key test_key_t4AUrTSH with timestamp 1746343492208
+2025-05-04 00:24:52,217 - grpc_client - INFO - Stored key test_key_Fg9Br62c with timestamp 1746343492209
+2025-05-04 00:24:54,350 - grpc_client - INFO - Stored key test_key_2k2GQlKt with timestamp 1746343492193
+2025-05-04 00:24:54,363 - grpc_client - INFO - Stored key test_key_KXIJF2jz with timestamp 1746343494354
+2025-05-04 00:24:54,406 - grpc_client - INFO - Stored key test_key_ojZMeJPK with timestamp 1746343492199
+2025-05-04 00:24:54,406 - grpc_client - INFO - Stored key test_key_RfrRpS7W with timestamp 1746343492201
+2025-05-04 00:24:56,481 - grpc_client - INFO - Stored key test_key_pAIryQdX with timestamp 1746343494348
+2025-05-04 00:24:56,496 - grpc_client - INFO - Stored key test_key_ehn0zhpo with timestamp 1746343496481
+2025-05-04 00:24:56,498 - grpc_client - INFO - Stored key test_key_96B6D328 with timestamp 1746343496482
+2025-05-04 00:24:56,500 - grpc_client - INFO - Stored key test_key_DG5o28R2 with timestamp 1746343496484
+2025-05-04 00:24:56,501 - grpc_client - INFO - Stored key test_key_NXOhEzgZ with timestamp 1746343496498
+2025-05-04 00:24:56,505 - grpc_client - INFO - Stored key test_key_BCy6f93n with timestamp 1746343496503
+2025-05-04 00:24:56,507 - grpc_client - INFO - Stored key test_key_3ykQren0 with timestamp 1746343494354
+2025-05-04 00:24:56,532 - grpc_client - INFO - Stored key test_key_CMN6eHrC with timestamp 1746343494405
+2025-05-04 00:24:56,532 - grpc_client - INFO - Stored key test_key_iJodO6LB with timestamp 1746343494406
+2025-05-04 00:24:56,538 - grpc_client - INFO - Stored key test_key_cmQV0Ocv with timestamp 1746343496534
+2025-05-04 00:24:58,651 - grpc_client - INFO - Stored key test_key_3O4eYB8K with timestamp 1746343498636
+2025-05-04 00:25:00,789 - grpc_client - INFO - Stored key test_key_KTrtUmHa with timestamp 1746343498632
+2025-05-04 00:25:00,796 - grpc_client - INFO - Stored key test_key_qEW1BV8D with timestamp 1746343500783
+2025-05-04 00:25:00,799 - grpc_client - INFO - Stored key test_key_y01elvSs with timestamp 1746343500791
+2025-05-04 00:25:00,976 - grpc_client - INFO - Stored key test_key_LFTkuXCv with timestamp 1746343498832
+2025-05-04 00:25:00,977 - grpc_client - INFO - Stored key test_key_GPr9luL3 with timestamp 1746343498830
+2025-05-04 00:25:00,977 - grpc_client - INFO - Stored key test_key_bVdTdd55 with timestamp 1746343498833
+2025-05-04 00:25:01,516 - grpc_client - INFO - Stored key test_key_G65G3e7O with timestamp 1746343501505
+2025-05-04 00:25:01,518 - grpc_client - INFO - Stored key test_key_NZqVOSAk with timestamp 1746343501507
+2025-05-04 00:25:02,945 - grpc_client - INFO - Stored key test_key_Dhvp0RRC with timestamp 1746343502938
+2025-05-04 00:25:02,979 - grpc_client - INFO - Stored key test_key_14zpGPqE with timestamp 1746343500837
+2025-05-04 00:25:02,990 - grpc_client - INFO - Stored key test_key_eSxYEz09 with timestamp 1746343502978
+2025-05-04 00:25:02,990 - grpc_client - INFO - Stored key test_key_ml5Oq05Y with timestamp 1746343502979
+2025-05-04 00:25:05,140 - grpc_client - INFO - Stored key test_key_2Hxcelkc with timestamp 1746343505127
+2025-05-04 00:25:05,140 - grpc_client - INFO - Stored key test_key_oE2lzPJV with timestamp 1746343505129
+2025-05-04 00:25:07,392 - grpc_client - INFO - Stored key test_key_WvMCJopp with timestamp 1746343500975
+2025-05-04 00:25:07,395 - grpc_client - INFO - Stored key test_key_5PQ5VexA with timestamp 1746343503108
+2025-05-04 00:25:07,398 - grpc_client - INFO - Stored key test_key_z9BneJvp with timestamp 1746343505248
+2025-05-04 00:25:09,435 - grpc_client - INFO - Stored key test_key_nACOWc0a with timestamp 1746343507298
+2025-05-04 00:25:09,445 - grpc_client - INFO - Stored key test_key_Tqaya22B with timestamp 1746343507300
+2025-05-04 00:25:09,542 - grpc_client - INFO - Stored key test_key_PBLOaNK8 with timestamp 1746343507389
+2025-05-04 00:25:09,543 - grpc_client - INFO - Stored key test_key_IyDhsoso with timestamp 1746343507396
+2025-05-04 00:25:09,560 - grpc_client - INFO - Stored key test_key_Kl1hrcR7 with timestamp 1746343509540
+2025-05-04 00:25:09,565 - grpc_client - INFO - Stored key test_key_a5Ksw8Ex with timestamp 1746343509555
+2025-05-04 00:25:09,570 - grpc_client - INFO - Stored key test_key_u2k2MnOX with timestamp 1746343509563
+2025-05-04 00:25:09,572 - grpc_client - INFO - Stored key test_key_8f3xOZsm with timestamp 1746343509568
+2025-05-04 00:25:11,605 - grpc_client - INFO - Stored key test_key_MRRJJmzI with timestamp 1746343511587
+2025-05-04 00:25:11,610 - grpc_client - INFO - Stored key test_key_oOA3pYml with timestamp 1746343511607
+2025-05-04 00:25:13,744 - grpc_client - INFO - Stored key test_key_YZyvB5NA with timestamp 1746343511585
+2025-05-04 00:25:13,835 - grpc_client - INFO - Stored key test_key_kV7saIHl with timestamp 1746343511705
+2025-05-04 00:25:13,843 - grpc_client - INFO - Stored key test_key_pxomsUhH with timestamp 1746343513834
+2025-05-04 00:25:13,849 - grpc_client - INFO - Stored key test_key_QKawU0SX with timestamp 1746343513839
+2025-05-04 00:25:15,876 - grpc_client - INFO - Stored key test_key_YVJpbn82 with timestamp 1746343511588
+2025-05-04 00:25:15,878 - grpc_client - INFO - Stored key test_key_Z5pVijCw with timestamp 1746343509445
+2025-05-04 00:25:15,879 - grpc_client - INFO - Stored key test_key_ydat6CzZ with timestamp 1746343511586
+2025-05-04 00:25:15,880 - grpc_client - INFO - Stored key test_key_GGRVbNhR with timestamp 1746343513731
+2025-05-04 00:25:15,894 - grpc_client - INFO - Stored key test_key_tirraSBp with timestamp 1746343515885
+2025-05-04 00:25:15,897 - grpc_client - INFO - Stored key test_key_6ifKbcpI with timestamp 1746343515895
+2025-05-04 00:25:15,897 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:18,025 - grpc_client - INFO - Stored key test_key_0dDTgoks with timestamp 1746343515878
+2025-05-04 00:25:18,044 - grpc_client - INFO - Retrieved key test_key_5NzMwB1F: test_value_S8N16ifwbQWAae18NS5Z
+2025-05-04 00:25:18,044 - grpc_client - INFO - Stored key test_key_a459cXOJ with timestamp 1746343518031
+2025-05-04 00:25:18,048 - grpc_client - INFO - Stored key test_key_CX1fthPu with timestamp 1746343518045
+2025-05-04 00:25:18,734 - grpc_client - INFO - Stored key test_key_p4oAkdni with timestamp 1746343518722
+2025-05-04 00:25:20,199 - grpc_client - INFO - Stored key test_key_mGY2j2Pk with timestamp 1746343518024
+2025-05-04 00:25:20,200 - grpc_client - INFO - Stored key test_key_pU2s6yZ4 with timestamp 1746343518022
+2025-05-04 00:25:20,201 - grpc_client - INFO - Stored key test_key_af1uDzfh with timestamp 1746343515874
+2025-05-04 00:25:20,213 - grpc_client - INFO - Stored key test_key_eIZ5VBCz with timestamp 1746343520196
+2025-05-04 00:25:20,215 - grpc_client - INFO - Stored key test_key_M4Y4Ldz3 with timestamp 1746343520197
+2025-05-04 00:25:20,215 - grpc_client - INFO - Stored key test_key_xYW2CkFw with timestamp 1746343520199
+2025-05-04 00:25:20,217 - grpc_client - INFO - Stored key test_key_5dYXMcmb with timestamp 1746343520211
+2025-05-04 00:25:20,218 - grpc_client - INFO - Stored key test_key_C7aOYbm1 with timestamp 1746343520216
+2025-05-04 00:25:22,322 - grpc_client - INFO - Retrieved key test_key_5PQ5VexA: test_value_OQ03UOLsclvGvvc9HVBe
+2025-05-04 00:25:23,008 - grpc_client - INFO - Stored key test_key_2zxrSOuz with timestamp 1746343520880
+2025-05-04 00:25:23,028 - grpc_client - INFO - Stored key test_key_Cm9kniqO with timestamp 1746343523013
+2025-05-04 00:25:23,029 - grpc_client - INFO - Stored key test_key_WbUzZgVc with timestamp 1746343523015
+2025-05-04 00:25:23,029 - grpc_client - INFO - Stored key test_key_ajM5oN9D with timestamp 1746343523013
+2025-05-04 00:25:23,033 - grpc_client - INFO - Stored key test_key_eeEClAln with timestamp 1746343523030
+2025-05-04 00:25:24,460 - grpc_client - INFO - Stored key test_key_M0kcdHB9 with timestamp 1746343524451
+2025-05-04 00:25:24,460 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:24,462 - grpc_client - INFO - Retrieved key test_key_tA5Phe6F: test_value_PBdUrEEF22Tgz2DhwjWj
+2025-05-04 00:25:24,532 - grpc_client - INFO - Stored key test_key_YIvIF7hg with timestamp 1746343522328
+2025-05-04 00:25:24,533 - grpc_client - INFO - Stored key test_key_Y4g5VK1y with timestamp 1746343522326
+2025-05-04 00:25:24,545 - grpc_client - INFO - Stored key test_key_23eDRLFF with timestamp 1746343524530
+2025-05-04 00:25:24,548 - grpc_client - INFO - Stored key test_key_703EKBHn with timestamp 1746343524536
+2025-05-04 00:25:24,553 - grpc_client - INFO - Stored key test_key_cnjqvIjo with timestamp 1746343524550
+2025-05-04 00:25:24,556 - grpc_client - INFO - Stored key test_key_W8CbXt0H with timestamp 1746343524554
+2025-05-04 00:25:25,188 - grpc_client - INFO - Stored key test_key_A5XSO74e with timestamp 1746343525170
+2025-05-04 00:25:25,189 - grpc_client - INFO - Stored key test_key_dxY0pldb with timestamp 1746343525172
+2025-05-04 00:25:26,647 - grpc_client - INFO - Retrieved key test_key_jCg6DSzu: test_value_xn4tdutOQbmSlrS2ggNw
+2025-05-04 00:25:26,654 - grpc_client - INFO - Retrieved key test_key_jCg6DSzu: test_value_xn4tdutOQbmSlrS2ggNw
+2025-05-04 00:25:27,389 - grpc_client - INFO - Stored key test_key_efAoZly7 with timestamp 1746343525172
+2025-05-04 00:25:27,391 - grpc_client - INFO - Stored key test_key_iAjM6TfF with timestamp 1746343525175
+2025-05-04 00:25:29,516 - grpc_client - INFO - Stored key test_key_KPdjaJhW with timestamp 1746343525166
+2025-05-04 00:25:29,519 - grpc_client - INFO - Stored key test_key_e7BlgTis with timestamp 1746343527371
+2025-05-04 00:25:29,530 - grpc_client - INFO - Stored key test_key_D8fFLI8o with timestamp 1746343527388
+2025-05-04 00:25:29,535 - grpc_client - INFO - Retrieved key test_key_ehn0zhpo: test_value_rQCgCfl11D8E3ayDXSoO
+2025-05-04 00:25:29,541 - grpc_client - INFO - Retrieved key test_key_t4BPi5EQ: test_value_lnj2uFPWckPS8VmizVVi
+2025-05-04 00:25:29,542 - grpc_client - INFO - Stored key test_key_OvrxZfL6 with timestamp 1746343529518
+2025-05-04 00:25:29,542 - grpc_client - INFO - Stored key test_key_BVKjRO94 with timestamp 1746343529521
+2025-05-04 00:25:29,543 - grpc_client - INFO - Stored key test_key_YUyeVLiC with timestamp 1746343529530
+2025-05-04 00:25:31,672 - grpc_client - INFO - Stored key test_key_tmRfiDBD with timestamp 1746343529523
+2025-05-04 00:25:31,719 - grpc_client - INFO - Retrieved key test_key_t4BPi5EQ: test_value_lnj2uFPWckPS8VmizVVi
+2025-05-04 00:25:32,595 - grpc_client - INFO - Retrieved key test_key_Y9Ngm1ha: test_value_eZsr0P04qD8YLUaiQtS4
+2025-05-04 00:25:33,959 - grpc_client - INFO - Stored key test_key_Snx8iXwV with timestamp 1746343531719
+2025-05-04 00:25:33,959 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:33,966 - grpc_client - INFO - Stored key test_key_XV2DTyLb with timestamp 1746343533958
+2025-05-04 00:25:33,966 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:33,967 - grpc_client - INFO - Retrieved key test_key_LFTkuXCv: test_value_QUvFRZwHaeWyamzCISz7
+2025-05-04 00:25:33,973 - grpc_client - INFO - Retrieved key test_key_y01elvSs: test_value_Rdmokz1ufwoeuAWyoeVQ
+2025-05-04 00:25:33,974 - grpc_client - INFO - Retrieved key test_key_OvrxZfL6: test_value_tqWlYAvDIsjOGcuwNbk5
+2025-05-04 00:25:33,978 - grpc_client - INFO - Retrieved key test_key_Cm9kniqO: test_value_STIqHDz60harE1BC0jHa
+2025-05-04 00:25:35,924 - grpc_client - INFO - Stored key test_key_CFjPfKhV with timestamp 1746343533728
+2025-05-04 00:25:35,939 - grpc_client - INFO - Stored key test_key_yhaWF7eN with timestamp 1746343533803
+2025-05-04 00:25:35,944 - grpc_client - INFO - Retrieved key test_key_1vHlHnAc: test_value_qMBKsKLSlEbpgJqlkxrz
+2025-05-04 00:25:36,180 - grpc_client - INFO - Retrieved key test_key_8f3xOZsm: test_value_G8YlhnXp2of2Xi2VmN9a
+2025-05-04 00:25:36,637 - grpc_client - INFO - Retrieved key test_key_vKYCJdxl: test_value_9xTXvNHNJsornxDQjz9c
+2025-05-04 00:25:36,637 - grpc_client - INFO - Stored key test_key_T0YNowUI with timestamp 1746343535939
+2025-05-04 00:25:36,642 - grpc_client - INFO - Stored key test_key_zktPxNKO with timestamp 1746343536639
+2025-05-04 00:25:38,675 - grpc_client - INFO - Retrieved key test_key_1vHlHnAc: test_value_qMBKsKLSlEbpgJqlkxrz
+2025-05-04 00:25:38,677 - grpc_client - INFO - Stored key test_key_jH2N5Fxn with timestamp 1746343538665
+2025-05-04 00:25:38,677 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:38,683 - grpc_client - INFO - Retrieved key test_key_eSxYEz09: test_value_Z5UiKZD3aebi70MgdxLx
+2025-05-04 00:25:38,781 - grpc_client - INFO - Stored key test_key_ufzZPrrT with timestamp 1746343538770
+2025-05-04 00:25:38,783 - grpc_client - INFO - Retrieved key test_key_psPWxWeO: test_value_p1YXBVl8r3iIWxaToavL
+2025-05-04 00:25:38,786 - grpc_client - INFO - Retrieved key test_key_zClyuqfZ: test_value_LBv52udCsJ5pLIvlt0B2
+2025-05-04 00:25:40,352 - grpc_client - INFO - Stored key test_key_KN9dwlgw with timestamp 1746343535917
+2025-05-04 00:25:40,352 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:40,352 - grpc_client - INFO - Stored key test_key_Lcc2qs2u with timestamp 1746343538059
+2025-05-04 00:25:40,353 - grpc_client - INFO - Retrieved key test_key_Dhvp0RRC: test_value_UE4QzsgsLWKr3Tn4eq6c
+2025-05-04 00:25:40,823 - grpc_client - INFO - Retrieved key test_key_eSxYEz09: test_value_Z5UiKZD3aebi70MgdxLx
+2025-05-04 00:25:42,516 - grpc_client - INFO - Stored key test_key_5ZV5HWT2 with timestamp 1746343542509
+2025-05-04 00:25:42,516 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:42,517 - grpc_client - INFO - Retrieved key test_key_Dhvp0RRC: test_value_UE4QzsgsLWKr3Tn4eq6c
+2025-05-04 00:25:44,664 - grpc_client - INFO - Retrieved key test_key_ojxT6bwi: test_value_R0pjRGXC0uD5ixxdO97V
+2025-05-04 00:25:44,674 - grpc_client - INFO - Retrieved key test_key_eeEClAln: test_value_3P1xdVWX6Q03h8jEkMNi
+2025-05-04 00:25:45,206 - grpc_client - INFO - Retrieved key test_key_NFb6DCUD: test_value_0SPMKJ3PgL3K4nsq6G7j
+2025-05-04 00:25:45,214 - grpc_client - INFO - Retrieved key test_key_u2k2MnOX: test_value_XXHsIbyRXSHCcqR6AzoT
+2025-05-04 00:25:47,366 - grpc_client - INFO - Retrieved key test_key_QaBH5xBx: test_value_HI0Ujw71dtUHFAJNGJVt
+2025-05-04 00:25:47,990 - grpc_client - INFO - Retrieved key test_key_yhaWF7eN: test_value_qr03evMqZH1aRmsPKZ2p
+2025-05-04 00:25:47,990 - grpc_client - INFO - Retrieved key test_key_Lcc2qs2u: test_value_QlEHRWJprmcBaycKQQnh
+2025-05-04 00:25:47,994 - grpc_client - INFO - Retrieved key test_key_KTrtUmHa: test_value_HiNU0evZdnB7vedZPnp0
+2025-05-04 00:25:49,365 - grpc_client - INFO - Retrieved key test_key_96B6D328: test_value_F1Uis2pVAXjcBXzmTVUb
+2025-05-04 00:25:49,367 - grpc_client - INFO - Stored key test_key_uo1Icebz with timestamp 1746343542509
+2025-05-04 00:25:51,517 - grpc_client - INFO - Retrieved key test_key_c8mTzmMN: test_value_e6j8i8bbCSUC3xexgMnS
+2025-05-04 00:25:51,521 - grpc_client - INFO - Retrieved key test_key_BNFaAbW3: test_value_nx5oooZbjHUlzzYBioKf
+2025-05-04 00:25:51,523 - grpc_client - INFO - Retrieved key test_key_YZyvB5NA: test_value_XOtrt92v58ipIs9Ta5Sb
+2025-05-04 00:25:51,536 - grpc_client - INFO - Retrieved key test_key_gFJwxszj: test_value_LOdBCxyzVt35e2ClyZ87
+2025-05-04 00:25:51,536 - grpc_client - INFO - Retrieved key test_key_UYAPusFA: test_value_WO6Je2d0iaByGvgAb6gZ
+2025-05-04 00:25:51,539 - grpc_client - INFO - Retrieved key test_key_mGY2j2Pk: test_value_JDQEwUkJCLgdOGRh8VHc
+2025-05-04 00:25:51,554 - grpc_client - INFO - Stored key test_key_QPCbaHqV with timestamp 1746343551550
+2025-05-04 00:25:51,554 - __main__ - INFO - Performing 70 GET operations
+2025-05-04 00:25:51,554 - grpc_client - INFO - Retrieved key test_key_A5XSO74e: test_value_pypISSsda3LCDwHO7pe1
+2025-05-04 00:25:53,698 - grpc_client - INFO - Retrieved key test_key_703EKBHn: test_value_WU2ArEN102qcrfg7IwTJ
+2025-05-04 00:25:53,699 - grpc_client - INFO - Retrieved key test_key_X78SVfdy: test_value_DsrL9YnQ8GdiOLuOe3ik
+2025-05-04 00:25:53,705 - grpc_client - INFO - Retrieved key test_key_KN9dwlgw: test_value_aIMvpDMG1iK8PNsTglOT
+2025-05-04 00:25:56,212 - grpc_client - INFO - Retrieved key test_key_Lcc2qs2u: test_value_QlEHRWJprmcBaycKQQnh
+2025-05-04 00:25:56,213 - grpc_client - INFO - Retrieved key test_key_yhaWF7eN: test_value_qr03evMqZH1aRmsPKZ2p
+2025-05-04 00:25:56,214 - grpc_client - INFO - Retrieved key test_key_UYAPusFA: test_value_WO6Je2d0iaByGvgAb6gZ
+2025-05-04 00:25:58,377 - grpc_client - INFO - Retrieved key test_key_MRRJJmzI: test_value_4ZclZgFXnHjvJm7bVZDy
+2025-05-04 00:25:58,416 - grpc_client - INFO - Retrieved key test_key_UYAPusFA: test_value_WO6Je2d0iaByGvgAb6gZ
+2025-05-04 00:26:01,362 - grpc_client - INFO - Retrieved key test_key_A5XSO74e: test_value_pypISSsda3LCDwHO7pe1
+2025-05-04 00:26:01,367 - grpc_client - INFO - Retrieved key test_key_oE2lzPJV: test_value_VAIYoV5zzuOZfCmT1Tht
+2025-05-04 00:26:02,649 - grpc_client - INFO - Retrieved key test_key_MeSqb6LT: test_value_nijh6fLywTEldA31Bhn8
+2025-05-04 00:26:02,650 - grpc_client - INFO - Retrieved key test_key_CFjPfKhV: test_value_sNRp2ea9REuv4GPGlBFD
+2025-05-04 00:26:04,799 - grpc_client - INFO - Retrieved key test_key_c8mTzmMN: test_value_e6j8i8bbCSUC3xexgMnS
+2025-05-04 00:26:04,806 - grpc_client - INFO - Retrieved key test_key_u2k2MnOX: test_value_XXHsIbyRXSHCcqR6AzoT
+2025-05-04 00:26:04,815 - grpc_client - INFO - Retrieved key test_key_UYAPusFA: test_value_WO6Je2d0iaByGvgAb6gZ
+2025-05-04 00:26:05,652 - grpc_client - INFO - Retrieved key test_key_psPWxWeO: test_value_p1YXBVl8r3iIWxaToavL
+2025-05-04 00:26:05,653 - grpc_client - INFO - Retrieved key test_key_HKjKozEw: test_value_QaBzv517I26UUwAXNGZg
+2025-05-04 00:26:05,654 - grpc_client - INFO - Retrieved key test_key_oAUbmtaO: test_value_epAwG0Ohj2xlwRocb9rd
+2025-05-04 00:26:05,662 - grpc_client - INFO - Retrieved key test_key_74gGjzwu: test_value_DFM1x4h9TvruyTRbPyjP
+2025-05-04 00:26:05,669 - grpc_client - INFO - Retrieved key test_key_cmQV0Ocv: test_value_9fnP6uvvPbj49cTHIl9L
+2025-05-04 00:26:07,665 - grpc_client - INFO - Retrieved key test_key_a5Ksw8Ex: test_value_wgUaEzruEM90AopWiy8P
+2025-05-04 00:26:07,666 - grpc_client - INFO - Retrieved key test_key_efAoZly7: test_value_SNaYEf3UpU6dTTpcp12f
+2025-05-04 00:26:07,666 - grpc_client - INFO - Retrieved key test_key_YIvIF7hg: test_value_E7lf2IyF6ev5eV5t42gM
+2025-05-04 00:26:07,671 - grpc_client - INFO - Retrieved key test_key_t4AUrTSH: test_value_vlY6ePaWvAOTYpBG2wRq
+2025-05-04 00:26:07,676 - grpc_client - INFO - Retrieved key test_key_NXOhEzgZ: test_value_gsfAnMsNENkcd6HfTzKm
+2025-05-04 00:26:09,122 - grpc_client - INFO - Retrieved key test_key_vKYCJdxl: test_value_9xTXvNHNJsornxDQjz9c
+2025-05-04 00:26:09,144 - grpc_client - INFO - Retrieved key test_key_ydat6CzZ: test_value_WfYm1dDkiYr3RQ3ELPGi
+2025-05-04 00:26:09,150 - grpc_client - INFO - Retrieved key test_key_jCg6DSzu: test_value_xn4tdutOQbmSlrS2ggNw
+2025-05-04 00:26:09,924 - grpc_client - INFO - Retrieved key test_key_mGY2j2Pk: test_value_JDQEwUkJCLgdOGRh8VHc
+2025-05-04 00:26:09,925 - grpc_client - INFO - Retrieved key test_key_s7Ol97O8: test_value_IdoVGhHhSfncpSbYY0do
+2025-05-04 00:26:10,025 - grpc_client - INFO - Retrieved key test_key_tXGjotC0: test_value_CiPVTSFrSjtLGUQfkInh
+2025-05-04 00:26:10,028 - grpc_client - INFO - Retrieved key test_key_Fg9Br62c: test_value_BYvSMvemoYM9PKweDx7m
+2025-05-04 00:26:10,043 - grpc_client - INFO - Retrieved key test_key_xYW2CkFw: test_value_65ElEzkLyLBEBiPFuykC
+2025-05-04 00:26:10,044 - grpc_client - INFO - Retrieved key test_key_6ifKbcpI: test_value_spuxuZUXArjKmwX5cQQk
+2025-05-04 00:26:12,073 - grpc_client - INFO - Retrieved key test_key_9KUCBg3M: test_value_t46pxoANvVoDqPf7Eie9
+2025-05-04 00:26:12,078 - grpc_client - INFO - Retrieved key test_key_mGY2j2Pk: test_value_JDQEwUkJCLgdOGRh8VHc
+2025-05-04 00:26:12,089 - grpc_client - INFO - Retrieved key test_key_vqfR3fLY: test_value_agWe2lbbjNhfHf5XoPbj
+2025-05-04 00:26:13,416 - grpc_client - INFO - Retrieved key test_key_S9wHkaqu: test_value_kTywp0vxqtkdskUtAIo1
+2025-05-04 00:26:13,424 - grpc_client - INFO - Retrieved key test_key_X78SVfdy: test_value_DsrL9YnQ8GdiOLuOe3ik
+2025-05-04 00:26:13,425 - grpc_client - INFO - Retrieved key test_key_Kl1hrcR7: test_value_pClUaXwRLO68RMt0ie9L
+2025-05-04 00:26:14,216 - grpc_client - INFO - Retrieved key test_key_Snx8iXwV: test_value_kHNp10MCvqiFvk7UFt7c
+2025-05-04 00:26:14,219 - grpc_client - INFO - Retrieved key test_key_CMN6eHrC: test_value_SjUbZU2kRWTqmwhlvi4b
+2025-05-04 00:26:14,321 - grpc_client - INFO - Retrieved key test_key_6ifKbcpI: test_value_spuxuZUXArjKmwX5cQQk
+2025-05-04 00:26:14,334 - grpc_client - INFO - Retrieved key test_key_oOA3pYml: test_value_6cELAx3KOhyPbnH5BaBB
+2025-05-04 00:26:14,337 - grpc_client - INFO - Retrieved key test_key_mGY2j2Pk: test_value_JDQEwUkJCLgdOGRh8VHc
+2025-05-04 00:26:14,338 - grpc_client - INFO - Retrieved key test_key_DG5o28R2: test_value_jhNvbrKksKculxzwAD9Y
+2025-05-04 00:26:14,342 - grpc_client - INFO - Retrieved key test_key_jCg6DSzu: test_value_xn4tdutOQbmSlrS2ggNw
+2025-05-04 00:26:15,408 - __main__ - INFO - Load test interrupted by user
+2025-05-04 00:26:15,598 - grpc_client - INFO - Retrieved key test_key_T0YNowUI: test_value_gfGOcpRtD4CzBarEXR9l
+2025-05-04 00:26:15,604 - grpc_client - INFO - Retrieved key test_key_1vHlHnAc: test_value_qMBKsKLSlEbpgJqlkxrz
+2025-05-04 00:26:15,609 - grpc_client - INFO - Retrieved key test_key_BCy6f93n: test_value_5q2c43gQYMazgrNTBjfb

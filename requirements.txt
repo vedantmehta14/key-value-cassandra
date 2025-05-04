@@ -1,3 +1,6 @@
 grpcio==1.71.0
 grpcio-tools==1.71.0
-protobuf==5.29.4 
+protobuf==5.29.4
+psutil==5.9.6
+matplotlib==3.8.3
+numpy==1.26.4 

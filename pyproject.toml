@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "grpcio==1.71.0",
+    "grpcio-tools==1.71.0",
+    "matplotlib>=3.10.1",
+    "protobuf==5.29.4",
+    "psutil==5.9.6",
+]

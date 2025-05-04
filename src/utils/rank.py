@@ -1,7 +1,12 @@
 import time
 import threading
-from typing import Dict, Any, Callable
+import os
+import psutil
+import platform
+import subprocess
+from typing import Dict, Any, Callable, List, Tuple
 import logging
+import random  # For simulating jitter when real measurement isn't available
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -20,6 +25,28 @@ class RankManager:
         self.heartbeat_thread = None
         self.running = False
         self.heartbeat_callback = None
+        
+        # Rank formula weights
+        # Default weights: c0, c1, c2, c3 for active_requests, cpu_free, memory_free, jitter
+        self.weights = {
+            'active_requests': 1.0,    # Higher number of requests = higher rank (worse)
+            'cpu_free': -0.5,          # Higher free CPU = lower rank (better)
+            'memory_free': -0.3,       # Higher free memory = lower rank (better)
+            'jitter': 0.2              # Higher jitter = higher rank (worse)
+        }
+        
+        # Track jitter measurements
+        self.jitter_measurements = []
+        self.max_jitter_measurements = 10  # Keep last 10 measurements
+        
+        # Track historical measurements for smoothing
+        self.historical_measurements = {
+            'active_requests': [],
+            'cpu_free': [],
+            'memory_free': [],
+            'jitter': []
+        }
+        self.max_history = 5  # Number of historical values to keep
     
     def start_heartbeat(self, callback: Callable[[int, int], None]):
         """Start sending heartbeats at regular intervals.
@@ -62,12 +89,145 @@ class RankManager:
         with self.lock:
             self.active_requests = max(0, self.active_requests - 1)
     
-    def get_rank(self) -> int:
-        """Calculate and return the current rank of this server."""
+    def _get_cpu_free_percentage(self) -> float:
+        """Get percentage of free CPU."""
+        try:
+            # Get CPU usage as a percentage
+            cpu_percent = psutil.cpu_percent(interval=0.1)
+            # Convert to free percentage
+            return 100.0 - cpu_percent
+        except Exception as e:
+            logger.warning(f"Failed to get CPU usage: {e}")
+            # Return a sensible default
+            return 50.0
+    
+    def _get_memory_free_percentage(self) -> float:
+        """Get percentage of free memory."""
+        try:
+            memory = psutil.virtual_memory()
+            return memory.available * 100 / memory.total
+        except Exception as e:
+            logger.warning(f"Failed to get memory usage: {e}")
+            # Return a sensible default
+            return 50.0
+    
+    def _get_jitter(self) -> float:
+        """Measure network jitter (variability in latency).
+        
+        Returns:
+            Jitter value in ms
+        """
+        try:
+            # Simple ping to measure jitter
+            if platform.system().lower() == 'windows':
+                ping_param = '-n'
+            else:
+                ping_param = '-c'
+            
+            # Ping common DNS server (Google's)
+            ping_target = '8.8.8.8'
+            cmd = ['ping', ping_param, '3', ping_target]
+            
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=5)
+            output_lines = result.stdout.splitlines()
+            
+            # Extract times from ping output
+            times = []
+            for line in output_lines:
+                if 'time=' in line:
+                    # Extract the time value
+                    time_part = line.split('time=')[1].split()[0]
+                    # Remove 'ms' if present
+                    time_value = float(time_part.replace('ms', ''))
+                    times.append(time_value)
+            
+            # Calculate jitter as the standard deviation of ping times
+            if times:
+                mean = sum(times) / len(times)
+                jitter = (sum((t - mean) ** 2 for t in times) / len(times)) ** 0.5
+                
+                # Add to measurements list and keep only most recent ones
+                self.jitter_measurements.append(jitter)
+                if len(self.jitter_measurements) > self.max_jitter_measurements:
+                    self.jitter_measurements.pop(0)
+                
+                # Return the average jitter over recent measurements
+                return sum(self.jitter_measurements) / len(self.jitter_measurements)
+            else:
+                return 0.0
+                
+        except Exception as e:
+            logger.warning(f"Failed to measure jitter: {e}")
+            # Simulate some reasonable jitter
+            return random.uniform(0.5, 5.0)
+    
+    def _update_historical(self, metric_name: str, value: float):
+        """Update historical measurements for a metric."""
         with self.lock:
-            # For now, just use the number of active requests as the rank
-            # Lower rank means less loaded (better)
-            return self.active_requests
+            self.historical_measurements[metric_name].append(value)
+            if len(self.historical_measurements[metric_name]) > self.max_history:
+                self.historical_measurements[metric_name].pop(0)
+    
+    def _get_smoothed_value(self, metric_name: str, current_value: float) -> float:
+        """Get smoothed value using historical measurements."""
+        with self.lock:
+            history = self.historical_measurements[metric_name]
+            if not history:
+                return current_value
+            
+            # Use exponential smoothing
+            alpha = 0.3  # Smoothing factor
+            smoothed = alpha * current_value
+            
+            # Add weighted historical values
+            weight = (1 - alpha)
+            for i, past_value in enumerate(reversed(history)):
+                factor = weight / (i + 1)
+                smoothed += factor * past_value
+            
+            return smoothed
+    
+    def get_rank(self) -> int:
+        """Calculate and return the current rank of this server using the formula:
+        
+        Rank = c0*active_requests + c1*cpu_free_pct + c2*memory_free_pct + c3*jitter
+        
+        Lower rank means less loaded (better).
+        """
+        with self.lock:
+            # Get current metrics
+            active_requests = self.active_requests
+            cpu_free = self._get_cpu_free_percentage()
+            memory_free = self._get_memory_free_percentage()
+            jitter = self._get_jitter()
+            
+            # Store current values for history
+            self._update_historical('active_requests', active_requests)
+            self._update_historical('cpu_free', cpu_free)
+            self._update_historical('memory_free', memory_free)
+            self._update_historical('jitter', jitter)
+            
+            # Get smoothed values
+            smoothed_requests = self._get_smoothed_value('active_requests', active_requests)
+            smoothed_cpu = self._get_smoothed_value('cpu_free', cpu_free)
+            smoothed_memory = self._get_smoothed_value('memory_free', memory_free)
+            smoothed_jitter = self._get_smoothed_value('jitter', jitter)
+            
+            # Calculate rank using the formula
+            rank = (
+                self.weights['active_requests'] * smoothed_requests +
+                self.weights['cpu_free'] * smoothed_cpu +
+                self.weights['memory_free'] * smoothed_memory +
+                self.weights['jitter'] * smoothed_jitter
+            )
+            
+            # Ensure rank is non-negative
+            rank = max(0, rank)
+            
+            logger.debug(f"Rank components: requests={smoothed_requests}, cpu_free={smoothed_cpu}, " +
+                        f"memory_free={smoothed_memory}, jitter={smoothed_jitter}, final_rank={rank}")
+            
+            return int(rank * 10)  # Scale for integer representation
     
     def update_server_rank(self, server_id: int, rank: int):
         """Update the stored rank for another server."""
