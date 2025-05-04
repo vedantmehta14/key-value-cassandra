@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Exit on error
+# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Generate Python code from proto file if it doesn't exist yet
+# Generate Python gRPC code from the proto file if it doesn't exist
 if [ ! -f "keyvalue_pb2.py" ]; then
     echo "Generating gRPC code from proto file..."
-    python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. keyvalue.proto
+    python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. keyvalue.proto
 fi
 
 # Function to check if a port is already in use
@@ -19,50 +19,47 @@ port_in_use() {
         netstat -tuln | grep -q ":$port "
         return $?
     else
-        # Default to assuming port is free if we can't check
+        # Assume port is free if we can't check
         return 1
     fi
 }
 
-# Parse server information from config.json
-servers=$(python -c "
+# Read server information from config.json using Python
+servers=$(python3 -c "
 import json
-with open('config.json', 'r') as f:
-    config = json.load(f)
-for server in config['servers']:
-    print(f\"{server['id']} {server['ip']} {server['port']}\")
+with open('config.json') as f:
+    data = json.load(f)
+    for server in data['servers']:
+        print(f\"{server['id']} {server['ip']} {server['port']}\")
 ")
 
-# Kill existing Python processes (if any)
+# Stop any running grpc_server.py processes
 echo "Stopping any existing servers..."
-pkill -f "python.*grpc_server.py" || true
+pkill -f "python3.*grpc_server.py" || true
 sleep 1
 
-# Start each server
+# Start each server in the background
 echo "Starting servers..."
 
-for server in $servers; do
-    read -r id ip port <<< "$server"
-    
-    # Check if port is already in use
-    if port_in_use $port; then
+while read -r id ip port; do
+    if port_in_use "$port"; then
         echo "Port $port is already in use. Cannot start server $id."
         continue
     fi
-    
-    # Start the server in the background
+
     echo "Starting server $id on $ip:$port"
-    python grpc_server.py --id $id --ip $ip --port $port > "server_$id.log" 2>&1 &
-    
-    # Sleep briefly to prevent port conflicts
+    python3 grpc_server.py --id "$id" --ip "$ip" --port "$port" > "server_$id.log" 2>&1 &
+
     sleep 0.5
-done
+done <<< "$servers"
 
 echo "All servers started. Use 'tail -f server_*.log' to view logs."
 echo "Press Ctrl+C to stop all servers."
 
-# Wait for Ctrl+C
-trap "echo 'Stopping all servers...'; pkill -f 'python.*grpc_server.py' || true; exit 0" INT
+# Gracefully handle Ctrl+C
+trap "echo 'Stopping all servers...'; pkill -f 'python3.*grpc_server.py' || true; exit 0" INT
+
+# Keep the script running until manually interrupted
 while true; do
     sleep 1
-done 
+done
