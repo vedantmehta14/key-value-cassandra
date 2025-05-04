@@ -1,6 +1,20 @@
-2025-05-03 20:14:12,342 - __main__ - INFO - Server 4 started on 127.0.0.1:50054
-2025-05-03 20:14:12,345 - utils.rank - INFO - Server 4 started heartbeat thread
-2025-05-03 20:14:39,409 - __main__ - INFO - Received replication write for key: name, timestamp: 1746328479408
-2025-05-03 20:14:39,410 - utils.storage - INFO - Stored name:Neel with timestamp 1746328479408
-2025-05-03 20:14:41,203 - __main__ - INFO - Received forwarded read for key: name
-2025-05-03 20:14:41,203 - utils.storage - INFO - Retrieved name:Neel with timestamp 1746328479408
+2025-05-03 23:20:07,693 - __main__ - INFO - Server 4 started on 192.168.1.129:50054
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1746339607.696048 1774693 chttp2_server.cc:1682] UNKNOWN:No address added out of total 1 resolved for '192.168.1.129:50054' {created_time:"2025-05-03T23:20:07.696043-07:00", children:[UNKNOWN:Unable to configure socket {created_time:"2025-05-03T23:20:07.696023-07:00", fd:3, children:[UNKNOWN:bind: Can't assign requested address (49) {created_time:"2025-05-03T23:20:07.696009-07:00"}]}]}
+Traceback (most recent call last):
+  File "/Users/vedantmehta/SJSU/Academics/Spring 25/CMPE 275 Enterprise App Dev/mini-3/src/grpc_server.py", line 329, in <module>
+    serve(args.id, args.ip, args.port)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vedantmehta/SJSU/Academics/Spring 25/CMPE 275 Enterprise App Dev/mini-3/src/grpc_server.py", line 300, in serve
+    server.add_insecure_port(server_address)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/vedantmehta/SJSU/Academics/Spring 25/CMPE 275 Enterprise App Dev/mini-3/.venv/lib/python3.13/site-packages/grpc/_server.py", line 1473, in add_insecure_port
+    return _common.validate_port_binding_result(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        address, _add_insecure_port(self._state, _common.encode(address))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/vedantmehta/SJSU/Academics/Spring 25/CMPE 275 Enterprise App Dev/mini-3/.venv/lib/python3.13/site-packages/grpc/_common.py", line 181, in validate_port_binding_result
+    raise RuntimeError(_ERROR_MESSAGE_PORT_BINDING_FAILED % address)
+RuntimeError: Failed to bind to address 192.168.1.129:50054; set GRPC_VERBOSITY=debug environment variable to see detailed error message.

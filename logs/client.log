@@ -11,3 +11,10 @@
 2025-05-03 20:14:32,739 - __main__ - INFO - Connecting to server at 127.0.0.1:50053
 2025-05-03 20:14:39,412 - __main__ - INFO - Stored key name with timestamp 1746328479408
 2025-05-03 20:14:41,204 - __main__ - INFO - Retrieved key name: Neel
+2025-05-03 20:22:41,098 - __main__ - INFO - Connecting to server at 127.0.0.1:50050
+2025-05-03 20:22:52,079 - __main__ - INFO - Stored key hello with timestamp 1746328972074
+2025-05-03 20:22:55,810 - __main__ - INFO - Retrieved key hello: world
+2025-05-03 23:22:30,974 - __main__ - INFO - Connecting to server at 192.168.1.129:50055
+2025-05-03 23:22:48,425 - __main__ - INFO - Connecting to server at 192.168.1.115:50059
+2025-05-03 23:22:56,222 - __main__ - INFO - Stored key sex with timestamp 1746339776103
+2025-05-03 23:23:24,283 - __main__ - INFO - Retrieved key sex: male

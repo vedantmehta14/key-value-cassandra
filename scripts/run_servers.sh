@@ -33,14 +33,35 @@ port_in_use() {
     fi
 }
 
-# Read server information from config.json using Python
+# Get local IP addresses
+echo "Getting local IP addresses..."
+local_ips=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
+
+echo "Local IP addresses: $local_ips"
+
+# Convert the local IPs into a Python-friendly format
+local_ips_python=$(echo "$local_ips" | tr ' ' ',')
+
+# Read server information from config.json using Python, filtering by local IPs
 servers=$(python3 -c "
 import json
+
+# Get local IPs as a list
+local_ips = \"$local_ips_python\".split(',')
+local_ips = [ip for ip in local_ips if ip]  # Remove empty strings
+print(f'Local IPs: {local_ips}')
+
 with open('config/config.json') as f:
     data = json.load(f)
     for server in data['servers']:
-        print(f\"{server['id']} {server['ip']} {server['port']}\")
+        if server['ip'] in local_ips:
+            print(f\"{server['id']} {server['ip']} {server['port']}\")
 ")
+
+if [ -z "$servers" ]; then
+    echo "No servers found with local IP addresses. Available IPs: $local_ips"
+    exit 1
+fi
 
 # Stop any running grpc_server.py processes
 echo "Stopping any existing servers..."
@@ -48,7 +69,7 @@ pkill -f "python3.*src/grpc_server.py" || true
 sleep 1
 
 # Start each server in the background
-echo "Starting servers..."
+echo "Starting local servers..."
 
 while read -r id ip port; do
     if port_in_use "$port"; then
@@ -62,7 +83,7 @@ while read -r id ip port; do
     sleep 0.5
 done <<< "$servers"
 
-echo "All servers started. Use 'tail -f logs/server_*.log' to view logs."
+echo "All local servers started. Use 'tail -f logs/server_*.log' to view logs."
 echo "Press Ctrl+C to stop all servers."
 
 # Gracefully handle Ctrl+C
