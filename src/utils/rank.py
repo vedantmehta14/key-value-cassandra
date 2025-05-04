@@ -26,25 +26,9 @@ class RankManager:
         self.running = False
         self.heartbeat_callback = None
         
-        # Rank formula weights
-        # Default weights: c0, c1, c2, c3 for active_requests, cpu_free, memory_free, jitter
-        self.weights = {
-            'active_requests': 1.0,    # Higher number of requests = higher rank (worse)
-            'cpu_free': -0.5,          # Higher free CPU = lower rank (better)
-            'memory_free': -0.3,       # Higher free memory = lower rank (better)
-            'jitter': 0.2              # Higher jitter = higher rank (worse)
-        }
-        
-        # Track jitter measurements
-        self.jitter_measurements = []
-        self.max_jitter_measurements = 10  # Keep last 10 measurements
-        
         # Track historical measurements for smoothing
         self.historical_measurements = {
-            'active_requests': [],
-            'cpu_free': [],
-            'memory_free': [],
-            'jitter': []
+            'active_requests': []
         }
         self.max_history = 5  # Number of historical values to keep
     
@@ -146,13 +130,8 @@ class RankManager:
                 mean = sum(times) / len(times)
                 jitter = (sum((t - mean) ** 2 for t in times) / len(times)) ** 0.5
                 
-                # Add to measurements list and keep only most recent ones
-                self.jitter_measurements.append(jitter)
-                if len(self.jitter_measurements) > self.max_jitter_measurements:
-                    self.jitter_measurements.pop(0)
-                
                 # Return the average jitter over recent measurements
-                return sum(self.jitter_measurements) / len(self.jitter_measurements)
+                return jitter
             else:
                 return 0.0
                 
@@ -188,44 +167,27 @@ class RankManager:
             return smoothed
     
     def get_rank(self) -> int:
-        """Calculate and return the current rank of this server using the formula:
-        
-        Rank = c0*active_requests + c1*cpu_free_pct + c2*memory_free_pct + c3*jitter
+        """Calculate and return the current rank of this server using only active requests.
         
         Lower rank means less loaded (better).
         """
         with self.lock:
-            # Get current metrics
+            # Get current active requests
             active_requests = self.active_requests
-            cpu_free = self._get_cpu_free_percentage()
-            memory_free = self._get_memory_free_percentage()
-            jitter = self._get_jitter()
             
-            # Store current values for history
+            # Store current value for history
             self._update_historical('active_requests', active_requests)
-            self._update_historical('cpu_free', cpu_free)
-            self._update_historical('memory_free', memory_free)
-            self._update_historical('jitter', jitter)
             
-            # Get smoothed values
+            # Get smoothed value
             smoothed_requests = self._get_smoothed_value('active_requests', active_requests)
-            smoothed_cpu = self._get_smoothed_value('cpu_free', cpu_free)
-            smoothed_memory = self._get_smoothed_value('memory_free', memory_free)
-            smoothed_jitter = self._get_smoothed_value('jitter', jitter)
             
-            # Calculate rank using the formula
-            rank = (
-                self.weights['active_requests'] * smoothed_requests +
-                self.weights['cpu_free'] * smoothed_cpu +
-                self.weights['memory_free'] * smoothed_memory +
-                self.weights['jitter'] * smoothed_jitter
-            )
+            # Calculate rank using only active requests
+            rank = smoothed_requests
             
             # Ensure rank is non-negative
             rank = max(0, rank)
             
-            logger.debug(f"Rank components: requests={smoothed_requests}, cpu_free={smoothed_cpu}, " +
-                        f"memory_free={smoothed_memory}, jitter={smoothed_jitter}, final_rank={rank}")
+            logger.debug(f"Rank based on active requests: {smoothed_requests}, final_rank={rank}")
             
             return int(rank * 10)  # Scale for integer representation
     
