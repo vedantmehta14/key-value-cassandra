@@ -1,9 +1,13 @@
 import hashlib
 import struct
 import bisect
+import sys
+import os
 from typing import List, Tuple, Dict, Optional, Any
 
-from config import get_config
+# Add the parent directory to the path to make utils imports work
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.config import get_config
 
 # Use murmurhash3 algorithm
 def murmurhash(key: str, seed: int = 0) -> int:

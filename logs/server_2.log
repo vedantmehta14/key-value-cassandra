@@ -1,0 +1,6 @@
+2025-05-03 20:14:11,242 - __main__ - INFO - Server 2 started on 127.0.0.1:50052
+2025-05-03 20:14:11,245 - utils.rank - INFO - Server 2 started heartbeat thread
+2025-05-03 20:14:39,410 - __main__ - INFO - Received replication write for key: name, timestamp: 1746328479408
+2025-05-03 20:14:39,411 - utils.storage - INFO - Stored name:Neel with timestamp 1746328479408
+2025-05-03 20:14:41,203 - __main__ - INFO - Received forwarded read for key: name
+2025-05-03 20:14:41,203 - utils.storage - INFO - Retrieved name:Neel with timestamp 1746328479408

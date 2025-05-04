@@ -2,23 +2,50 @@ import sys
 import threading
 import time
 import logging
+import os
 from concurrent import futures
 import argparse
 import grpc
 
 # Import the generated protocol code
+# Ensure the proto directory is in the path
+proto_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "proto")
+sys.path.append(proto_dir)
+
 import keyvalue_pb2
 import keyvalue_pb2_grpc
 
 # Import our own modules
-from config import get_config
-from hashing import get_hash_ring
-from rank import get_rank_manager
-from storage import get_store
-from quorum import get_quorum_manager
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from utils.config import get_config
+from utils.hashing import get_hash_ring
+from utils.rank import get_rank_manager
+from utils.storage import get_store
+from utils.quorum import get_quorum_manager
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+# Setup logging
+def setup_logging(server_id):
+    # Create logs directory if it doesn't exist
+    logs_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logs")
+    os.makedirs(logs_dir, exist_ok=True)
+    
+    # Configure logging
+    log_file = os.path.join(logs_dir, f"server_{server_id}.log")
+    
+    # Setup root logger
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_file),
+            logging.StreamHandler()
+        ]
+    )
+    
+    return logging.getLogger(__name__)
+
+# The logger will be initialized when server starts
+logger = None
 
 class KeyValueServicer(keyvalue_pb2_grpc.KeyValueServiceServicer):
     """Implementation of the client-facing KeyValueService."""
@@ -249,46 +276,54 @@ def send_heartbeats(server_id, server_addresses):
 
 
 def serve(server_id, server_ip, server_port):
-    """Start the gRPC server."""
+    global logger
+    
+    # Setup logging for this server
+    logger = setup_logging(server_id)
+    
+    # Log server start
     server_address = f"{server_ip}:{server_port}"
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    
-    # Initialize services
-    key_value_servicer = KeyValueServicer(server_id, server_address)
-    internal_servicer = InternalServicer(server_id, server_address)
-    
-    # Register services with the server
-    keyvalue_pb2_grpc.add_KeyValueServiceServicer_to_server(key_value_servicer, server)
-    keyvalue_pb2_grpc.add_InternalServiceServicer_to_server(internal_servicer, server)
-    
-    # Add a secure port
-    server.add_insecure_port(server_address)
-    
-    # Start the server
-    server.start()
     logger.info(f"Server {server_id} started on {server_address}")
     
-    # Get server addresses for heartbeats
-    config = get_config()
-    server_addresses = {s["id"]: f"{s['ip']}:{s['port']}" for s in config.servers}
+    # Create gRPC server
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     
-    # Start sending heartbeats
-    send_heartbeats(server_id, server_addresses)
+    # Register servicers
+    keyvalue_pb2_grpc.add_KeyValueServiceServicer_to_server(
+        KeyValueServicer(server_id, server_address), server
+    )
+    keyvalue_pb2_grpc.add_InternalServiceServicer_to_server(
+        InternalServicer(server_id, server_address), server
+    )
     
-    # Keep the server running
+    # Add secure port with insecure credentials (for simplicity)
+    server.add_insecure_port(server_address)
+    
+    # Start server
+    server.start()
+    
+    # Start background heartbeat thread
+    server_addresses = {s["id"]: f"{s['ip']}:{s['port']}" for s in get_config().get_all_servers()}
+    heartbeat_thread = threading.Thread(
+        target=send_heartbeats,
+        args=(server_id, server_addresses),
+        daemon=True
+    )
+    heartbeat_thread.start()
+    
+    # Keep thread alive
     try:
         while True:
             time.sleep(86400)  # Sleep for a day
     except KeyboardInterrupt:
         server.stop(0)
-        logger.info(f"Server {server_id} stopped")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Start a key-value store server")
+    parser = argparse.ArgumentParser(description="Key-Value Store Server")
     parser.add_argument("--id", type=int, required=True, help="Server ID")
-    parser.add_argument("--ip", type=str, required=True, help="Server IP address")
-    parser.add_argument("--port", type=int, required=True, help="Server port")
-    args = parser.parse_args()
+    parser.add_argument("--ip", type=str, required=True, help="Server IP")
+    parser.add_argument("--port", type=int, required=True, help="Server Port")
     
+    args = parser.parse_args()
     serve(args.id, args.ip, args.port) 

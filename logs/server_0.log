@@ -1,0 +1,4 @@
+2025-05-03 20:14:10,158 - __main__ - INFO - Server 0 started on 127.0.0.1:50050
+2025-05-03 20:14:10,166 - utils.rank - INFO - Server 0 started heartbeat thread
+2025-05-03 20:14:39,410 - __main__ - INFO - Received replication write for key: name, timestamp: 1746328479408
+2025-05-03 20:14:39,411 - utils.storage - INFO - Stored name:Neel with timestamp 1746328479408

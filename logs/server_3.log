@@ -1,0 +1,8 @@
+2025-05-03 20:14:11,787 - __main__ - INFO - Server 3 started on 127.0.0.1:50053
+2025-05-03 20:14:11,791 - utils.rank - INFO - Server 3 started heartbeat thread
+2025-05-03 20:14:39,407 - __main__ - INFO - Received Put request for key: name, value: Neel
+2025-05-03 20:14:39,409 - utils.storage - INFO - Stored name:Neel with timestamp 1746328479408
+2025-05-03 20:14:39,411 - utils.quorum - INFO - Write quorum achieved: 3/3
+2025-05-03 20:14:39,411 - utils.quorum - INFO - Need eventual consistency for servers: [0, 3]
+2025-05-03 20:14:41,201 - __main__ - INFO - Received Get request for key: name
+2025-05-03 20:14:41,204 - utils.quorum - INFO - Read quorum achieved: 3/3, latest value from server 4 with timestamp 1746328479408

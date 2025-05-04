@@ -1,8 +1,14 @@
 import json
+import os
 from typing import Dict, List, Any
 
 class Config:
-    def __init__(self, config_file="config.json"):
+    def __init__(self, config_file=None):
+        if config_file is None:
+            # Default to config/config.json relative to project root
+            project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+            config_file = os.path.join(project_root, "config/config.json")
+        
         with open(config_file, 'r') as f:
             self.config = json.load(f)
         
@@ -39,7 +45,7 @@ class Config:
 # Singleton instance
 _config_instance = None
 
-def get_config(config_file="config.json"):
+def get_config(config_file=None):
     global _config_instance
     if _config_instance is None:
         _config_instance = Config(config_file)

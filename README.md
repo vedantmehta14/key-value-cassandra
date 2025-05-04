@@ -21,15 +21,33 @@ The key-value store consists of:
 
 ## Project Structure
 
-- `config.py`: Configuration management
-- `hashing.py`: MurmurHash and consistent hashing implementation
-- `rank.py`: Server rank management
-- `storage.py`: Local key-value storage with timestamp versioning
-- `quorum.py`: Quorum consensus logic
-- `grpc_server.py`: Server implementation
-- `grpc_client.py`: Client library and CLI
-- `keyvalue.proto`: gRPC service definitions
-- `run_servers.sh`: Script to run all servers in the cluster
+The project is organized in the following directory structure:
+
+- `src/`: Source code directory
+  - `utils/`: Utility modules
+    - `config.py`: Configuration management
+    - `hashing.py`: MurmurHash and consistent hashing implementation
+    - `rank.py`: Server rank management
+    - `storage.py`: Local key-value storage with timestamp versioning 
+    - `quorum.py`: Quorum consensus logic
+  - `proto/`: Protocol buffer definitions and generated code
+    - `keyvalue.proto`: gRPC service definitions
+  - `grpc_server.py`: Server implementation
+  - `grpc_client.py`: Client library and CLI
+  - `main.py`: Main entry point
+
+- `scripts/`: Utility scripts
+  - `run_servers.sh`: Script to run all servers in the cluster
+  - `generate_grpc.sh`: Script to generate gRPC code from proto files
+
+- `config/`: Configuration files
+  - `config.json`: Main configuration file
+
+- `logs/`: Log files
+  - `server_*.log`: Server logs
+  - `client.log`: Client logs
+
+- `tests/`: Test files (for future implementation)
 
 ## Setup and Installation
 
@@ -40,21 +58,21 @@ The key-value store consists of:
 
 2. Generate gRPC code:
    ```
-   python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. keyvalue.proto
+   ./scripts/generate_grpc.sh
    ```
 
-3. Configure the system by editing `config.json` (adjust cluster size, replication factor, etc.)
+3. Configure the system by editing `config/config.json` (adjust cluster size, replication factor, etc.)
 
 ## Running the Key-Value Store
 
 1. Start all servers using the provided script:
    ```
-   ./run_servers.sh
+   ./scripts/run_servers.sh
    ```
 
 2. Use the client to interact with the store:
    ```
-   python grpc_client.py
+   python src/grpc_client.py
    ```
 
 ## Client Usage

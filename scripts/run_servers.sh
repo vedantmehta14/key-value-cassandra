@@ -3,11 +3,20 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+# Set base directory to the project root
+cd "$(dirname "$0")/.."
+
 # Generate Python gRPC code from the proto file if it doesn't exist
-if [ ! -f "keyvalue_pb2.py" ]; then
+if [ ! -f "src/proto/keyvalue_pb2.py" ]; then
     echo "Generating gRPC code from proto file..."
-    python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. keyvalue.proto
+    python3 -m grpc_tools.protoc -I./src/proto --python_out=./src/proto --grpc_python_out=./src/proto ./src/proto/keyvalue.proto
+    # Move the generated files to the right place
+    mv src/proto/src/proto/keyvalue_pb2*.py src/proto/ 2>/dev/null || true
+    rmdir src/proto/src/proto src/proto/src 2>/dev/null || true
 fi
+
+# Create logs directory if it doesn't exist
+mkdir -p logs
 
 # Function to check if a port is already in use
 port_in_use() {
@@ -27,7 +36,7 @@ port_in_use() {
 # Read server information from config.json using Python
 servers=$(python3 -c "
 import json
-with open('config.json') as f:
+with open('config/config.json') as f:
     data = json.load(f)
     for server in data['servers']:
         print(f\"{server['id']} {server['ip']} {server['port']}\")
@@ -35,7 +44,7 @@ with open('config.json') as f:
 
 # Stop any running grpc_server.py processes
 echo "Stopping any existing servers..."
-pkill -f "python3.*grpc_server.py" || true
+pkill -f "python3.*src/grpc_server.py" || true
 sleep 1
 
 # Start each server in the background
@@ -48,16 +57,16 @@ while read -r id ip port; do
     fi
 
     echo "Starting server $id on $ip:$port"
-    python3 grpc_server.py --id "$id" --ip "$ip" --port "$port" > "server_$id.log" 2>&1 &
+    python3 src/grpc_server.py --id "$id" --ip "$ip" --port "$port" > "logs/server_$id.log" 2>&1 &
 
     sleep 0.5
 done <<< "$servers"
 
-echo "All servers started. Use 'tail -f server_*.log' to view logs."
+echo "All servers started. Use 'tail -f logs/server_*.log' to view logs."
 echo "Press Ctrl+C to stop all servers."
 
 # Gracefully handle Ctrl+C
-trap "echo 'Stopping all servers...'; pkill -f 'python3.*grpc_server.py' || true; exit 0" INT
+trap "echo 'Stopping all servers...'; pkill -f 'python3.*src/grpc_server.py' || true; exit 0" INT
 
 # Keep the script running until manually interrupted
 while true; do

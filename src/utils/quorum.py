@@ -1,10 +1,14 @@
 import threading
+import sys
+import os
 from typing import List, Dict, Any, Tuple, Optional, Callable
 import logging
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-from config import get_config
+# Add the parent directory to the path to make utils imports work
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.config import get_config
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

@@ -1,8 +1,8 @@
 {
   "cluster_size": 10,
-  "replication_factor": 3,
-  "write_quorum": 2,
-  "read_quorum": 2,
+  "replication_factor": 5,
+  "write_quorum": 3,
+  "read_quorum": 3,
   "servers": [
     {"id": 0, "ip": "127.0.0.1", "port": 50050},
     {"id": 1, "ip": "127.0.0.1", "port": 50051},

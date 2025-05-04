@@ -1,18 +1,44 @@
 import sys
 import random
 import logging
+import os
 import grpc
 import argparse
+
+# Ensure the proto directory is in the path
+proto_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "proto")
+sys.path.append(proto_dir)
 
 # Import the generated protocol code
 import keyvalue_pb2
 import keyvalue_pb2_grpc
 
-# Import config
-from config import get_config
+# Import our own modules
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from utils.config import get_config
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+# Setup logging
+def setup_logging():
+    # Create logs directory if it doesn't exist
+    logs_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logs")
+    os.makedirs(logs_dir, exist_ok=True)
+    
+    # Configure logging
+    log_file = os.path.join(logs_dir, "client.log")
+    
+    # Setup root logger
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_file),
+            logging.StreamHandler()
+        ]
+    )
+    
+    return logging.getLogger(__name__)
+
+logger = setup_logging()
 
 class KeyValueClient:
     """Client for interacting with the distributed key-value store."""
