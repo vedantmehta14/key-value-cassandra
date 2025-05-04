@@ -1,0 +1,294 @@
+import sys
+import threading
+import time
+import logging
+from concurrent import futures
+import argparse
+import grpc
+
+# Import the generated protocol code
+import keyvalue_pb2
+import keyvalue_pb2_grpc
+
+# Import our own modules
+from config import get_config
+from hashing import get_hash_ring
+from rank import get_rank_manager
+from storage import get_store
+from quorum import get_quorum_manager
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+class KeyValueServicer(keyvalue_pb2_grpc.KeyValueServiceServicer):
+    """Implementation of the client-facing KeyValueService."""
+    
+    def __init__(self, server_id, server_address):
+        self.server_id = server_id
+        self.server_address = server_address
+        self.config = get_config()
+        self.hash_ring = get_hash_ring()
+        self.rank_manager = get_rank_manager(server_id, self.config.heartbeat_interval)
+        self.store = get_store(server_id)
+        self.quorum_manager = get_quorum_manager()
+    
+    def Get(self, request, context):
+        """Handle client Get request."""
+        logger.info(f"Received Get request for key: {request.key}")
+        
+        # Increment active requests
+        self.rank_manager.increment_active_requests()
+        
+        try:
+            # Find responsible servers for this key using consistent hashing
+            responsible_servers = self._get_servers_for_key(request.key)
+            server_ids = [server_id for server_id, _ in responsible_servers]
+            
+            # Sort servers by rank
+            ranked_server_ids = self.rank_manager.get_servers_by_rank(server_ids)
+            
+            # Query the top read_quorum servers
+            top_servers = ranked_server_ids[:self.config.read_quorum]
+            
+            # Create a function to read from a server
+            def read_from_server(server_id, key):
+                if server_id == self.server_id:
+                    # Read locally
+                    return self.store.get(key)
+                else:
+                    # Forward to the appropriate server
+                    return self._forward_read(server_id, key)
+            
+            # Perform quorum read
+            success, value, timestamp = self.quorum_manager.perform_read_quorum(
+                top_servers, read_from_server, request.key
+            )
+            
+            return keyvalue_pb2.GetResponse(
+                success=success,
+                value="" if value is None else value,
+                timestamp=timestamp
+            )
+            
+        except Exception as e:
+            logger.error(f"Error in Get: {e}")
+            return keyvalue_pb2.GetResponse(success=False, value="", timestamp=0)
+        finally:
+            # Decrement active requests
+            self.rank_manager.decrement_active_requests()
+    
+    def Put(self, request, context):
+        """Handle client Put request."""
+        logger.info(f"Received Put request for key: {request.key}, value: {request.value}")
+        
+        # Increment active requests
+        self.rank_manager.increment_active_requests()
+        
+        try:
+            # Find responsible servers for this key using consistent hashing
+            responsible_servers = self._get_servers_for_key(request.key)
+            server_ids = [server_id for server_id, _ in responsible_servers]
+            
+            # Sort servers by rank
+            ranked_server_ids = self.rank_manager.get_servers_by_rank(server_ids)
+            
+            # Generate a timestamp for this write
+            timestamp = int(time.time() * 1000)
+            
+            # Create a function to write to a server
+            def write_to_server(server_id, key, value, timestamp):
+                if server_id == self.server_id:
+                    # Write locally
+                    actual_timestamp = self.store.put(key, value, timestamp)
+                    return True, actual_timestamp
+                else:
+                    # Replicate to another server
+                    return self._replicate_write(server_id, key, value, timestamp)
+            
+            # Perform quorum write
+            success, actual_timestamp = self.quorum_manager.perform_write_quorum(
+                ranked_server_ids, write_to_server, request.key, request.value, timestamp
+            )
+            
+            return keyvalue_pb2.PutResponse(success=success, timestamp=actual_timestamp)
+            
+        except Exception as e:
+            logger.error(f"Error in Put: {e}")
+            return keyvalue_pb2.PutResponse(success=False, timestamp=0)
+        finally:
+            # Decrement active requests
+            self.rank_manager.decrement_active_requests()
+    
+    def Delete(self, request, context):
+        """Handle client Delete request."""
+        logger.info(f"Received Delete request for key: {request.key}")
+        
+        # Increment active requests
+        self.rank_manager.increment_active_requests()
+        
+        try:
+            # For simplicity, implement delete as a special write with empty value
+            empty_put = keyvalue_pb2.PutRequest(key=request.key, value="")
+            put_response = self.Put(empty_put, context)
+            
+            return keyvalue_pb2.DeleteResponse(success=put_response.success)
+            
+        except Exception as e:
+            logger.error(f"Error in Delete: {e}")
+            return keyvalue_pb2.DeleteResponse(success=False)
+        finally:
+            # Decrement active requests
+            self.rank_manager.decrement_active_requests()
+    
+    def GetAllKeys(self, request, context):
+        """Handle client GetAllKeys request (for debugging)."""
+        logger.info("Received GetAllKeys request")
+        
+        # This is just from the current server for debugging
+        keys = self.store.get_all_keys()
+        return keyvalue_pb2.GetAllKeysResponse(keys=keys)
+    
+    def _get_servers_for_key(self, key):
+        """Get the servers responsible for a key based on consistent hashing."""
+        return self.hash_ring.get_n_servers_for_key(key, self.config.replication_factor)
+    
+    def _forward_read(self, server_id, key):
+        """Forward a read request to another server."""
+        server_address = self.config.get_server_address(server_id)
+        try:
+            with grpc.insecure_channel(server_address) as channel:
+                stub = keyvalue_pb2_grpc.InternalServiceStub(channel)
+                response = stub.ForwardRead(keyvalue_pb2.ForwardReadRequest(key=key))
+                if response.success:
+                    return response.value, response.timestamp
+                else:
+                    return None, 0
+        except Exception as e:
+            logger.error(f"Error forwarding read to {server_address}: {e}")
+            return None, 0
+    
+    def _replicate_write(self, server_id, key, value, timestamp):
+        """Replicate a write to another server."""
+        server_address = self.config.get_server_address(server_id)
+        try:
+            with grpc.insecure_channel(server_address) as channel:
+                stub = keyvalue_pb2_grpc.InternalServiceStub(channel)
+                response = stub.ReplicateWrite(
+                    keyvalue_pb2.ReplicateWriteRequest(
+                        key=key, value=value, timestamp=timestamp
+                    )
+                )
+                return response.success, response.timestamp
+        except Exception as e:
+            logger.error(f"Error replicating write to {server_address}: {e}")
+            return False, 0
+
+
+class InternalServicer(keyvalue_pb2_grpc.InternalServiceServicer):
+    """Implementation of the internal server-to-server service."""
+    
+    def __init__(self, server_id, server_address):
+        self.server_id = server_id
+        self.server_address = server_address
+        self.config = get_config()
+        self.rank_manager = get_rank_manager(server_id, self.config.heartbeat_interval)
+        self.store = get_store(server_id)
+    
+    def ReplicateWrite(self, request, context):
+        """Handle replication of a write from another server."""
+        logger.info(f"Received replication write for key: {request.key}, timestamp: {request.timestamp}")
+        
+        # Store the key-value with the provided timestamp
+        actual_timestamp = self.store.put(request.key, request.value, request.timestamp)
+        
+        return keyvalue_pb2.ReplicateWriteResponse(
+            success=True, timestamp=actual_timestamp
+        )
+    
+    def ForwardRead(self, request, context):
+        """Handle forwarded read from another server."""
+        logger.info(f"Received forwarded read for key: {request.key}")
+        
+        # Read from local store
+        value, timestamp = self.store.get(request.key)
+        
+        return keyvalue_pb2.ForwardReadResponse(
+            success=True,
+            value="" if value is None else value,
+            timestamp=timestamp
+        )
+    
+    def Heartbeat(self, request, context):
+        """Handle heartbeat from another server."""
+        logger.debug(f"Received heartbeat from server {request.server_id} with rank {request.rank}")
+        
+        # Update the stored rank for this server
+        self.rank_manager.update_server_rank(request.server_id, request.rank)
+        
+        return keyvalue_pb2.HeartbeatResponse(success=True)
+
+
+def send_heartbeats(server_id, server_addresses):
+    """Send heartbeats to all other servers."""
+    rank_manager = get_rank_manager(server_id)
+    
+    def heartbeat_callback(server_id, rank):
+        for target_id, target_address in server_addresses.items():
+            if target_id != server_id:  # Don't send to self
+                try:
+                    with grpc.insecure_channel(target_address) as channel:
+                        stub = keyvalue_pb2_grpc.InternalServiceStub(channel)
+                        stub.Heartbeat(
+                            keyvalue_pb2.HeartbeatRequest(server_id=server_id, rank=rank)
+                        )
+                except Exception as e:
+                    logger.debug(f"Failed to send heartbeat to {target_address}: {e}")
+    
+    # Start sending heartbeats
+    rank_manager.start_heartbeat(heartbeat_callback)
+
+
+def serve(server_id, server_ip, server_port):
+    """Start the gRPC server."""
+    server_address = f"{server_ip}:{server_port}"
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    
+    # Initialize services
+    key_value_servicer = KeyValueServicer(server_id, server_address)
+    internal_servicer = InternalServicer(server_id, server_address)
+    
+    # Register services with the server
+    keyvalue_pb2_grpc.add_KeyValueServiceServicer_to_server(key_value_servicer, server)
+    keyvalue_pb2_grpc.add_InternalServiceServicer_to_server(internal_servicer, server)
+    
+    # Add a secure port
+    server.add_insecure_port(server_address)
+    
+    # Start the server
+    server.start()
+    logger.info(f"Server {server_id} started on {server_address}")
+    
+    # Get server addresses for heartbeats
+    config = get_config()
+    server_addresses = {s["id"]: f"{s['ip']}:{s['port']}" for s in config.servers}
+    
+    # Start sending heartbeats
+    send_heartbeats(server_id, server_addresses)
+    
+    # Keep the server running
+    try:
+        while True:
+            time.sleep(86400)  # Sleep for a day
+    except KeyboardInterrupt:
+        server.stop(0)
+        logger.info(f"Server {server_id} stopped")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Start a key-value store server")
+    parser.add_argument("--id", type=int, required=True, help="Server ID")
+    parser.add_argument("--ip", type=str, required=True, help="Server IP address")
+    parser.add_argument("--port", type=int, required=True, help="Server port")
+    args = parser.parse_args()
+    
+    serve(args.id, args.ip, args.port) 
