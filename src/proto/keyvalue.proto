@@ -27,6 +27,12 @@ service InternalService {
   
   // Send heartbeat with rank information
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  
+  // Request work stealing from another server
+  rpc RequestWorkSteal(WorkStealRequest) returns (WorkStealResponse);
+  
+  // Get server status for work stealing
+  rpc GetServerStatus(ServerStatusRequest) returns (ServerStatusResponse);
 }
 
 // Request and response messages for KeyValueService
@@ -97,4 +103,34 @@ message HeartbeatRequest {
 
 message HeartbeatResponse {
   bool success = 1;
+}
+
+// New messages for work stealing
+message WorkStealRequest {
+  int32 requesting_server_id = 1;
+  int32 requesting_server_rank = 2;
+  int32 max_messages_to_steal = 3;
+}
+
+message WorkStealResponse {
+  bool success = 1;
+  repeated PendingMessage messages = 2;
+}
+
+message PendingMessage {
+  string key = 1;
+  string value = 2;
+  int64 timestamp = 3;
+  string operation_type = 4;  // "GET", "PUT", or "DELETE"
+}
+
+message ServerStatusRequest {
+  int32 requesting_server_id = 1;
+}
+
+message ServerStatusResponse {
+  int32 queue_length = 1;
+  float cpu_utilization = 2;
+  int32 active_requests = 3;
+  int32 server_rank = 4;
 } 

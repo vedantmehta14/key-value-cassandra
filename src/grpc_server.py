@@ -22,6 +22,7 @@ from utils.hashing import get_hash_ring
 from utils.rank import get_rank_manager
 from utils.storage import get_store
 from utils.quorum import get_quorum_manager
+from utils.work_stealing import WorkStealingManager
 
 # Setup logging
 def setup_logging(server_id):
@@ -58,10 +59,15 @@ class KeyValueServicer(keyvalue_pb2_grpc.KeyValueServiceServicer):
         self.rank_manager = get_rank_manager(server_id, self.config.heartbeat_interval)
         self.store = get_store(server_id)
         self.quorum_manager = get_quorum_manager()
+        self.work_stealing_manager = WorkStealingManager(server_id, self.rank_manager)
+        self.work_stealing_manager.start_work_stealing()
     
     def Get(self, request, context):
         """Handle client Get request."""
         logger.info(f"Received Get request for key: {request.key}")
+        
+        # Add to work stealing queue
+        self.work_stealing_manager.add_message(request.key, "", int(time.time() * 1000), "GET")
         
         # Increment active requests
         self.rank_manager.increment_active_requests()
@@ -108,6 +114,9 @@ class KeyValueServicer(keyvalue_pb2_grpc.KeyValueServiceServicer):
         """Handle client Put request."""
         logger.info(f"Received Put request for key: {request.key}, value: {request.value}")
         
+        # Add to work stealing queue
+        self.work_stealing_manager.add_message(request.key, request.value, int(time.time() * 1000), "PUT")
+        
         # Increment active requests
         self.rank_manager.increment_active_requests()
         
@@ -149,6 +158,9 @@ class KeyValueServicer(keyvalue_pb2_grpc.KeyValueServiceServicer):
     def Delete(self, request, context):
         """Handle client Delete request."""
         logger.info(f"Received Delete request for key: {request.key}")
+        
+        # Add to work stealing queue
+        self.work_stealing_manager.add_message(request.key, "", int(time.time() * 1000), "DELETE")
         
         # Increment active requests
         self.rank_manager.increment_active_requests()
@@ -220,6 +232,7 @@ class InternalServicer(keyvalue_pb2_grpc.InternalServiceServicer):
         self.config = get_config()
         self.rank_manager = get_rank_manager(server_id, self.config.heartbeat_interval)
         self.store = get_store(server_id)
+        self.work_stealing_manager = WorkStealingManager(server_id, self.rank_manager)
     
     def ReplicateWrite(self, request, context):
         """Handle replication of a write from another server."""
@@ -253,6 +266,44 @@ class InternalServicer(keyvalue_pb2_grpc.InternalServiceServicer):
         self.rank_manager.update_server_rank(request.server_id, request.rank)
         
         return keyvalue_pb2.HeartbeatResponse(success=True)
+
+    def GetServerStatus(self, request, context):
+        """Handle server status request for work stealing."""
+        logger.info(f"Received server status request from server {request.requesting_server_id}")
+        
+        return keyvalue_pb2.ServerStatusResponse(
+            queue_length=self.work_stealing_manager.get_queue_length(),
+            cpu_utilization=self.work_stealing_manager.get_cpu_utilization(),
+            active_requests=self.rank_manager.active_requests,
+            server_rank=self.rank_manager.get_rank()
+        )
+
+    def RequestWorkSteal(self, request, context):
+        """Handle work steal request from another server."""
+        logger.info(f"Received work steal request from server {request.requesting_server_id}")
+        
+        # Only give work if the requesting server is less loaded
+        if request.requesting_server_rank >= self.rank_manager.get_rank():
+            return keyvalue_pb2.WorkStealResponse(success=False, messages=[])
+        
+        # Get messages to give away
+        messages_to_give = []
+        for _ in range(request.max_messages_to_steal):
+            try:
+                message = self.work_stealing_manager.pending_messages.get_nowait()
+                messages_to_give.append(keyvalue_pb2.PendingMessage(
+                    key=message['key'],
+                    value=message['value'],
+                    timestamp=message['timestamp'],
+                    operation_type=message['operation_type']
+                ))
+            except:
+                break
+        
+        return keyvalue_pb2.WorkStealResponse(
+            success=len(messages_to_give) > 0,
+            messages=messages_to_give
+        )
 
 
 def send_heartbeats(server_id, server_addresses):
