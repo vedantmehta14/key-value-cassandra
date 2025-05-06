@@ -1,6 +1,5 @@
 # AI generated
 #!/bin/bash
-
 # Default values
 CLIENTS=5
 STARTING_OPS=100

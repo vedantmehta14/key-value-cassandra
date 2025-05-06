@@ -20,23 +20,23 @@ class WorkStealingManager:
         self.rank_manager = rank_manager
         self.config = get_config()
         
-        # Queue for pending messages
+
         self.pending_messages = Queue()
         
-        # Lock for thread safety
+
         self.lock = threading.RLock()
         
-        # Background thread for work stealing
+
         self.stealing_thread = None
         self.running = False
         
-        # Configuration for work stealing - More aggressive settings
-        self.stealing_interval = 2  # seconds (reduced from 5)
-        self.min_queue_length_for_stealing = 5  # reduced from 10
-        self.max_messages_to_steal = 10  # increased from 5
-        self.stealing_threshold = 0.3  # reduced from 0.7 (steal if queue is 30% of others)
+       
+        self.stealing_interval = 2
+        self.min_queue_length_for_stealing = 5  
+        self.max_messages_to_steal = 10  
+        self.stealing_threshold = 0.3  
         
-        # Track stolen messages for logging
+
         self.stolen_messages = []
     
     def start_work_stealing(self):
@@ -79,7 +79,7 @@ class WorkStealingManager:
         """Background loop that attempts to steal work from other servers."""
         while self.running:
             try:
-                # Only attempt to steal if our queue is relatively empty
+                
                 if self.get_queue_length() < self.min_queue_length_for_stealing:
                     self._attempt_work_stealing()
             except Exception as e:
@@ -89,28 +89,27 @@ class WorkStealingManager:
     
     def _attempt_work_stealing(self):
         """Attempt to steal work from other servers."""
-        # Get all server statuses
+
         server_statuses = self._get_all_server_statuses()
         
-        # Find potential victims (servers with more work)
         victims = []
         our_queue_length = self.get_queue_length()
         
         for server_id, status in server_statuses.items():
             if server_id != self.server_id:
-                # More aggressive conditions for work stealing
-                if (status['queue_length'] > our_queue_length * (1 + self.stealing_threshold) or  # Queue length condition
+            
+                if (status['queue_length'] > our_queue_length * (1 + self.stealing_threshold) or  
                     status['cpu_utilization'] > 50 or  # Reduced CPU threshold from 70
-                    status['server_rank'] > self.rank_manager.get_rank()):  # Rank condition
+                    status['server_rank'] > self.rank_manager.get_rank()): 
                     victims.append((server_id, status))
         
-        # Sort victims by queue length (most loaded first)
+       
         victims.sort(key=lambda x: x[1]['queue_length'], reverse=True)
         
-        # Try to steal from each victim
+       
         for victim_id, victim_status in victims:
             if self._steal_from_server(victim_id):
-                # Continue stealing from other victims even after a successful steal
+                
                 continue
     
     def _get_all_server_statuses(self) -> Dict[int, Dict[str, Any]]:
@@ -160,7 +159,7 @@ class WorkStealingManager:
                             msg.operation_type
                         )
                     
-                    # Log the stolen messages
+                    
                     self._log_stolen_messages(victim_id, response.messages)
                     return True
                 
