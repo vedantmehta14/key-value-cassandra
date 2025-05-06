@@ -2,40 +2,40 @@ syntax = "proto3";
 
 package keyvaluestore;
 
-// Service for client-server communication
+
 service KeyValueService {
-  // Read a value by key
+
   rpc Get(GetRequest) returns (GetResponse);
   
-  // Write a key-value pair
+
   rpc Put(PutRequest) returns (PutResponse);
   
-  // Delete a key
+
   rpc Delete(DeleteRequest) returns (DeleteResponse);
   
-  // Get all keys (for debugging)
+
   rpc GetAllKeys(GetAllKeysRequest) returns (GetAllKeysResponse);
 }
 
-// Service for internal server-to-server communication
+
 service InternalService {
-  // Replicate a write to another server
+
   rpc ReplicateWrite(ReplicateWriteRequest) returns (ReplicateWriteResponse);
   
-  // Forward a read to another server
+
   rpc ForwardRead(ForwardReadRequest) returns (ForwardReadResponse);
   
-  // Send heartbeat with rank information
+
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
   
-  // Request work stealing from another server
+
   rpc RequestWorkSteal(WorkStealRequest) returns (WorkStealResponse);
   
-  // Get server status for work stealing
+
   rpc GetServerStatus(ServerStatusRequest) returns (ServerStatusResponse);
 }
 
-// Request and response messages for KeyValueService
+
 
 message GetRequest {
   string key = 1;
@@ -73,7 +73,7 @@ message GetAllKeysResponse {
   repeated string keys = 1;
 }
 
-// Request and response messages for InternalService
+
 
 message ReplicateWriteRequest {
   string key = 1;
@@ -105,7 +105,7 @@ message HeartbeatResponse {
   bool success = 1;
 }
 
-// New messages for work stealing
+
 message WorkStealRequest {
   int32 requesting_server_id = 1;
   int32 requesting_server_rank = 2;
