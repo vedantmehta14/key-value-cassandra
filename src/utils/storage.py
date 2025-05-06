@@ -15,19 +15,12 @@ class KeyValueStore:
     def put(self, key: str, value: str, timestamp: Optional[int] = None) -> int:
         """
         Store a key-value pair with a logical timestamp.
-        
-        Args:
-            key: The key to store
-            value: The value to store
-            timestamp: Optional timestamp (if not provided, one will be generated)
-            
-        Returns:
-            The timestamp used
+    
         """
         with self.lock:
             current_timestamp = timestamp if timestamp is not None else int(time.time() * 1000)
             
-            # If key exists, only update if new timestamp is greater
+            
             if key in self.store:
                 stored_value, stored_timestamp = self.store[key]
                 if current_timestamp <= stored_timestamp:
@@ -42,11 +35,7 @@ class KeyValueStore:
         """
         Retrieve a value and its timestamp for a given key.
         
-        Args:
-            key: The key to retrieve
-            
-        Returns:
-            Tuple of (value, timestamp) or (None, 0) if key doesn't exist
+ 
         """
         with self.lock:
             if key in self.store:
@@ -61,17 +50,12 @@ class KeyValueStore:
         """
         Delete a key from the store.
         
-        Args:
-            key: The key to delete
-            timestamp: Optional timestamp for deletion
-            
-        Returns:
-            True if the key was deleted, False otherwise
+  
         """
         with self.lock:
             current_timestamp = timestamp if timestamp is not None else int(time.time() * 1000)
             
-            # Only delete if key exists and timestamp is newer
+
             if key in self.store:
                 _, stored_timestamp = self.store[key]
                 if current_timestamp <= stored_timestamp:
@@ -91,7 +75,6 @@ class KeyValueStore:
             return list(self.store.keys())
 
 
-# Singleton instance for each server
 _store_instances = {}
 
 def get_store(server_id: int):
