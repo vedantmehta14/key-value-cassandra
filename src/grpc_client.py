@@ -5,28 +5,23 @@ import os
 import grpc
 import argparse
 
-# Ensure the proto directory is in the path
+
 proto_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "proto")
 sys.path.append(proto_dir)
 
-# Import the generated protocol code
+
 import keyvalue_pb2
 import keyvalue_pb2_grpc
 
-# Import our own modules
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from utils.config import get_config
 
-# Setup logging
 def setup_logging():
-    # Create logs directory if it doesn't exist
     logs_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "logs")
     os.makedirs(logs_dir, exist_ok=True)
     
-    # Configure logging
     log_file = os.path.join(logs_dir, "client.log")
     
-    # Setup root logger
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -54,7 +49,7 @@ class KeyValueClient:
         self.config = get_config()
         
         if server_address is None:
-            # Pick a random server from config
+
             server = random.choice(self.config.get_all_servers())
             server_address = f"{server['ip']}:{server['port']}"
         
@@ -62,15 +57,7 @@ class KeyValueClient:
         logger.info(f"Connecting to server at {server_address}")
     
     def get(self, key):
-        """
-        Get a value for a key.
-        
-        Args:
-            key: The key to retrieve
-            
-        Returns:
-            The value if found, None otherwise
-        """
+
         try:
             with grpc.insecure_channel(self.server_address) as channel:
                 stub = keyvalue_pb2_grpc.KeyValueServiceStub(channel)
@@ -87,16 +74,7 @@ class KeyValueClient:
             return None
     
     def put(self, key, value):
-        """
-        Store a key-value pair.
-        
-        Args:
-            key: The key to store
-            value: The value to store
-            
-        Returns:
-            True if successful, False otherwise
-        """
+
         try:
             with grpc.insecure_channel(self.server_address) as channel:
                 stub = keyvalue_pb2_grpc.KeyValueServiceStub(channel)
@@ -115,15 +93,7 @@ class KeyValueClient:
             return False
     
     def delete(self, key):
-        """
-        Delete a key.
-        
-        Args:
-            key: The key to delete
-            
-        Returns:
-            True if successful, False otherwise
-        """
+
         try:
             with grpc.insecure_channel(self.server_address) as channel:
                 stub = keyvalue_pb2_grpc.KeyValueServiceStub(channel)
@@ -140,12 +110,7 @@ class KeyValueClient:
             return False
     
     def get_all_keys(self):
-        """
-        Get all keys from the server (for debugging).
-        
-        Returns:
-            List of keys
-        """
+
         try:
             with grpc.insecure_channel(self.server_address) as channel:
                 stub = keyvalue_pb2_grpc.KeyValueServiceStub(channel)
@@ -157,7 +122,7 @@ class KeyValueClient:
 
 
 def interactive_cli():
-    """Run an interactive command-line interface for the key-value store."""
+
     parser = argparse.ArgumentParser(description="Key-Value Store Client")
     parser.add_argument("--server", type=str, help="Server address (ip:port)")
     args = parser.parse_args()
