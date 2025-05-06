@@ -1,3 +1,4 @@
+# AI generated
 #!/bin/bash
 
 # Default values

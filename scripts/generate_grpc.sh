@@ -1,3 +1,4 @@
+# AI generated
 #!/bin/bash
 
 # Set base directory to the project root

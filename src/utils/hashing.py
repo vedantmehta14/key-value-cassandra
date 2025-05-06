@@ -5,11 +5,11 @@ import sys
 import os
 from typing import List, Tuple, Dict, Optional, Any
 
-# Add the parent directory to the path to make utils imports work
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.config import get_config
 
 # Use murmurhash3 algorithm
+# AI generated
 def murmurhash(key: str, seed: int = 0) -> int:
     """Implement MurmurHash3 for string keys"""
     key_bytes = key.encode('utf-8')
@@ -69,7 +69,6 @@ class ConsistentHashRing:
         self.sorted_keys = []  # Sorted list of hash values
         self.server_node_map = {}  # server_id -> list of hash values
         
-        # Load initial servers from config
         config = get_config()
         for server in config.get_all_servers():
             self.add_server(server["id"], f"{server['ip']}:{server['port']}")
@@ -79,7 +78,6 @@ class ConsistentHashRing:
         if server_id not in self.server_node_map:
             self.server_node_map[server_id] = []
         
-        # Add the server multiple times (virtual nodes) for better distribution
         for i in range(self.num_virtual_nodes):
             virtual_node_key = f"{address}:{i}"
             hash_val = murmurhash(virtual_node_key)
@@ -87,7 +85,6 @@ class ConsistentHashRing:
             self.ring[hash_val] = (server_id, address)
             self.server_node_map[server_id].append(hash_val)
             
-            # Insert maintaining sorted order
             bisect.insort(self.sorted_keys, hash_val)
     
     def remove_server(self, server_id: int) -> None:
@@ -95,7 +92,6 @@ class ConsistentHashRing:
         if server_id not in self.server_node_map:
             return
         
-        # Remove all virtual nodes for this server
         for hash_val in self.server_node_map[server_id]:
             if hash_val in self.ring:
                 del self.ring[hash_val]
@@ -110,7 +106,6 @@ class ConsistentHashRing:
         
         key_hash = murmurhash(key)
         
-        # Find the first node with hash >= key's hash, or wrap around to the first one
         pos = bisect.bisect_left(self.sorted_keys, key_hash) % len(self.sorted_keys)
         return self.ring[self.sorted_keys[pos]]
     
@@ -124,13 +119,11 @@ class ConsistentHashRing:
         
         key_hash = murmurhash(key)
         
-        # Find the first node with hash >= key's hash
         pos = bisect.bisect_left(self.sorted_keys, key_hash) % len(self.sorted_keys)
         
         result = []
         seen_servers = set()
         
-        # Walk clockwise around the ring
         for i in range(len(self.sorted_keys)):
             curr_pos = (pos + i) % len(self.sorted_keys)
             server_id, address = self.ring[self.sorted_keys[curr_pos]]
