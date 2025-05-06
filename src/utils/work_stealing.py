@@ -30,11 +30,11 @@ class WorkStealingManager:
         self.stealing_thread = None
         self.running = False
         
-        # Configuration for work stealing
-        self.stealing_interval = 5  # seconds
-        self.min_queue_length_for_stealing = 10
-        self.max_messages_to_steal = 5
-        self.stealing_threshold = 0.7  # Only steal if our queue is less than 70% of others
+        # Configuration for work stealing - More aggressive settings
+        self.stealing_interval = 2  # seconds (reduced from 5)
+        self.min_queue_length_for_stealing = 5  # reduced from 10
+        self.max_messages_to_steal = 10  # increased from 5
+        self.stealing_threshold = 0.3  # reduced from 0.7 (steal if queue is 30% of others)
         
         # Track stolen messages for logging
         self.stolen_messages = []
@@ -98,13 +98,10 @@ class WorkStealingManager:
         
         for server_id, status in server_statuses.items():
             if server_id != self.server_id:
-                # Consider a server as a victim if:
-                # 1. Their queue is significantly longer than ours
-                # 2. Their CPU utilization is high
-                # 3. Their rank is worse than ours
-                if (status['queue_length'] > our_queue_length * (1 + self.stealing_threshold) and
-                    status['cpu_utilization'] > 70 and
-                    status['server_rank'] > self.rank_manager.get_rank()):
+                # More aggressive conditions for work stealing
+                if (status['queue_length'] > our_queue_length * (1 + self.stealing_threshold) or  # Queue length condition
+                    status['cpu_utilization'] > 50 or  # Reduced CPU threshold from 70
+                    status['server_rank'] > self.rank_manager.get_rank()):  # Rank condition
                     victims.append((server_id, status))
         
         # Sort victims by queue length (most loaded first)
@@ -113,7 +110,8 @@ class WorkStealingManager:
         # Try to steal from each victim
         for victim_id, victim_status in victims:
             if self._steal_from_server(victim_id):
-                break  # Stop after successful steal
+                # Continue stealing from other victims even after a successful steal
+                continue
     
     def _get_all_server_statuses(self) -> Dict[int, Dict[str, Any]]:
         """Get status information from all servers."""
@@ -172,7 +170,7 @@ class WorkStealingManager:
             logger.error(f"Failed to steal from server {victim_id}: {e}")
             return False
     
-    def _log_stolen_messages(self, victim_id: int, messages: List[keyvalue_pb2.PendingMessage]):
+    def _log_stolen_messages(self, victim_id: int, messages: List[Any]):
         """Log information about stolen messages."""
         for msg in messages:
             log_entry = {

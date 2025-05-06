@@ -167,27 +167,50 @@ class RankManager:
             return smoothed
     
     def get_rank(self) -> int:
-        """Calculate and return the current rank of this server using only active requests.
+        """Calculate and return the current rank of this server using multiple metrics.
+        
+        The rank is calculated using:
+        1. CPU utilization (40% weight)
+        2. Queue length (30% weight)
+        3. Active requests (30% weight)
         
         Lower rank means less loaded (better).
         """
         with self.lock:
-            # Get current active requests
+            # Get current metrics
+            cpu_util = self._get_cpu_free_percentage()  # Convert to free percentage
+            queue_length = self.work_stealing_manager.get_queue_length() if hasattr(self, 'work_stealing_manager') else 0
             active_requests = self.active_requests
             
-            # Store current value for history
+            # Store current values for history
+            self._update_historical('cpu_utilization', cpu_util)
+            self._update_historical('queue_length', queue_length)
             self._update_historical('active_requests', active_requests)
             
-            # Get smoothed value
+            # Get smoothed values
+            smoothed_cpu = self._get_smoothed_value('cpu_utilization', cpu_util)
+            smoothed_queue = self._get_smoothed_value('queue_length', queue_length)
             smoothed_requests = self._get_smoothed_value('active_requests', active_requests)
             
-            # Calculate rank using only active requests
-            rank = smoothed_requests
+            # Calculate weighted rank
+            # CPU utilization (40% weight) - higher free CPU is better (lower rank)
+            cpu_rank = (100 - smoothed_cpu) * 0.4
+            
+            # Queue length (30% weight) - normalize to 0-100 scale
+            max_queue = 100  # Maximum expected queue length
+            queue_rank = min(smoothed_queue / max_queue * 100, 100) * 0.3
+            
+            # Active requests (30% weight) - normalize to 0-100 scale
+            max_requests = 50  # Maximum expected concurrent requests
+            request_rank = min(smoothed_requests / max_requests * 100, 100) * 0.3
+            
+            # Calculate final rank
+            rank = cpu_rank + queue_rank + request_rank
             
             # Ensure rank is non-negative
             rank = max(0, rank)
             
-            logger.debug(f"Rank based on active requests: {smoothed_requests}, final_rank={rank}")
+            logger.debug(f"Rank components - CPU: {cpu_rank:.2f}, Queue: {queue_rank:.2f}, Requests: {request_rank:.2f}, final_rank={rank:.2f}")
             
             return int(rank * 10)  # Scale for integer representation
     
